@@ -29,11 +29,11 @@ class EquivalentieklassenEnRandwaardenTest {
                 Arguments.of(1, 0.8),
                 Arguments.of(2, 1.60),
                 Arguments.of(99, 79.2),
-                Arguments.of(100, 118),
-                Arguments.of(101, 118.8),
-                Arguments.of(499, 437.2),
-                Arguments.of(500, 470),
-                Arguments.of(501, 470.8)
+                Arguments.of(100, 42),
+                Arguments.of(101, 42.8),
+                Arguments.of(499, 361.2),
+                Arguments.of(500, 330),
+                Arguments.of(501, 330.8)
         );
     }
 
@@ -43,7 +43,6 @@ class EquivalentieklassenEnRandwaardenTest {
     void nettoWinstTest(int input, double input2) {
         kas.oogstPlantSoort(madeliefje,input,1.0,"Algemeen");
         double Expected = input2;
-        System.out.println(kas.getTotaleWinst());
         double Actual = kas.getTotaleWinst();
         assertEquals(Expected,Actual,0.00000000001);
     }
