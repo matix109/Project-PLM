@@ -10,6 +10,7 @@ abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
     private int groeiTijdWeken;
+    private int huidigeGroeiTijdWeken;
     private double prijsOmTeGroeien;
     private int Luchtvochtigheid;
     private int Temperatuur;
@@ -24,6 +25,9 @@ abstract class Plant {
         this.Temperatuur = Temperatuur;
     }
 
+    abstract public void volgendeWeek();
+    abstract public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken);
+    abstract public int getHuidigeGroeiTijdWeken();
 
     abstract public String getNaam();
 

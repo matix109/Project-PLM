@@ -6,6 +6,7 @@ class Groente extends Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
     private int groeiTijdWeken;
+    private int huidigeGroeiTijdWeken;
     private double prijsOmTeGroeien;
     private int Luchtvochtigheid;
     private int Temperatuur;
@@ -19,12 +20,25 @@ class Groente extends Plant {
         this.prijsOmTeGroeien = prijsOmTeGroeien;
         this.Luchtvochtigheid = Luchtvochtigheid;
         this.Temperatuur = Temperatuur;
+        this.huidigeGroeiTijdWeken = 0;
         setStringVoeding(Gro,MiGro);
     }
 
     public void geefVoeding(int Dag,int Maand,int Jaar) {
         Handelingen add = new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding);
         addHandeling(add);
+    }
+
+public void volgendeWeek(){
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken + 1;
+}
+
+    public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken) {
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken;
+    }
+
+    public int getHuidigeGroeiTijdWeken() {
+        return this.huidigeGroeiTijdWeken;
     }
 
     public String getNaam(){
