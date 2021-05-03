@@ -22,9 +22,8 @@ class oogstPlantenSoortTestMCDC {
         @DisplayName("MC/DC Test1")
         void oogstPlantSoortTest1() {
             wortel.setHuidigeGroeiTijdWeken(7);
-            kas.oogstPlantSoort(wortel,6,2,"Algemeen");
-            int expected = 1;
-            int actual = kas.getHoeveelheidSoortenOogst();
+            boolean expected = true;
+            boolean actual = kas.oogstPlantSoort(wortel,6,2,"Algemeen");
             assertEquals(expected,actual);
         }
 
@@ -32,9 +31,8 @@ class oogstPlantenSoortTestMCDC {
     @DisplayName("MC/DC Test2")
     void oogstPlantSoortTest2() {
         wortel.setHuidigeGroeiTijdWeken(7);
-        kas.oogstPlantSoort(courgette,10,2,"Algemeen");
-        int expected = 0;
-        int actual = kas.getHoeveelheidSoortenOogst();
+        boolean expected = false;
+        boolean actual = kas.oogstPlantSoort(courgette,10,2,"Algemeen");
         assertEquals(expected,actual);
     }
 
@@ -42,9 +40,8 @@ class oogstPlantenSoortTestMCDC {
     @DisplayName("MC/DC Test3")
     void oogstPlantSoortTest3() {
         wortel.setHuidigeGroeiTijdWeken(7);
-        kas.oogstPlantSoort(wortel,0,2,"Algemeen");
-        int expected = 0;
-        int actual = kas.getHoeveelheidSoortenOogst();
+        boolean expected = false;
+        boolean actual = kas.oogstPlantSoort(wortel,0,2,"Algemeen");
         assertEquals(expected,actual);
     }
 
@@ -52,9 +49,8 @@ class oogstPlantenSoortTestMCDC {
     @DisplayName("MC/DC Test4")
     void oogstPlantSoortTest4() {
         wortel.setHuidigeGroeiTijdWeken(5);
-        kas.oogstPlantSoort(wortel,9,2,"Algemeen");
-        int expected = 0;
-        int actual = kas.getHoeveelheidSoortenOogst();
+        boolean expected = false;
+        boolean actual = kas.oogstPlantSoort(wortel,9,2,"Algemeen");
         assertEquals(expected,actual);
     }
 
