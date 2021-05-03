@@ -28,7 +28,7 @@ public String getKasNaam(){
             }
         }
 
-        if (inDeKas && Volgroeid && Hoeveelheid >= 1) {  // && Voorwaarde volgroeid moet hier nog bij
+        if (inDeKas && Volgroeid && Hoeveelheid >= 1) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
             removePlant(plant);
             plant.resetHandelingen();
