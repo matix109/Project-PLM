@@ -17,7 +17,7 @@ public String getKasNaam(){
     return Naam;
 }
 
-    public void oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
+    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
         boolean inDeKas = false;
         boolean Volgroeid = (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
                 || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
@@ -34,9 +34,10 @@ public String getKasNaam(){
             plant.resetHandelingen();
             Bewaart.add(oogst);
             oogst.addWinstKas(this);
+            return true;
         }
         else{
-            System.out.println("De plant kan niet geoogst worden.");
+            return false;
         }
     }
 
