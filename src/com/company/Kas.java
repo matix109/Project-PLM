@@ -112,6 +112,7 @@ groeitIn.add(plant);
 
     public void addWinst(double Winst) {
     totaleWinst += Winst;
+
     }
 
 
