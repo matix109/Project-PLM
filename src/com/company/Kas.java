@@ -111,12 +111,7 @@ groeitIn.add(plant);
     }
 
     public void addWinst(double Winst) {
-    //geen opslag kosten voor Winst onder de 200euro
-    //opslag kosten voor winst van 200euro tot 1000euro van 38euro(Pallet)
-    //voor winst boven de 1000euro komen er kosten bij voor een kleine container van 120 euro
-
-
-    totaleWinst += Winst;
+        totaleWinst += Winst;
     }
 
 
