@@ -25,7 +25,8 @@ public String getKasNaam(){
                 inDeKas = true;
             }
         }
-        if (inDeKas) {
+
+        if (inDeKas) {  // && Voorwaarde volgroeid moet hier nog bij
             removePlant(plant);
             plant.resetHandelingen();
             Bewaart.add(oogst);

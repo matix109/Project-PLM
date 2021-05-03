@@ -5,7 +5,7 @@ class Kwaliteit {
     private double prijsPerStuk;
     private String kwaliteit;
 
-    public Kwaliteit(String Kwaliteit, double PrijsPerStuk) {
+    public Kwaliteit(String Kwaliteit, double PrijsPerStuk) {//als er x stuks zijn komen er extra kosten bij voor opslag
         this.kwaliteit = Kwaliteit;
         if (this.kwaliteit.equalsIgnoreCase("slecht")) {
                 this.prijsPerStuk = PrijsPerStuk - ((PrijsPerStuk/100) * 30);
