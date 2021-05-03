@@ -5,24 +5,10 @@ class Handelingen {
     private String Handeling;
 
     public Handelingen(int Dag, int Maand , int Jaar, String handleing) {
-        String datum = "";
-        if (Dag < 10){
-            datum =""+0+Dag+"/";
-        }
-        else{
-            datum = Dag + "/";
-        }
-        if (Maand < 10 ){
-            datum = datum + 0 +Maand+"/";
-        }
-        else{
-            datum = datum + Maand + "/";
-        }
-        datum = datum + Jaar;
         this.datum = datum;
         this.Handeling = handleing;
     }
-
+    public String correcteDatum(int Dag,int Maand, int Jaar){return "";}
     public String getDatum() {
         return datum;
     }
