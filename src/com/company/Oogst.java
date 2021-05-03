@@ -15,8 +15,17 @@ class Oogst {
     }
 
     public void addWinstKas(Kas kas) {
-        kas.addWinst(Winst - kosten);
+        if (this.Hoeveelheid >= 500){
+            kas.addWinst(Winst - (kosten + 70));
+        }
+        else if (this.Hoeveelheid >= 100){
+            kas.addWinst(Winst - (kosten + 38));
+        }
+        else if (this.Hoeveelheid < 100){
+            kas.addWinst(Winst - kosten);
+        }
     }
+
 
     public int getHoeveelheid() {
         return Hoeveelheid;
