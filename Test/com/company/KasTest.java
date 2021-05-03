@@ -1,0 +1,56 @@
+package com.company;
+import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class KasTest {
+   static Kas kas = null;
+   static Groente wortel = null;
+   static Groente courgette = null;
+
+    @BeforeAll
+    static void initialize(){
+        kas = new Kas("kas");
+        wortel = new Groente("Wortel",7,0.20, 60,21,3,4);
+        courgette = new Groente("Courgette",7,0.30, 60,21,3,4);
+        kas.addPlant(wortel);
+        kas.addPlant(courgette);
+        wortel.nieuweHandeling(9,11,1999,"de blaadjes onderhouden");
+        kas.oogstPlantSoort(wortel,10,2,"Algemeen");
+    }
+
+    @Test
+    @Order(2)
+    @DisplayName("Hoeveelheid Groente")
+    void oogstPlantSoortTest() {
+        int expected = 1;
+        int actual = kas.getHoeveelheidGroentes();
+        assertEquals(expected,actual);
+        }
+
+    @Test
+    @Order(1)
+    @DisplayName("Soorten Oogst")
+    void oogstPlantSoortTest2() {
+        int expected = 1;
+        int actual = kas.getHoeveelheidSoortenOogst();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("Handelingen")
+    void oogstPlantSoortTest3() {
+        int expected = 0;
+        int actual = wortel.getHoeveelheidHandelingen();
+        assertEquals(expected,actual);
+    }
+
+    @AfterAll
+    static void reset(){
+        kas = null;
+        wortel = null;
+        courgette = null;
+    }
+}

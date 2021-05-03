@@ -1,0 +1,121 @@
+package com.company;
+
+import java.util.ArrayList;
+
+class Kas {
+    private String Naam;
+    private ArrayList<Oogst> Bewaart;
+    private ArrayList<Plant> groeitIn;
+    private double totaleWinst;
+
+Kas(String naam){
+    this.Naam = naam;
+    Bewaart = new ArrayList<>();
+groeitIn = new ArrayList<>();
+}
+public String getKasNaam(){
+    return Naam;
+}
+
+    public void oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
+        Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
+        boolean inDeKas = false;
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
+                inDeKas = true;
+            }
+        }
+        if (inDeKas) {
+            removePlant(plant);
+            plant.resetHandelingen();
+            Bewaart.add(oogst);
+            oogst.addWinstKas(this);
+        }
+        else{
+            System.out.println("De plant kan niet geoogst worden omdat die niet in de kas staat");
+        }
+    }
+
+    public void getPlantenLijst() {
+         for (int i = 0; i < groeitIn.size(); i++) {
+             System.out.println(groeitIn.get(i).getNaam());
+         }
+   }
+
+    public void getBloemenLijst() {
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i) instanceof Bloem) {
+                System.out.println(groeitIn.get(i).getNaam());
+            }
+        }
+    }
+
+    public void getGroenteLijst() {
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if(groeitIn.get(i) instanceof Groente) {
+                System.out.println(groeitIn.get(i).getNaam());
+            }
+        }
+    }
+
+    public void getOogstenKas(){
+        for (int i = 0; i < Bewaart.size(); i++) {
+            System.out.print("De plant "+ Bewaart.get(i).getNaam() +" had een oogst van "+ Bewaart.get(i).getHoeveelheid()+
+                    " wat "+ Bewaart.get(i).getNettoWinst()+" euro opleverde\n");
+        }
+    }
+
+    public int getHoeveelheidBloemen() {
+        int a =0;
+        for (int i = 0; i < groeitIn.size(); i++) {
+
+            if (groeitIn.get(i) instanceof Bloem) {
+                a++;
+            }
+        }
+        return a;
+    }
+public void addPlant(Plant plant){
+groeitIn.add(plant);
+}
+    public int getHoeveelheidGroentes() {
+        int a = 0;
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i) instanceof Groente) {
+                a++;
+            }
+        }
+        return a;
+    }
+
+    public int getHoeveelheidPlanten() {
+        int i;
+       for (i = 0; i < groeitIn.size(); i++) {
+        }
+        return i;
+    }
+    public int getHoeveelheidSoortenOogst() {
+        int i;
+        for (i = 0; i < Bewaart.size(); i++) {
+        }
+        return i;
+    }
+
+    public double getTotaleWinst() {
+        return totaleWinst;
+    }
+
+    public void addWinst(double Winst) {
+        totaleWinst += Winst;
+    }
+
+
+    public void removePlant(Plant plant) {
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
+                groeitIn.remove(i);
+            }
+        }
+    }
+
+}
