@@ -16,16 +16,15 @@ class Oogst {
 
     public void addWinstKas(Kas kas) {
         if (this.Hoeveelheid >= 500){
-            kas.addWinst(Winst - (kosten + 70));
+            kas.addWinst(Winst - (kosten + 70));//Kist
         }
         else if (this.Hoeveelheid >= 100){
-            kas.addWinst(Winst - (kosten + 38));
+            kas.addWinst(Winst - (kosten + 38));//Pallet
         }
         else if (this.Hoeveelheid < 100){
             kas.addWinst(Winst - kosten);
         }
     }
-
 
     public int getHoeveelheid() {
         return Hoeveelheid;
