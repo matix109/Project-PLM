@@ -11,7 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class berekenDeKwaliteitPairwiseTest {
     static Kas kas = null;
-    static Kwaliteit kwaliteit = null;
+    static Kwaliteit kwaliteit1 = null;
+    static Kwaliteit kwaliteit2 = null;
+    static Kwaliteit kwaliteit3 = null;
+    static Kwaliteit kwaliteit4 = null;
+    static Kwaliteit kwaliteit5 = null;
+    static Kwaliteit kwaliteit6 = null;
     static Bloem madeliefje = null;
     static Bloem tulp = null;
     static Bloem lotus = null;
@@ -26,10 +31,10 @@ class berekenDeKwaliteitPairwiseTest {
         kas = new Kas("Kas");
         //Bloemen
         madeliefje = new Bloem("Madeliefje", 0, 0.20, 60, 21, 3, 4, 6);//Goed
-        tulp = new Bloem("Tulp", 0, 0.41, 60, 21, 3, 4, 6);//Goed
-        lotus = new Bloem("Lotus", 0, 0.41, 60, 21, 3, 4, 6);//Goed
+        tulp = new Bloem("Tulp", 0, 0.31, 60, 21, 3, 4, 6);//Goed
+        lotus = new Bloem("Lotus", 0, 0.31, 60, 21, 3, 4, 6);//Goed
         //Groente
-        aardappel = new Groente("Aardappel", 0, 0.41, 60, 21, 3, 4);//Goed
+        aardappel = new Groente("Aardappel", 0, 0.31, 60, 21, 3, 4);//Goed
         courgette = new Groente("Courgette", 0, 0.20, 60, 21, 3, 4);//Goed
         wortel = new Groente("Wortel", 0, 0.20, 60, 21, 3, 4);//Goed
         //In de kas
@@ -45,22 +50,34 @@ class berekenDeKwaliteitPairwiseTest {
         tulp.geefVoeding(4,5,2021);
         aardappel.geefVoeding(4,5,2021);
         wortel.geefVoeding(4,5,2021);
+        //Kwaliteit
+        kwaliteit1 = new Kwaliteit("Slecht",madeliefje,1);
+        kwaliteit2 = new Kwaliteit("Slecht",aardappel,1);
+        kwaliteit3 = new Kwaliteit("Algemeen",tulp,1);
+        kwaliteit4 = new Kwaliteit("Algemeen",courgette,1);
+        kwaliteit5 = new Kwaliteit("Goed",lotus,1);
+        kwaliteit6 = new Kwaliteit("Goed",wortel,1);
     }
     @Test
     @DisplayName("Prijs Per Stuk Test")
     void nettoWinstTest() {
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Slecht",madeliefje,true,false),0.000000001);
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Slecht",aardappel,false,true),0.000000001);
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Algemeen",tulp,false,true),0.000000001);
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Algemeen",courgette,true,false),0.000000001);
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Goed",lotus,true,true),0.000000001);
-        assertEquals(0,kwaliteit.berekenPrijsPerStuk("Goed",wortel,false,false),0.000000001);
+        assertEquals(0.77,kwaliteit1.getPrijsPerStuk(),0.000000001);
+        assertEquals(0,kwaliteit2.berekenPrijsPerStuk("Slecht",aardappel,false,true),0.000000001);
+        assertEquals(0,kwaliteit3.berekenPrijsPerStuk("Algemeen",tulp,false,true),0.000000001);
+        assertEquals(0,kwaliteit4.berekenPrijsPerStuk("Algemeen",courgette,true,false),0.000000001);
+        assertEquals(0,kwaliteit5.berekenPrijsPerStuk("Goed",lotus,true,true),0.000000001);
+        assertEquals(0,kwaliteit6.berekenPrijsPerStuk("Goed",wortel,false,false),0.000000001);
     }
 
     @AfterAll
     static void reset(){
         kas = null;
-        kwaliteit = null;
+        kwaliteit1 = null;
+        kwaliteit2 = null;
+        kwaliteit3 = null;
+        kwaliteit4 = null;
+        kwaliteit5 = null;
+        kwaliteit6 = null;
         madeliefje = null;
         tulp = null;
         lotus = null;

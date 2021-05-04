@@ -11,6 +11,7 @@ class Bloem extends Plant {
     private int Luchtvochtigheid;
     private int Temperatuur;
     private String Voeding;
+    boolean Bio = true;
 
     Bloem(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur, int Gro, int MiGro, int Bloom) {
         super(naam,groeiTijdWeken,prijsOmTeGroeien,Luchtvochtigheid,Temperatuur);
@@ -23,9 +24,22 @@ class Bloem extends Plant {
         setStringVoeding(Gro,MiGro,Bloom);
     }
 
+    public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){
+        if (Kwaliteit.equalsIgnoreCase("slecht")) {
+            return (prijsPerStuk / 100) * 30;
+        } else if (Kwaliteit.equalsIgnoreCase("goed")) {
+            return (prijsPerStuk / 100) * 30;
+        }
+        return 0;
+    }
+
     public void geefVoeding(int Dag,int Maand,int Jaar) {
         Handelingen eten = new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding);
         addHandeling(eten);
+        this.Bio = false;
+    }
+    public boolean getBio(){
+        return Bio;
     }
     public void volgendeWeek(){
         this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken + 1;

@@ -24,7 +24,8 @@ abstract class Plant {
         this.Luchtvochtigheid = Luchtvochtigheid;
         this.Temperatuur = Temperatuur;
     }
-
+    abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
+    abstract public boolean getBio();
     abstract public void volgendeWeek();
     abstract public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken);
     abstract public int getHuidigeGroeiTijdWeken();
