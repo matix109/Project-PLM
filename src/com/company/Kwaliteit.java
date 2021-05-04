@@ -20,9 +20,10 @@ class Kwaliteit {
     //Kwaliteit 3 variabelen (Goed,Algemeen,Slecht) waarop de initiele prijs per stuk wordt gebaseerd.
     //Boolean Bio als de plant 0 keer voeding heeft gekregen is die bio anders niet 2 variabelen (Bio of niet Bio) als die bio is wordt de prijs hoger
 
-    public double berekenPrijsPerStuk(String Kwaliteit, double PrijsPerStuk, boolean Bio, boolean Luxe){
-        return prijsPerStuk;
+    public double berekenPrijsPerStuk(String Kwaliteit, Plant plant, boolean Bio, boolean Luxe){
+        return 0;
     }
+
     public String getKwaliteit() {
         return kwaliteit;
     }

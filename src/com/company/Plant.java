@@ -15,7 +15,6 @@ abstract class Plant {
     private int Luchtvochtigheid;
     private int Temperatuur;
     private String Voeding;
-    //boolean BIO
 
     Plant(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur) {
         Ondergaat = new ArrayList<>();

@@ -6,7 +6,7 @@ class Bloem extends Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
     private int groeiTijdWeken;
-    private int huidigeGroeiTijdWeken;
+    private int huidigeGroeiTijdWeken = 0;
     private double prijsOmTeGroeien;
     private int Luchtvochtigheid;
     private int Temperatuur;
