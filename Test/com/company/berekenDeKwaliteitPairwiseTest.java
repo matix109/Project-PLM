@@ -51,22 +51,31 @@ class berekenDeKwaliteitPairwiseTest {
         aardappel.geefVoeding(4,5,2021);
         wortel.geefVoeding(4,5,2021);
         //Kwaliteit
+        //Door middel van een Kwaliteit object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
+        //Onder elke kwaliteit staat de ingevulde methode als voorbeeld.
         kwaliteit1 = new Kwaliteit("Slecht",madeliefje,1);
+        //kwaliteit1.berekenPrijsPerStuk("Slecht",aardappel,true,false);
         kwaliteit2 = new Kwaliteit("Slecht",aardappel,1);
+        //kwaliteit2.berekenPrijsPerStuk("Slecht",aardappel,false,true);
         kwaliteit3 = new Kwaliteit("Algemeen",tulp,1);
+        //kwaliteit3.berekenPrijsPerStuk("Algemeen",tulp,false,true);
         kwaliteit4 = new Kwaliteit("Algemeen",courgette,1);
+        //kwaliteit4.berekenPrijsPerStuk("Algemeen",courgette,true,false);
         kwaliteit5 = new Kwaliteit("Goed",lotus,1);
+        //kwaliteit5.berekenPrijsPerStuk("Goed",lotus,true,true)
         kwaliteit6 = new Kwaliteit("Goed",wortel,1);
+        //kwaliteit6.berekenPrijsPerStuk("Goed",wortel,false,false)
     }
+
     @Test
     @DisplayName("Prijs Per Stuk Test")
     void nettoWinstTest() {
-        assertEquals(0.77,kwaliteit1.getPrijsPerStuk(),0.000000001);
-        assertEquals(0,kwaliteit2.berekenPrijsPerStuk("Slecht",aardappel,false,true),0.000000001);
-        assertEquals(0,kwaliteit3.berekenPrijsPerStuk("Algemeen",tulp,false,true),0.000000001);
-        assertEquals(0,kwaliteit4.berekenPrijsPerStuk("Algemeen",courgette,true,false),0.000000001);
-        assertEquals(0,kwaliteit5.berekenPrijsPerStuk("Goed",lotus,true,true),0.000000001);
-        assertEquals(0,kwaliteit6.berekenPrijsPerStuk("Goed",wortel,false,false),0.000000001);
+        assertEquals(0.77,kwaliteit1.getPrijsPerStuk(),0.01);
+        assertEquals(0.84,kwaliteit2.getPrijsPerStuk(),0.01);
+        assertEquals(1.05,kwaliteit3.getPrijsPerStuk(),0.01);
+        assertEquals(1.1,kwaliteit4.getPrijsPerStuk(),0.01);
+        assertEquals(1.5,kwaliteit5.getPrijsPerStuk(),0.01);
+        assertEquals(1.2,kwaliteit6.getPrijsPerStuk(),0.01);
     }
 
     @AfterAll
