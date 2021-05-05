@@ -30,7 +30,7 @@ class oogstPlantenSoortTestMCDC {
     @Test
     @DisplayName("MC/DC Test2")
     void oogstPlantSoortTest2() {
-        wortel.setHuidigeGroeiTijdWeken(7);
+        courgette.setHuidigeGroeiTijdWeken(7);
         boolean expected = false;
         boolean actual = kas.oogstPlantSoort(courgette,10,2,"Algemeen");
         assertEquals(expected,actual);

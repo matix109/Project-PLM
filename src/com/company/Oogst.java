@@ -9,7 +9,7 @@ class Oogst {
     public Oogst(Plant plant, int Hoeveelheid,double PrijsPerStuk, String Kwaliteit) {
         this.naam = plant.getNaam();
         this.Hoeveelheid = Hoeveelheid;
-        this.kwaliteit = new Kwaliteit(Kwaliteit, PrijsPerStuk);
+        this.kwaliteit = new Kwaliteit(Kwaliteit, plant, PrijsPerStuk);
         this.Winst = Hoeveelheid * kwaliteit.getPrijsPerStuk();
         this.kosten = plant.getPrijsOmTeGroeien() * Hoeveelheid;
     }
