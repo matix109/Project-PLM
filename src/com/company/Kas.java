@@ -17,22 +17,27 @@ public String getKasNaam(){
     return Naam;
 }
 
-    public void oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
-        Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
+    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
         boolean inDeKas = false;
+        boolean Volgroeid = (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
+                || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+
         for (int i = 0; i < groeitIn.size(); i++) {
             if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
                 inDeKas = true;
             }
         }
-        if (inDeKas) {
+
+        if (inDeKas && Volgroeid && Hoeveelheid >= 1) {
+            Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
             removePlant(plant);
             plant.resetHandelingen();
             Bewaart.add(oogst);
             oogst.addWinstKas(this);
+            return true;
         }
         else{
-            System.out.println("De plant kan niet geoogst worden omdat die niet in de kas staat");
+            return false;
         }
     }
 
@@ -106,7 +111,8 @@ groeitIn.add(plant);
     }
 
     public void addWinst(double Winst) {
-        totaleWinst += Winst;
+    totaleWinst += Winst;
+
     }
 
 

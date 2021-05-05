@@ -3,10 +3,14 @@ package com.company;
 import java.util.ArrayList;
 // Kijken of ik de variabelen hier kan weghalen en ook meer dingen naar hier halen uit plant en groente om
 // codeduplicatie te voorkomen.
+//Een Boolean volgroeid toevoegen met een methode waarin er gecontroleerd wordt of de groeitijd weken het zelfde is als de
+//voorgestelde groeitijd +/- en vervolgens die boolean met true of false setten|| Volgroeid moet dan als een
+//voorwaarde in de oogst methode als een plant niet volgrroeid is kan die niet geoogst worden.
 abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
     private int groeiTijdWeken;
+    private int huidigeGroeiTijdWeken;
     private double prijsOmTeGroeien;
     private int Luchtvochtigheid;
     private int Temperatuur;
@@ -20,7 +24,11 @@ abstract class Plant {
         this.Luchtvochtigheid = Luchtvochtigheid;
         this.Temperatuur = Temperatuur;
     }
-
+    abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
+    abstract public boolean getBio();
+    abstract public void volgendeWeek();
+    abstract public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken);
+    abstract public int getHuidigeGroeiTijdWeken();
 
     abstract public String getNaam();
 

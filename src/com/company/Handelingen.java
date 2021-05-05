@@ -22,7 +22,6 @@ class Handelingen {
         this.datum = datum;
         this.Handeling = handleing;
     }
-
     public String getDatum() {
         return datum;
     }
