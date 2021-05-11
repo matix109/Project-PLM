@@ -25,6 +25,7 @@ public String getKasNaam(){
         for (int i = 0; i < groeitIn.size(); i++) {
             if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
                 inDeKas = true;
+                break;
             }
         }
 
@@ -83,6 +84,7 @@ public String getKasNaam(){
 public void addPlant(Plant plant){
 groeitIn.add(plant);
 }
+
     public int getHoeveelheidGroentes() {
         int a = 0;
         for (int i = 0; i < groeitIn.size(); i++) {
@@ -114,7 +116,6 @@ groeitIn.add(plant);
     totaleWinst += Winst;
 
     }
-
 
     public void removePlant(Plant plant) {
         for (int i = 0; i < groeitIn.size(); i++) {

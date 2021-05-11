@@ -16,6 +16,12 @@ public class Main {
         kas.addPlant(madeliefje);
         kas.addPlant(tulp);
 
+        wortel.setHuidigeGroeiTijdWeken(7);
+        aardappel.setHuidigeGroeiTijdWeken(7);
+        courgette.setHuidigeGroeiTijdWeken(7);
+        madeliefje.setHuidigeGroeiTijdWeken(7);
+        tulp.setHuidigeGroeiTijdWeken(7);
+
         System.out.println(kas.getHoeveelheidGroentes());
         kas.getGroenteLijst();
         System.out.println();
@@ -47,8 +53,8 @@ public class Main {
         System.out.println(kas.getHoeveelheidPlanten());
         kas.getGroenteLijst();
         System.out.println(kas.getTotaleWinst());
-        Oogst oogst = new Oogst(courgette,2,3,"algemeen");
-        Oogst madeliefjeOogst = new Oogst(madeliefje,2,5.50,"algemeen");
+/*        Oogst oogst = new Oogst(courgette,2,3,"algemeen");
+        Oogst madeliefjeOogst = new Oogst(madeliefje,2,5.50,"algemeen");*/
         System.out.println(kas.getTotaleWinst());
         System.out.println(kas.getTotaleWinst());
         Kas kas2 = new Kas("kas");
@@ -59,7 +65,7 @@ public class Main {
         System.out.println();
         kas.getBloemenLijst();
         System.out.println();
-        kas.oogstPlantSoort(aardappel,10,0.50,"algemeen");
+        //kas.oogstPlantSoort(aardappel,10,0.50,"algemeen");
         System.out.println();
         //kas.oogstPlantSoort(madeliefje,1,2.50,"algemeen");
         System.out.println();
@@ -88,12 +94,14 @@ public class Main {
         System.out.println(madeliefje.getNaam());
         madeliefje.setNaam("Moodeliefje");
         kas.getBloemenLijst();
-        kas.oogstPlantSoort(madeliefje,2,2,"Goed");
         kas.getBloemenLijst();
         System.out.println();
-        kas.oogstPlantSoort(madeliefje,2,2,"Slecht");
-        Plant astronemeria = new Bloem("Astronemeria",7,0.20, 60,21,3,4,6);
+        Plant astronemeria = new Bloem("Astronemeria",7,0.31, 60,21,3,4,6);
         kas.addPlant(astronemeria);
+        astronemeria.setHuidigeGroeiTijdWeken(6);
+        astronemeria.volgendeWeek();
+        astronemeria.volgendeWeek();
+        astronemeria.geefVoeding(1,1,2021);
         System.out.println();
         kas.getPlantenLijst();
         System.out.println();
@@ -109,6 +117,16 @@ public class Main {
         System.out.println(kas.getTotaleWinst());
         System.out.println(kas.getHoeveelheidSoortenOogst());
         System.out.println(madeliefje.getHandelingen());
+        kas.getOogstenKas();
+        madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen");
+        madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen2");
+        kas.oogstPlantSoort(madeliefje,2,2,"Goed");
+        System.out.println(courgette.getHandelingen());
+        System.out.println(wortel.getHandelingen());
+        System.out.println(madeliefje.getHandelingen());
+        System.out.println(kas.getTotaleWinst());
+        System.out.println(madeliefje.getHoeveelheidHandelingen());
+        kas.getOogstenKas();
 
     }
 }

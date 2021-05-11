@@ -16,6 +16,8 @@ class KasTest {
         courgette = new Groente("Courgette",7,0.30, 60,21,3,4);
         kas.addPlant(wortel);
         kas.addPlant(courgette);
+        wortel.setHuidigeGroeiTijdWeken(7);
+        courgette.setHuidigeGroeiTijdWeken(7);
         wortel.nieuweHandeling(9,11,1999,"de blaadjes onderhouden");
         kas.oogstPlantSoort(wortel,10,2,"Algemeen");
     }

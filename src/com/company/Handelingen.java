@@ -5,7 +5,7 @@ class Handelingen {
     private String Handeling;
 
     public Handelingen(int Dag, int Maand , int Jaar, String handleing) {
-        String datum = "";
+        String datum;
         if (Dag < 10){
             datum =""+0+Dag+"/";
         }

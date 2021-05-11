@@ -21,7 +21,7 @@ class Oogst {
         else if (this.Hoeveelheid >= 100){
             kas.addWinst(Winst - (kosten + 38));//Pallet
         }
-        else if (this.Hoeveelheid < 100){
+        else {//if (this.Hoeveelheid < 100)
             kas.addWinst(Winst - kosten);
         }
     }

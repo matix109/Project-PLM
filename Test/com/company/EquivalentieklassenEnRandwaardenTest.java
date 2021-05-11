@@ -20,6 +20,7 @@ class EquivalentieklassenEnRandwaardenTest {
     void setup(){
         kas = new Kas("Kas");
         madeliefje = new Bloem("Madeliefje", 7, 0.20, 60, 21, 3, 4, 6);
+        madeliefje.geefVoeding(1,1,2021);
         madeliefje.setHuidigeGroeiTijdWeken(7);
         kas.addPlant(madeliefje);
     }
