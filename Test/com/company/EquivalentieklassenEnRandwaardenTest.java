@@ -45,7 +45,7 @@ class EquivalentieklassenEnRandwaardenTest {
         kas.oogstPlantSoort(madeliefje,input,1.0,"Algemeen");
         double Expected = input2;
         double Actual = kas.getTotaleWinst();
-        assertEquals(Expected,Actual,0.00000000001);
+        assertEquals(Expected,Actual,0.0001);
     }
 
     @AfterEach

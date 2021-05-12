@@ -13,13 +13,17 @@ class Kwaliteit {
         private double berekenPrijsPerStuk(Plant plant, double PrijsPerStuk, boolean Bio, boolean Luxe){
             double tijdelijkePrijsPerStuk = kwaliteitPrijs(plant, PrijsPerStuk);
             if (Bio){
-                tijdelijkePrijsPerStuk = tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*10);
+                tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,10);
             }
             if(Luxe){
-                tijdelijkePrijsPerStuk = tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*5);
+                tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,5);
             }
             return tijdelijkePrijsPerStuk;
         }
+
+private double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
+    return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
+}
 
 private double kwaliteitPrijs(Plant plant, double PrijsPerStuk){
     if (this.kwaliteit.equalsIgnoreCase("slecht")) {

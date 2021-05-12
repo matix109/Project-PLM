@@ -13,6 +13,7 @@ Kas(String naam){
     Bewaart = new ArrayList<>();
 groeitIn = new ArrayList<>();
 }
+
 public String getKasNaam(){
     return Naam;
 }
@@ -20,19 +21,21 @@ public String getKasNaam(){
     public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
         if (kanGeoogstWorden(plant,Hoeveelheid)) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
-            Bewaart.add(oogst);
-            oogst.addWinstKas(this);
-            removePlant(plant);
+            geoogstePlant(oogst,plant);
             return true;
         }
-        else{
             return false;
-        }
     }
 
     private boolean kanGeoogstWorden(Plant plant, int Hoeveelheid){
     return inDeKas(plant) && Volgroeid(plant) && Hoeveelheid >= 1;
     }
+
+private void geoogstePlant(Oogst oogst, Plant plant){
+    Bewaart.add(oogst);
+    oogst.addWinstKas(this);
+    removePlant(plant);
+}
 
     private boolean Volgroeid(Plant plant){
        return (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())

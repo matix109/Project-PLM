@@ -4,11 +4,14 @@ import java.util.ArrayList;
 abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
-    private int groeiTijdWeken;
     private int huidigeGroeiTijdWeken;
-    private double prijsOmTeGroeien;
+    private double prijsOmTeGroeien;// miss hier ook iets mee doen.
+    //Benodigheiden miss een apparte klasse
+    private int groeiTijdWeken;
     private int Luchtvochtigheid;
     private int Temperatuur;
+    // miss voeding een apparte klasse maken om de parameter lijst kleiner te maken bij het
+    // aanmaken van een bloem of een groente.
 
     Plant(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur) {
         Ondergaat = new ArrayList<>();
