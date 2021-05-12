@@ -19,8 +19,7 @@ class Groente extends Plant {
     }
 
     public void geefVoeding(int Dag,int Maand,int Jaar) {
-        Handelingen add = new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding);
-        addHandeling(add);
+        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding));
         this.Bio = false;
     }
     public boolean getBio(){

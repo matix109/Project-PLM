@@ -18,28 +18,34 @@ public String getKasNaam(){
 }
 
     public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
-        boolean inDeKas = false;
-        boolean Volgroeid = (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
-                || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
-
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
-                inDeKas = true;
-                break;
-            }
-        }
-
-        if (inDeKas && Volgroeid && Hoeveelheid >= 1) {
+        if (kanGeoogstWorden(plant,Hoeveelheid)) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
-            removePlant(plant);
-            plant.resetHandelingen();
             Bewaart.add(oogst);
             oogst.addWinstKas(this);
+            removePlant(plant);
             return true;
         }
         else{
             return false;
         }
+    }
+
+    private boolean kanGeoogstWorden(Plant plant, int Hoeveelheid){
+    return inDeKas(plant) && Volgroeid(plant) && Hoeveelheid >= 1;
+    }
+
+    private boolean Volgroeid(Plant plant){
+       return (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
+                || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+    }
+
+    private boolean inDeKas(Plant plant){
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void getPlantenLijst() {
@@ -118,11 +124,10 @@ groeitIn.add(plant);
     }
 
     public void removePlant(Plant plant) {
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
-                groeitIn.remove(i);
+            if (inDeKas(plant)) {
+                groeitIn.remove(plant);
+                plant.resetHandelingen();
             }
         }
     }
 
-}

@@ -120,6 +120,7 @@ public class Main {
         kas.getOogstenKas();
         madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen");
         madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen2");
+        System.out.println("Kijk hier");
         kas.oogstPlantSoort(madeliefje,2,2,"Goed");
         System.out.println(courgette.getHandelingen());
         System.out.println(wortel.getHandelingen());

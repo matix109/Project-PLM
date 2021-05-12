@@ -27,10 +27,14 @@ abstract class Plant {
 
     abstract public void geefVoeding(int dag, int maand, int jaar);
 
+    private String handelingenString(int i){
+        return this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
+    }
+
     public String getHandelingen() {
         String handelingenString = "";
         for (int i = 0; i < this.Ondergaat.size(); i++) {
-            handelingenString = handelingenString + "" + this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
+             handelingenString = handelingenString + handelingenString(i);
         }
         return handelingenString;
     }
@@ -41,10 +45,8 @@ abstract class Plant {
     }
 
     public String getBenodigheden() {
-        String Benodigheden;
-        Benodigheden = "Plantensoort " + this.getNaam() + " moet staan in " + this.getTemperatuur() + " graden celcius met " +
+        return "Plantensoort " + this.getNaam() + " moet staan in " + this.getTemperatuur() + " graden celcius met " +
                 this.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding();
-        return Benodigheden;
     }
 
      public void addHandeling(Handelingen handleing){

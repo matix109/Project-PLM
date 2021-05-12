@@ -3,27 +3,28 @@ class Oogst {
     private String naam;
     private int Hoeveelheid;
     private double Winst;
-    private Kwaliteit kwaliteit;
+    //private Kwaliteit kwaliteit;
     private double kosten;
 
     public Oogst(Plant plant, int Hoeveelheid,double PrijsPerStuk, String Kwaliteit) {
         this.naam = plant.getNaam();
         this.Hoeveelheid = Hoeveelheid;
-        this.kwaliteit = new Kwaliteit(Kwaliteit, plant, PrijsPerStuk);
-        this.Winst = Hoeveelheid * kwaliteit.getPrijsPerStuk();
-        this.kosten = plant.getPrijsOmTeGroeien() * Hoeveelheid;
+        //this.kwaliteit = new Kwaliteit(Kwaliteit, plant, PrijsPerStuk).getPrijsPerStuk();
+        this.Winst = Hoeveelheid * new Kwaliteit(Kwaliteit, plant, PrijsPerStuk).getPrijsPerStuk();
+        this.kosten = plant.getPrijsOmTeGroeien() * Hoeveelheid + extraKosten();
     }
 
+private int extraKosten(){
+    if (this.Hoeveelheid >= 500){
+        return 70;
+    }
+    else if (this.Hoeveelheid >= 100){
+        return 38;
+    }
+return 0;
+}
     public void addWinstKas(Kas kas) {
-        if (this.Hoeveelheid >= 500){
-            kas.addWinst(Winst - (kosten + 70));//Kist
-        }
-        else if (this.Hoeveelheid >= 100){
-            kas.addWinst(Winst - (kosten + 38));//Pallet
-        }
-        else {//if (this.Hoeveelheid < 100)
-            kas.addWinst(Winst - kosten);
-        }
+            kas.addWinst(getNettoWinst());
     }
 
     public int getHoeveelheid() {

@@ -7,20 +7,11 @@ class Kwaliteit {
 
     public Kwaliteit(String Kwaliteit, Plant plant, double PrijsPerStuk) {
         this.kwaliteit = Kwaliteit;
-        this.prijsPerStuk = PrijsPerStuk;
-        boolean isDePlantBio = plant.getBio();
-        boolean isDePlantLuxe = plant.getPrijsOmTeGroeien() > 0.30;
-        this.prijsPerStuk = berekenPrijsPerStuk(Kwaliteit,plant,isDePlantBio,isDePlantLuxe);
+        this.prijsPerStuk = berekenPrijsPerStuk(plant, PrijsPerStuk, plant.getBio(),plant.getPrijsOmTeGroeien() > 0.30);
     }
-        public double berekenPrijsPerStuk(String Kwaliteit, Plant plant, boolean Bio, boolean Luxe){
-            double tijdelijkePrijsPerStuk = 0;
-            if (this.kwaliteit.equalsIgnoreCase("slecht")) {
-                tijdelijkePrijsPerStuk = this.prijsPerStuk - plant.getBerekekningKwaliteit(Kwaliteit,this.prijsPerStuk);
-            } else if (this.kwaliteit.equalsIgnoreCase("algemeen")) {
-                tijdelijkePrijsPerStuk = prijsPerStuk;
-            } else if (this.kwaliteit.equalsIgnoreCase("goed")) {
-                tijdelijkePrijsPerStuk = this.prijsPerStuk + plant.getBerekekningKwaliteit(Kwaliteit,this.prijsPerStuk);
-            }
+
+        private double berekenPrijsPerStuk(Plant plant, double PrijsPerStuk, boolean Bio, boolean Luxe){
+            double tijdelijkePrijsPerStuk = kwaliteitPrijs(plant, PrijsPerStuk);
             if (Bio){
                 tijdelijkePrijsPerStuk = tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*10);
             }
@@ -29,6 +20,18 @@ class Kwaliteit {
             }
             return tijdelijkePrijsPerStuk;
         }
+
+private double kwaliteitPrijs(Plant plant, double PrijsPerStuk){
+    if (this.kwaliteit.equalsIgnoreCase("slecht")) {
+        return PrijsPerStuk - plant.getBerekekningKwaliteit(this.kwaliteit,PrijsPerStuk);
+    } else if (this.kwaliteit.equalsIgnoreCase("algemeen")) {
+        return PrijsPerStuk;
+    } else if (this.kwaliteit.equalsIgnoreCase("goed")) {
+        return PrijsPerStuk + plant.getBerekekningKwaliteit(this.kwaliteit,PrijsPerStuk);
+    }
+    return PrijsPerStuk;
+}
+
 
     public String getKwaliteit() {
         return kwaliteit;

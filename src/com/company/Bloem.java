@@ -19,8 +19,7 @@ class Bloem extends Plant {
     }
 
     public void geefVoeding(int Dag,int Maand,int Jaar) {
-        Handelingen eten = new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding);
-        addHandeling(eten);
+        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding));
         this.Bio = false;
     }
     public boolean getBio(){

@@ -5,6 +5,11 @@ class Handelingen {
     private String Handeling;
 
     public Handelingen(int Dag, int Maand , int Jaar, String handleing) {
+        this.datum = datumOrganizer(Dag,Maand,Jaar);
+        this.Handeling = handleing;
+    }
+
+    private String datumOrganizer(int Dag, int Maand, int Jaar){
         String datum;
         if (Dag < 10){
             datum =""+0+Dag+"/";
@@ -18,10 +23,9 @@ class Handelingen {
         else{
             datum = datum + Maand + "/";
         }
-        datum = datum + Jaar;
-        this.datum = datum;
-        this.Handeling = handleing;
+       return datum + Jaar;
     }
+
     public String getDatum() {
         return datum;
     }
