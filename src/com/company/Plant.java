@@ -5,22 +5,21 @@ abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
     private String naam;
     private int huidigeGroeiTijdWeken;
-    private double prijsOmTeGroeien;// miss hier ook iets mee doen.
+    private double prijsOmTeGroeien;
     //Benodigheiden miss een apparte klasse
-    private int groeiTijdWeken;
-    private int Luchtvochtigheid;
-    private int Temperatuur;
+    private Benodigdheden Heeft;
     // miss voeding een apparte klasse maken om de parameter lijst kleiner te maken bij het
     // aanmaken van een bloem of een groente.
 
-    Plant(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur) {
+    Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid) {
         Ondergaat = new ArrayList<>();
         this.naam = naam;
-        this.groeiTijdWeken = groeiTijdWeken;
         this.prijsOmTeGroeien = prijsOmTeGroeien;
-        this.Luchtvochtigheid = Luchtvochtigheid;
-        this.Temperatuur = Temperatuur;
+        this.Heeft = benodigheid;
         this.huidigeGroeiTijdWeken = 0;
+/*        this.groeiTijdWeken = groeiTijdWeken;
+        this.Luchtvochtigheid = Luchtvochtigheid;
+        this.Temperatuur = Temperatuur;*/
     }
     abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
 
@@ -30,8 +29,12 @@ abstract class Plant {
 
     abstract public void geefVoeding(int dag, int maand, int jaar);
 
-    private String handelingenString(int i){
+    private String handelingenString(int i) {
         return this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
+    }
+
+    public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken) {
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken;
     }
 
     public String getHandelingen() {
@@ -46,10 +49,12 @@ abstract class Plant {
         Handelingen add = new Handelingen(dag,maand,jaar,handeling);
         this.Ondergaat.add(add);
     }
-
-    public String getBenodigheden() {
-        return "Plantensoort " + this.getNaam() + " moet staan in " + this.getTemperatuur() + " graden celcius met " +
-                this.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding();
+    public Benodigdheden getBenodigdheden(){
+        return Heeft;
+    }
+    public String getBenodighedenString() {
+        return "Plantensoort " + this.getNaam() + " moet staan in " + Heeft.getTemperatuur() + " graden celcius met " +
+                Heeft.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding();
     }
 
      public void addHandeling(Handelingen handleing){
@@ -74,48 +79,19 @@ abstract class Plant {
         return this.naam;
     }
 
-    public int getGroeiTijdWeken() {
-        return this.groeiTijdWeken;
-    }
-
     public double getPrijsOmTeGroeien() {
         return this.prijsOmTeGroeien;
-    }
-
-    public int getLuchtvochtigheid() {
-        return this.Luchtvochtigheid;
-    }
-
-    public int getTemperatuur() {
-        return this.Temperatuur;
-    }
-
-    public void volgendeWeek(){
-        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken + 1;
-    }
-
-    public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken) {
-        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken;
-    }
-
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    public void setGroeiTijdWeken(int groeiTijdWeken) {
-        this.groeiTijdWeken = groeiTijdWeken;
     }
 
     public void setPrijsOmTeGroeien(double prijsOmTeGroeien) {
         this.prijsOmTeGroeien = prijsOmTeGroeien;
     }
 
-    public void setLuchtvochtigheid(int luchtvochtigheid) {
-        this.Luchtvochtigheid = luchtvochtigheid;
+    public void volgendeWeek(){
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken + 1;
     }
 
-    public void setTemperatuur(int temperatuur) {
-        this.Temperatuur = temperatuur;
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
-
 }

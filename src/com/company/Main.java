@@ -4,11 +4,11 @@ package com.company;
 public class Main {
     public static void main(String[] args) {
         Kas kas = new Kas("kas");
-        Groente wortel = new Groente("Wortel",7,0.20, 60,21,3,4);
-        Groente aardappel = new Groente("Aardappel",7,0.20, 60,21,3,4);
-        Groente courgette = new Groente("Courgette",7,0.20, 60,21,3,4);
-        Bloem madeliefje = new Bloem("Madeliefje",7,0.20, 60,21,3,4,6);
-        Bloem tulp = new Bloem("Tulp",7,0.20, 60,21,3,4,6);
+        Groente wortel = new Groente("Wortel",0.20,new Benodigdheden(7,60,21) ,3,4);
+        Groente aardappel = new Groente("Aardappel",0.20,new Benodigdheden(7,60,21),3,4);
+        Groente courgette = new Groente("Courgette",0.20,new Benodigdheden(7,60,21),3,4);
+        Bloem madeliefje = new Bloem("Madeliefje",0.20,new Benodigdheden(7,60,21),3,4,6);
+        Bloem tulp = new Bloem("Tulp",0.20,new Benodigdheden(7,60,21),3,4,6);
 
         kas.addPlant(wortel);
         kas.addPlant(aardappel);
@@ -38,9 +38,9 @@ public class Main {
         System.out.println(courgette.getHandelingen());
         System.out.println(aardappel.getHandelingen());
         System.out.println(aardappel.getPrijsOmTeGroeien());
-        System.out.println(aardappel.getBenodigheden());
+        System.out.println(aardappel.getBenodighedenString());
         System.out.println(wortel.getHandelingen());
-        System.out.println(madeliefje.getBenodigheden());
+        System.out.println(madeliefje.getBenodighedenString());
         madeliefje.geefVoeding(11,12,1999);
         System.out.println(madeliefje.getVoeding());
         madeliefje.nieuweHandeling(11,12,2000,"Blaadjes controleren");
@@ -81,22 +81,22 @@ public class Main {
         courgette.nieuweHandeling(1,1,1999,"Testertje");
         System.out.println(courgette.getHandelingen());
         System.out.println(wortel.getHandelingen());
-        System.out.println(madeliefje.getBenodigheden());
+        System.out.println(madeliefje.getBenodighedenString());
         kas.getBloemenLijst();
         System.out.println(madeliefje.getHandelingen());
         System.out.println(kas.getTotaleWinst());
         System.out.println(courgette.getHandelingen());
         kas.oogstPlantSoort(courgette,10,1,"Algemeen");
         System.out.println(kas.getTotaleWinst());
-        System.out.println(courgette.getBenodigheden());
-        System.out.println(courgette.getGroeiTijdWeken());
+        System.out.println(courgette.getBenodighedenString());
+        System.out.println(courgette.getBenodigdheden().getGroeiTijdWeken());
         System.out.println(courgette.getHandelingen());
         System.out.println(madeliefje.getNaam());
         madeliefje.setNaam("Moodeliefje");
         kas.getBloemenLijst();
         kas.getBloemenLijst();
         System.out.println();
-        Plant astronemeria = new Bloem("Astronemeria",7,0.31, 60,21,3,4,6);
+        Plant astronemeria = new Bloem("Astronemeria", 0.31, new Benodigdheden(7,60,21),3,4,6);
         kas.addPlant(astronemeria);
         astronemeria.setHuidigeGroeiTijdWeken(6);
         astronemeria.volgendeWeek();
@@ -121,13 +121,14 @@ public class Main {
         madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen");
         madeliefje.nieuweHandeling(1,1,2021,"Test nieuwe aanpassingen2");
         System.out.println("Kijk hier");
-        kas.oogstPlantSoort(madeliefje,2,2,"Goed");
+       // kas.oogstPlantSoort(madeliefje,2,2,"Goed");
         System.out.println(courgette.getHandelingen());
         System.out.println(wortel.getHandelingen());
         System.out.println(madeliefje.getHandelingen());
         System.out.println(kas.getTotaleWinst());
         System.out.println(madeliefje.getHoeveelheidHandelingen());
         kas.getOogstenKas();
+        System.out.println(madeliefje.getBenodighedenString());
 
     }
 }
