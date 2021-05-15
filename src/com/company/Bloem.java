@@ -4,8 +4,8 @@ class Bloem extends Plant {
     private String Voeding;
     boolean Bio = true;
 
-    Bloem(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur, double Gro, double MiGro, double Bloom) {
-        super(naam,groeiTijdWeken,prijsOmTeGroeien,Luchtvochtigheid,Temperatuur);
+    Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, double Gro, double MiGro, double Bloom) {
+        super(naam,prijsPerStuk,benodigheid);
         setStringVoeding(Gro,MiGro,Bloom);
     }
 

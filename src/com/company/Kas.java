@@ -38,8 +38,8 @@ private void geoogstePlant(Oogst oogst, Plant plant){
 }
 
     private boolean Volgroeid(Plant plant){
-       return (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
-                || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+       return (plant.getBenodigdheden().getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getBenodigdheden().getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
+                || (plant.getBenodigdheden().getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
     }
 
     private boolean inDeKas(Plant plant){
