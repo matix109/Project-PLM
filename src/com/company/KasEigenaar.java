@@ -68,5 +68,4 @@ public class KasEigenaar {
     private void setWachtwoord(String wachtwoord) {
         Wachtwoord = wachtwoord;
     }
-
 }
