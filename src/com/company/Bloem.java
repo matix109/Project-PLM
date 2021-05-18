@@ -2,7 +2,6 @@ package com.company;
 
 class Bloem extends Plant {
     private String Voeding;
-    boolean Bio = true;
 
     Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, double Gro, double MiGro, double Bloom) {
         super(naam,prijsPerStuk,benodigheid);
@@ -16,14 +15,6 @@ class Bloem extends Plant {
             return (prijsPerStuk / 100) * 30;
         }
         return 0;
-    }
-
-    public void geefVoeding(int Dag,int Maand,int Jaar) {
-        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ Voeding));
-        this.Bio = false;
-    }
-    public boolean getBio(){
-        return Bio;
     }
 
     public String getVoeding() {

@@ -129,6 +129,9 @@ public class Main {
         System.out.println(madeliefje.getHoeveelheidHandelingen());
         kas.getOogstenKas();
         System.out.println(madeliefje.getBenodighedenString());
+KasEigenaar.maakAccount();
+KasEigenaar.getInstance().addKas(kas);
+Login.getInstance().Inloggen();
 
     }
 }
