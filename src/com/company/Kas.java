@@ -11,7 +11,7 @@ class Kas {
 Kas(String naam){
     this.Naam = naam;
     Bewaart = new ArrayList<>();
-groeitIn = new ArrayList<>();
+    groeitIn = new ArrayList<>();
 }
 
 public String getKasNaam(){

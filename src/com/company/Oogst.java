@@ -3,7 +3,7 @@ class Oogst {
     private String naam;
     private int Hoeveelheid;
     private double Winst;
-    //private Kwaliteit kwaliteit;
+    //private Kwaliteit isVanEenBepaalde;
     private double kosten;
 
     public Oogst(Plant plant, int Hoeveelheid,double PrijsPerStuk, String Kwaliteit) {

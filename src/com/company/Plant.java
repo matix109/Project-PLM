@@ -3,13 +3,11 @@ package com.company;
 import java.util.ArrayList;
 abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
+    private Benodigdheden Heeft;
     private String naam;
     private int huidigeGroeiTijdWeken;
     private double prijsOmTeGroeien;
-    //Benodigheiden miss een apparte klasse
-    private Benodigdheden Heeft;
-    // miss voeding een apparte klasse maken om de parameter lijst kleiner te maken bij het
-    // aanmaken van een bloem of een groente.
+    boolean Bio = true;
 
     Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid) {
         Ondergaat = new ArrayList<>();
@@ -17,17 +15,19 @@ abstract class Plant {
         this.prijsOmTeGroeien = prijsOmTeGroeien;
         this.Heeft = benodigheid;
         this.huidigeGroeiTijdWeken = 0;
-/*        this.groeiTijdWeken = groeiTijdWeken;
-        this.Luchtvochtigheid = Luchtvochtigheid;
-        this.Temperatuur = Temperatuur;*/
     }
     abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
 
-    abstract public boolean getBio();
-
     abstract public String getVoeding();
 
-    abstract public void geefVoeding(int dag, int maand, int jaar);
+    public void geefVoeding(int Dag,int Maand,int Jaar) {
+        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ getVoeding()));
+        this.Bio = false;
+    }
+
+    public boolean getBio(){
+        return Bio;
+    }
 
     private String handelingenString(int i) {
         return this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
