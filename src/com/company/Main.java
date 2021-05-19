@@ -129,9 +129,12 @@ public class Main {
         System.out.println(madeliefje.getHoeveelheidHandelingen());
         kas.getOogstenKas();
         System.out.println(madeliefje.getBenodighedenString());
-KasEigenaar.maakAccount();
-KasEigenaar.getInstance().addKas(kas);
-Login.getInstance().Inloggen();
-
+//KasEigenaar.maakAccount();
+//KasEigenaar.getInstance().addKas(kas);
+//Login.getInstance().Inloggen();
+        System.out.println(madeliefje.getHandelingen());
+madeliefje.geefVoeding(1,1,2021);
+        System.out.println("");
+        System.out.println(madeliefje.getHandelingen());
     }
 }
