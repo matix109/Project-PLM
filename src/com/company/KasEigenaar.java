@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.Exceptions.KasBestaatNietException;
+import com.company.Exceptions.KasEigenaarNietIngelogdException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,21 +24,35 @@ public class KasEigenaar {
         return singleton;
     }
 
-    public boolean bezitDeKas(Kas kas){
+    public boolean bezitDeKas(String kas){
         for (int i = 0; i < Bezit.size(); i++) {
-            if (Bezit.get(i).getKasNaam().equals(kas.getKasNaam())) {
+            if (Bezit.get(i).getKasNaam().equals(kas)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void addKas(Kas kas){
-    Bezit.add(kas);
+    public Kas getKas(String name) throws KasBestaatNietException {
+        for (int i = 0; i < Bezit.size(); i++) {
+            if (Bezit.get(i).getKasNaam().equals(name)) {
+                return Bezit.get(i);
+            }
+        }
+throw new KasBestaatNietException(name);
+    }
+
+    public void addKas(Kas kas) throws KasEigenaarNietIngelogdException {
+        if(Login.getInstance().kasEigenaarIngelogd()) {
+            Bezit.add(kas);
+        }
+        else {
+            throw new KasEigenaarNietIngelogdException();
+        }
     }
 
     public void removeKas(Kas kas){
-    if(bezitDeKas(kas)){
+    if(bezitDeKas(kas.getKasNaam())){
         Bezit.remove(kas);
     }
     }
@@ -50,6 +67,9 @@ public class KasEigenaar {
             System.out.println("Voer u nieuwe Wachtwoord in:");
             String Wachtwoord = scanner.nextLine();
             KasEigenaar.getInstance().setWachtwoord(Wachtwoord);
+        }
+        else{
+            System.out.println("De kas eigenaar heeft al een account.");
         }
     }
 

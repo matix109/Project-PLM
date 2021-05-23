@@ -19,7 +19,7 @@ class EquivalentieklassenEnRandwaardenTest {
     @BeforeEach
     void setup(){
         kas = new Kas("Kas");
-        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7,60,21), 3, 4, 6);
+        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7,60,21), new Voeding(3, 4, 6));
         madeliefje.geefVoeding(1,1,2021);
         madeliefje.setHuidigeGroeiTijdWeken(7);
         kas.addPlant(madeliefje);

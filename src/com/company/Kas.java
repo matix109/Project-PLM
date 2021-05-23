@@ -1,6 +1,9 @@
 package com.company;
 
+import com.company.Exceptions.NietInDeKasException;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Kas {
     private String Naam;
@@ -18,6 +21,30 @@ public String getKasNaam(){
     return Naam;
 }
 
+    public Kas getKas(String name){
+        if(name.equals(getKasNaam())){
+            return this;
+        }
+        else {
+            System.out.println("Kas Bestaat niet");
+            return null; // Exeption maken.
+        }
+    }
+
+    public Plant getTargetPlant() throws NietInDeKasException {
+        Scanner scanner = new Scanner(System.in);
+        Plant dummy;
+        System.out.println("Voer de naam van de plant in:");
+        String plantNaam = scanner.nextLine();
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if(groeitIn.get(i).getNaam().equalsIgnoreCase(plantNaam)){
+            dummy = groeitIn.get(i);
+            return dummy;
+            }
+        }
+        throw new NietInDeKasException();
+    }
+
     public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
         if (kanGeoogstWorden(plant,Hoeveelheid)) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
@@ -27,13 +54,14 @@ public String getKasNaam(){
             return false;
     }
 
+
     private boolean kanGeoogstWorden(Plant plant, int Hoeveelheid){
     return inDeKas(plant) && Volgroeid(plant) && Hoeveelheid >= 1;
     }
 
 private void geoogstePlant(Oogst oogst, Plant plant){
     Bewaart.add(oogst);
-    oogst.addWinstKas(this);
+    addWinst(oogst);
     removePlant(plant);
 }
 
@@ -90,6 +118,7 @@ private void geoogstePlant(Oogst oogst, Plant plant){
         }
         return a;
     }
+
 public void addPlant(Plant plant){
 groeitIn.add(plant);
 }
@@ -110,6 +139,7 @@ groeitIn.add(plant);
         }
         return i;
     }
+
     public int getHoeveelheidSoortenOogst() {
         int i;
         for (i = 0; i < Bewaart.size(); i++) {
@@ -121,9 +151,8 @@ groeitIn.add(plant);
         return totaleWinst;
     }
 
-    public void addWinst(double Winst) {
-    totaleWinst += Winst;
-
+    private void addWinst(Oogst oogst) {
+    totaleWinst += oogst.getNettoWinst();
     }
 
     public void removePlant(Plant plant) {

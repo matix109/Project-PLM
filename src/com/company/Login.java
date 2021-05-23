@@ -41,7 +41,7 @@ singleton = new Login();
         return false;
     }
 
-    private boolean kasEigenaarIngelogd(){
+    public boolean kasEigenaarIngelogd(){
         return ingelogd;
     }
 
