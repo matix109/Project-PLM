@@ -1,6 +1,9 @@
 package com.company;
 
+import com.company.Exceptions.NietInDeKasException;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Kas {
     private String Naam;
@@ -11,34 +14,69 @@ class Kas {
 Kas(String naam){
     this.Naam = naam;
     Bewaart = new ArrayList<>();
-groeitIn = new ArrayList<>();
+    groeitIn = new ArrayList<>();
 }
+
 public String getKasNaam(){
     return Naam;
 }
 
-    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
-        boolean inDeKas = false;
-        boolean Volgroeid = (plant.getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
-                || (plant.getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+    public Kas getKas(String name){
+        if(name.equals(getKasNaam())){
+            return this;
+        }
+        else {
+            System.out.println("Kas Bestaat niet");
+            return null; // Exeption maken.
+        }
+    }
 
+    public Plant getTargetPlant() throws NietInDeKasException {
+        Scanner scanner = new Scanner(System.in);
+        Plant dummy;
+        System.out.println("Voer de naam van de plant in:");
+        String plantNaam = scanner.nextLine();
         for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
-                inDeKas = true;
+            if(groeitIn.get(i).getNaam().equalsIgnoreCase(plantNaam)){
+            dummy = groeitIn.get(i);
+            return dummy;
             }
         }
+        throw new NietInDeKasException();
+    }
 
-        if (inDeKas && Volgroeid && Hoeveelheid >= 1) {
+    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
+        if (kanGeoogstWorden(plant,Hoeveelheid)) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
-            removePlant(plant);
-            plant.resetHandelingen();
-            Bewaart.add(oogst);
-            oogst.addWinstKas(this);
+            geoogstePlant(oogst,plant);
             return true;
         }
-        else{
             return false;
+    }
+
+
+    private boolean kanGeoogstWorden(Plant plant, int Hoeveelheid){
+    return inDeKas(plant) && Volgroeid(plant) && Hoeveelheid >= 1;
+    }
+
+private void geoogstePlant(Oogst oogst, Plant plant){
+    Bewaart.add(oogst);
+    addWinst(oogst);
+    removePlant(plant);
+}
+
+    private boolean Volgroeid(Plant plant){
+       return (plant.getBenodigdheden().getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getBenodigdheden().getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
+                || (plant.getBenodigdheden().getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+    }
+
+    private boolean inDeKas(Plant plant){
+        for (int i = 0; i < groeitIn.size(); i++) {
+            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
+                return true;
+            }
         }
+        return false;
     }
 
     public void getPlantenLijst() {
@@ -80,9 +118,11 @@ public String getKasNaam(){
         }
         return a;
     }
+
 public void addPlant(Plant plant){
 groeitIn.add(plant);
 }
+
     public int getHoeveelheidGroentes() {
         int a = 0;
         for (int i = 0; i < groeitIn.size(); i++) {
@@ -99,6 +139,7 @@ groeitIn.add(plant);
         }
         return i;
     }
+
     public int getHoeveelheidSoortenOogst() {
         int i;
         for (i = 0; i < Bewaart.size(); i++) {
@@ -110,18 +151,15 @@ groeitIn.add(plant);
         return totaleWinst;
     }
 
-    public void addWinst(double Winst) {
-    totaleWinst += Winst;
-
+    private void addWinst(Oogst oogst) {
+    totaleWinst += oogst.getNettoWinst();
     }
 
-
     public void removePlant(Plant plant) {
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i).getNaam().equals(plant.getNaam())) {
-                groeitIn.remove(i);
+            if (inDeKas(plant)) {
+                groeitIn.remove(plant);
+                plant.resetHandelingen();
             }
         }
     }
 
-}

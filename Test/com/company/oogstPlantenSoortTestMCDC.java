@@ -13,8 +13,8 @@ class oogstPlantenSoortTestMCDC {
         @BeforeEach
         void initialize(){
             kas = new Kas("kas");
-            wortel = new Groente("Wortel",7,0.20, 60,21,3,4);
-            courgette = new Groente("Courgette",7,0.30, 60,21,3,4);
+            wortel = new Groente("Wortel",0.20,new Benodigdheden(7,60,21),new Voeding(3,4));
+            courgette = new Groente("Courgette",0.30,new Benodigdheden(7,60,21),new Voeding(3,4));
             kas.addPlant(wortel);
         }
 

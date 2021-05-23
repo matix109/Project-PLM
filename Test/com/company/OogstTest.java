@@ -20,7 +20,8 @@ class OogstTest {
 
     @BeforeEach
      void setup(){
-        madeliefje = new Bloem("Madeliefje", 7, 0.20, 60, 21, 3, 4, 6);
+        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));
+        madeliefje.geefVoeding(1,1,2021);
     }
 
     static Stream<Arguments> parametersPlanten() {

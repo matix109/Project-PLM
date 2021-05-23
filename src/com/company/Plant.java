@@ -1,52 +1,46 @@
 package com.company;
 
 import java.util.ArrayList;
-// Kijken of ik de variabelen hier kan weghalen en ook meer dingen naar hier halen uit plant en groente om
-// codeduplicatie te voorkomen.
-//Een Boolean volgroeid toevoegen met een methode waarin er gecontroleerd wordt of de groeitijd weken het zelfde is als de
-//voorgestelde groeitijd +/- en vervolgens die boolean met true of false setten|| Volgroeid moet dan als een
-//voorwaarde in de oogst methode als een plant niet volgrroeid is kan die niet geoogst worden.
 abstract class Plant {
     private ArrayList<Handelingen> Ondergaat;
+    private Benodigdheden Heeft;
     private String naam;
-    private int groeiTijdWeken;
     private int huidigeGroeiTijdWeken;
     private double prijsOmTeGroeien;
-    private int Luchtvochtigheid;
-    private int Temperatuur;
-    private String Voeding;
+    boolean Bio = true;
 
-    Plant(String naam, int groeiTijdWeken, double prijsOmTeGroeien, int Luchtvochtigheid, int Temperatuur) {
+    Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid) {
         Ondergaat = new ArrayList<>();
         this.naam = naam;
-        this.groeiTijdWeken = groeiTijdWeken;
         this.prijsOmTeGroeien = prijsOmTeGroeien;
-        this.Luchtvochtigheid = Luchtvochtigheid;
-        this.Temperatuur = Temperatuur;
+        this.Heeft = benodigheid;
+        this.huidigeGroeiTijdWeken = 0;
     }
     abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
-    abstract public boolean getBio();
-    abstract public void volgendeWeek();
-    abstract public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken);
-    abstract public int getHuidigeGroeiTijdWeken();
 
-    abstract public String getNaam();
+    abstract public Voeding getVoeding();
 
-    abstract public int getGroeiTijdWeken();
+    public void geefVoeding(int Dag,int Maand,int Jaar) {
+        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ getVoeding().getStringVoeding()));
+        this.Bio = false;
+    }
 
-    abstract public double getPrijsOmTeGroeien();
+    public boolean getBio(){
+        return Bio;
+    }
 
-    abstract public int getLuchtvochtigheid();
+    private String handelingenString(int i) {
+        return this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
+    }
 
-    abstract public int getTemperatuur();
-
-    abstract public String getVoeding();
-
+    public void setHuidigeGroeiTijdWeken(int huidigeGroeiTijdWeken) {
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken;
+    }
 
     public String getHandelingen() {
         String handelingenString = "";
         for (int i = 0; i < this.Ondergaat.size(); i++) {
-            handelingenString = handelingenString + "" + this.Ondergaat.get(i).getDatum() + " " + this.Ondergaat.get(i).getHandeling() + "\n";
+             handelingenString = handelingenString + handelingenString(i);
         }
         return handelingenString;
     }
@@ -55,51 +49,52 @@ abstract class Plant {
         Handelingen add = new Handelingen(dag,maand,jaar,handeling);
         this.Ondergaat.add(add);
     }
+    public Benodigdheden getBenodigdheden(){
+        return Heeft;
+    }
 
-    public String getBenodigheden() {
-        String Benodigheden = "";
-        Benodigheden = "Plantensoort " + this.getNaam() + " moet staan in " + this.getTemperatuur() + " graden celcius met " +
-                this.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding();
-        return Benodigheden;
+    public String getBenodigdhedenString() {
+        return "Plantensoort " + this.getNaam() + " moet staan in " + Heeft.getTemperatuur() + " graden celcius met " +
+                Heeft.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding().getStringVoeding();
     }
 
      public void addHandeling(Handelingen handleing){
         this.Ondergaat.add(handleing);
 }
 
-    public void geefVoeding(int dag, int maand, int jaar)
-    {
-        Handelingen add = new Handelingen(dag,maand,jaar,  Voeding);
-        addHandeling(add);
-    }
     public void resetHandelingen(){
     this.Ondergaat = new ArrayList<>();
     }
+
     public int getHoeveelheidHandelingen() {
         int i;
         for (i = 0; i < Ondergaat.size(); i++) {
         }
         return i;
     }
-// De setters moeten zo aangepast worden dat alleen de gene met de Rol KAS EIGENAAR het aan kan passen.
-    public void setNaam(String naam) {
-        this.naam = naam;
+
+    public int getHuidigeGroeiTijdWeken() {
+        return this.huidigeGroeiTijdWeken;
     }
 
-    public void setGroeiTijdWeken(int groeiTijdWeken) {
-        this.groeiTijdWeken = groeiTijdWeken;
+    public String getNaam(){
+        return this.naam;
+    }
+
+    public double getPrijsOmTeGroeien() {
+        return this.prijsOmTeGroeien;
     }
 
     public void setPrijsOmTeGroeien(double prijsOmTeGroeien) {
         this.prijsOmTeGroeien = prijsOmTeGroeien;
     }
 
-    public void setLuchtvochtigheid(int luchtvochtigheid) {
-        this.Luchtvochtigheid = luchtvochtigheid;
+    public void volgendeWeek(){
+        this.huidigeGroeiTijdWeken = huidigeGroeiTijdWeken + 1;
     }
 
-    public void setTemperatuur(int temperatuur) {
-        this.Temperatuur = temperatuur;
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 
 }

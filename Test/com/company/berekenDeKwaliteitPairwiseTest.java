@@ -30,13 +30,13 @@ class berekenDeKwaliteitPairwiseTest {
     static void setup(){
         kas = new Kas("Kas");
         //Bloemen
-        madeliefje = new Bloem("Madeliefje", 0, 0.20, 60, 21, 3, 4, 6);//Goed
-        tulp = new Bloem("Tulp", 0, 0.31, 60, 21, 3, 4, 6);//Goed
-        lotus = new Bloem("Lotus", 0, 0.31, 60, 21, 3, 4, 6);//Goed
+        madeliefje = new Bloem("Madeliefje", 0.20,new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
+        tulp = new Bloem("Tulp", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
+        lotus = new Bloem("Lotus", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
         //Groente
-        aardappel = new Groente("Aardappel", 0, 0.31, 60, 21, 3, 4);//Goed
-        courgette = new Groente("Courgette", 0, 0.20, 60, 21, 3, 4);//Goed
-        wortel = new Groente("Wortel", 0, 0.20, 60, 21, 3, 4);//Goed
+        aardappel = new Groente("Aardappel", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4));//Goed
+        courgette = new Groente("Courgette", 0.20, new Benodigdheden(0,60,21),new Voeding( 3, 4));//Goed
+        wortel = new Groente("Wortel", 0.20, new Benodigdheden(0,60,21), new Voeding(3, 4));//Goed
         //In de kas
         kas.addPlant(madeliefje);
         kas.addPlant(tulp);

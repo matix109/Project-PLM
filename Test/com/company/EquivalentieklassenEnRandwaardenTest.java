@@ -19,7 +19,8 @@ class EquivalentieklassenEnRandwaardenTest {
     @BeforeEach
     void setup(){
         kas = new Kas("Kas");
-        madeliefje = new Bloem("Madeliefje", 7, 0.20, 60, 21, 3, 4, 6);
+        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7,60,21), new Voeding(3, 4, 6));
+        madeliefje.geefVoeding(1,1,2021);
         madeliefje.setHuidigeGroeiTijdWeken(7);
         kas.addPlant(madeliefje);
     }
@@ -44,7 +45,7 @@ class EquivalentieklassenEnRandwaardenTest {
         kas.oogstPlantSoort(madeliefje,input,1.0,"Algemeen");
         double Expected = input2;
         double Actual = kas.getTotaleWinst();
-        assertEquals(Expected,Actual,0.00000000001);
+        assertEquals(Expected,Actual,0.0001);
     }
 
     @AfterEach
