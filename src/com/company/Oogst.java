@@ -1,4 +1,7 @@
 package com.company;
+
+import java.util.Scanner;
+
 class Oogst {
     private String naam;
     private int Hoeveelheid;
@@ -23,9 +26,6 @@ private int extraKosten(){
     }
 return 0;
 }
-    public void addWinstKas(Kas kas) {
-            kas.addWinst(getNettoWinst());
-    }
 
     public int getHoeveelheid() {
         return Hoeveelheid;

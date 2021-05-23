@@ -18,10 +18,10 @@ abstract class Plant {
     }
     abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
 
-    abstract public String getVoeding();
+    abstract public Voeding getVoeding();
 
     public void geefVoeding(int Dag,int Maand,int Jaar) {
-        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ getVoeding()));
+        addHandeling(new Handelingen(Dag,Maand,Jaar, "Krijgt: "+ getVoeding().getStringVoeding()));
         this.Bio = false;
     }
 
@@ -52,9 +52,10 @@ abstract class Plant {
     public Benodigdheden getBenodigdheden(){
         return Heeft;
     }
-    public String getBenodighedenString() {
+
+    public String getBenodigdhedenString() {
         return "Plantensoort " + this.getNaam() + " moet staan in " + Heeft.getTemperatuur() + " graden celcius met " +
-                Heeft.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding();
+                Heeft.getLuchtvochtigheid() + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: " + this.getVoeding().getStringVoeding();
     }
 
      public void addHandeling(Handelingen handleing){
@@ -71,6 +72,7 @@ abstract class Plant {
         }
         return i;
     }
+
     public int getHuidigeGroeiTijdWeken() {
         return this.huidigeGroeiTijdWeken;
     }
@@ -94,4 +96,5 @@ abstract class Plant {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
 }

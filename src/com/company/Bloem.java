@@ -1,11 +1,11 @@
 package com.company;
 
 class Bloem extends Plant {
-    private String Voeding;
+    private Voeding voeding;
 
-    Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, double Gro, double MiGro, double Bloom) {
+    Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, Voeding voeding) {
         super(naam,prijsPerStuk,benodigheid);
-        setStringVoeding(Gro,MiGro,Bloom);
+        this.voeding = voeding;
     }
 
     public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){
@@ -17,12 +17,8 @@ class Bloem extends Plant {
         return 0;
     }
 
-    public String getVoeding() {
-        return Voeding;
-    }
-
-    public void setStringVoeding(double Gro, double MiGro, double Bloom) {
-        Voeding =Gro + "ml Gro, " + MiGro + "ml MiGro en " + Bloom + "ml Bloom.";
+    public Voeding getVoeding() {
+        return voeding;
     }
 
 }
