@@ -14,6 +14,12 @@ public class MenuCases {
                 kas.getPlantenLijst();
                 System.out.println();
                 break;
+            case 2:
+                System.out.println(kas.getHoeveelheidPlanten());
+                System.out.println();
+                break;
+            default:
+                System.out.println("Kies 1,2 of 0");
         }
     }
 
@@ -72,8 +78,17 @@ public class MenuCases {
                     System.out.println();
                 }
                 break;
+            case 4:
+                try {
+                    Plant plant3 = kas.getTargetPlant();
+                    plant3.volgendeWeek();
+                } catch (NietInDeKasException e) {
+                    System.out.println(e);
+                    System.out.println();
+                }
+                break;
             default:
-                System.out.println("Kies 1 t/m 3");
+                System.out.println("Kies 1 t/m 4");
         }
     }
 
@@ -102,8 +117,18 @@ public class MenuCases {
                     System.out.println();
                 }
                 break;
+            case 3:
+                try {
+                    Plant plant2 = kas.getTargetPlant();
+                    System.out.println(plant2.getHuidigeGroeiTijdWeken());
+                    System.out.println();
+                } catch (NietInDeKasException e) {
+                    System.out.println(e);
+                    System.out.println();
+                }
+                break;
             default:
-                System.out.println("Kies 1 of 2");
+                System.out.println("Kies 1 t/m 3");
         }
     }
 
@@ -171,11 +196,15 @@ public class MenuCases {
                 System.out.println();
                 break;
             case 2:
+                System.out.println(kas.getHoeveelheidSoortenOogst());
+                System.out.println();
+                break;
+            case 3:
                 System.out.println("De totale winst van " + kas.getKasNaam() + " is €" + kas.getTotaleWinst() + ".");
                 System.out.println();
                 break;
             default:
-                System.out.println("Kies 1 of 2");
+                System.out.println("Kies 1 t/m 3");
         }
     }
 

@@ -66,6 +66,7 @@ public class MenuKeuzes {
         System.out.println("1) Ik wil een plant oogsten.");
         System.out.println("2) Ik wil een plant voeding geven.");
         System.out.println("3) Ik wil een aparte handeling verrichten op een plant.");
+        System.out.println("4) Ik wil een plant 1 week vooruit zetten in zijn groei.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choiceHandeling = vraagEenInt();
@@ -76,6 +77,7 @@ public class MenuKeuzes {
     public static int printPlantInfo(){
         System.out.println("1) Ik wil de benodigdheden weten van een plant.");
         System.out.println("2) Ik wil de handelingen inzien die op een plant zijn verricht.");
+        System.out.println("3) Ik wil weten hoe lang een plant al groeit.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choicePlantInfo = vraagEenInt();
@@ -92,8 +94,9 @@ public class MenuKeuzes {
         return choicePlantToevoegen;
     }
     public static int printPlantOogst(){
-        System.out.println("1) Ik alle oogst zien.");
-        System.out.println("2) Ik wil de totale winst zien.");
+        System.out.println("1) Ik een lijst met oogsten zien.");
+        System.out.println("2) Ik wil de hoeveelheid oogsten zien.");
+        System.out.println("3) Ik wil de totale winst zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choiceOogst = vraagEenInt();
@@ -112,6 +115,7 @@ public class MenuKeuzes {
     }
     public static int printLijstKeuzes(){
         System.out.println("1) Ik wil alle planten zien.");
+        System.out.println("2) Ik wil de hoeveelheid planten in de kas zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choiceLijst = vraagEenInt();
