@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.NietInDeKasException;
 
 import java.util.ArrayList;
@@ -21,20 +22,19 @@ public String getKasNaam(){
     return Naam;
 }
 
-    public Kas getKas(String name){
+    public Kas getKas(String name) throws KasBestaatNietException {
         if(name.equals(getKasNaam())){
             return this;
         }
         else {
-            System.out.println("Kas Bestaat niet");
-            return null; // Exeption maken.
+            throw new KasBestaatNietException(name);
         }
     }
 
     public Plant getTargetPlant() throws NietInDeKasException {
         Scanner scanner = new Scanner(System.in);
         Plant dummy;
-        System.out.println("Voer de naam van de plant in:");
+        System.out.print("Voer de naam van de plant in:");
         String plantNaam = scanner.nextLine();
         for (int i = 0; i < groeitIn.size(); i++) {
             if(groeitIn.get(i).getNaam().equalsIgnoreCase(plantNaam)){
@@ -85,7 +85,7 @@ private void geoogstePlant(Oogst oogst, Plant plant){
          }
    }
 
-    public void getBloemenLijst() {
+/*    public void getBloemenLijst() {
         for (int i = 0; i < groeitIn.size(); i++) {
             if (groeitIn.get(i) instanceof Bloem) {
                 System.out.println(groeitIn.get(i).getNaam());
@@ -99,16 +99,9 @@ private void geoogstePlant(Oogst oogst, Plant plant){
                 System.out.println(groeitIn.get(i).getNaam());
             }
         }
-    }
+    }*/
 
-    public void getOogstenKas(){
-        for (int i = 0; i < Bewaart.size(); i++) {
-            System.out.print("De plant "+ Bewaart.get(i).getNaam() +" had een oogst van "+ Bewaart.get(i).getHoeveelheid()+
-                    " wat "+ Bewaart.get(i).getNettoWinst()+" euro opleverde\n");
-        }
-    }
-
-    public int getHoeveelheidBloemen() {
+    /*    public int getHoeveelheidBloemen() {
         int a =0;
         for (int i = 0; i < groeitIn.size(); i++) {
 
@@ -119,10 +112,6 @@ private void geoogstePlant(Oogst oogst, Plant plant){
         return a;
     }
 
-public void addPlant(Plant plant){
-groeitIn.add(plant);
-}
-
     public int getHoeveelheidGroentes() {
         int a = 0;
         for (int i = 0; i < groeitIn.size(); i++) {
@@ -131,7 +120,19 @@ groeitIn.add(plant);
             }
         }
         return a;
+    }*/
+
+    public void getOogstenKas(){
+        for (int i = 0; i < Bewaart.size(); i++) {
+            System.out.print("De plant "+ Bewaart.get(i).getNaam() +" had een oogst van "+ Bewaart.get(i).getHoeveelheid()+
+                    " wat €"+ Bewaart.get(i).getNettoWinst()+" opleverde\n");
+        }
     }
+    public void addPlant(Plant plant){
+        groeitIn.add(plant);
+    }
+
+
 
     public int getHoeveelheidPlanten() {
         int i;

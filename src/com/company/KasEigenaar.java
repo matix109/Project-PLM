@@ -15,6 +15,7 @@ public class KasEigenaar {
 
     private KasEigenaar(){
         Bezit = new ArrayList<>();
+        Bezit.add(new Kas("Dummy"));
     }
 
     public static KasEigenaar getInstance(){
@@ -33,7 +34,7 @@ public class KasEigenaar {
         return false;
     }
 
-    public Kas getKas(String name) throws KasBestaatNietException {
+    public Kas getKasInBezit(String name) throws KasBestaatNietException {
         for (int i = 0; i < Bezit.size(); i++) {
             if (Bezit.get(i).getKasNaam().equals(name)) {
                 return Bezit.get(i);
@@ -61,15 +62,16 @@ throw new KasBestaatNietException(name);
         if(KasEigenaar.getInstance().Gebruikersnaam == null && KasEigenaar.getInstance().Wachtwoord == null) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Maak een account aan.");
-            System.out.println("Voer u nieuwe Gebruikersnaam in:");
+            System.out.print("Voer u nieuwe Gebruikersnaam in: ");
             String Gebruikernsaam = scanner.nextLine();
             KasEigenaar.getInstance().setGebruikersnaam(Gebruikernsaam);
-            System.out.println("Voer u nieuwe Wachtwoord in:");
+            System.out.print("Voer u nieuwe Wachtwoord in: ");
             String Wachtwoord = scanner.nextLine();
             KasEigenaar.getInstance().setWachtwoord(Wachtwoord);
         }
         else{
             System.out.println("De kas eigenaar heeft al een account.");
+            System.out.println();
         }
     }
 

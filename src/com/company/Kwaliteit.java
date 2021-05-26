@@ -1,13 +1,32 @@
 package com.company;
 
+import java.util.Scanner;
 
 class Kwaliteit {
     private double prijsPerStuk;
     private String kwaliteit;
 
     public Kwaliteit(String Kwaliteit, Plant plant, double PrijsPerStuk) {
-        this.kwaliteit = Kwaliteit;
+        this.kwaliteit = geldigeKwaliteit(Kwaliteit);
         this.prijsPerStuk = berekenPrijsPerStuk(plant, PrijsPerStuk, plant.getBio(),plant.getPrijsOmTeGroeien() > 0.30);
+    }
+
+    private String geldigeKwaliteit(String kwaliteit){
+        Scanner scanner = new Scanner(System.in);
+        String correcteKwaliteit = kwaliteit;
+        while (true) {
+            if (kwaliteitString(correcteKwaliteit)) {
+                return correcteKwaliteit;
+            }
+            else {
+                System.out.println("Dat is geen geldige Kwaliteit. Voer Slecht,Algemeen of Goed in: ");
+            correcteKwaliteit = scanner.nextLine();
+            }
+        }
+    }
+
+    private boolean kwaliteitString(String kwaliteit){
+        return kwaliteit.equalsIgnoreCase("slecht") || kwaliteit.equalsIgnoreCase("algemeen") || kwaliteit.equalsIgnoreCase("goed");
     }
 
         private double berekenPrijsPerStuk(Plant plant, double PrijsPerStuk, boolean Bio, boolean Luxe){

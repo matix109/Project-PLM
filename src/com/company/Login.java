@@ -53,10 +53,10 @@ singleton = new Login();
             Scanner scanner = new Scanner(System.in);
             for(int i = 0; i < 3;i++) {
                 System.out.println("=======================================");
-                System.out.println("Voer u gebruikersnaam in:");
+                System.out.print("Voer u gebruikersnaam in: ");
                 String gebruikersnaam = scanner.nextLine();
                 if(bestaatKasEigenaar(gebruikersnaam)){
-                System.out.println("Voer u wachtword in:");
+                System.out.print("Voer u wachtword in: ");
                 String wachtwoord = scanner.nextLine();
                 System.out.println("=======================================");
 
@@ -68,10 +68,12 @@ singleton = new Login();
                 }
                 else {
                     System.out.println("Onjuiste combinatie van gebruikersnaam en wachtwoord");
+                    System.out.println();
                 }
             }
                 else{
                     System.out.println("Kas eigenaar bestaat nog niet of heeft geen account.");
+                    System.out.println();
                     break;
                 }
               }

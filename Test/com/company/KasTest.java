@@ -27,7 +27,7 @@ class KasTest {
     @DisplayName("Hoeveelheid Groente")
     void oogstPlantSoortTest() {
         int expected = 1;
-        int actual = kas.getHoeveelheidGroentes();
+        int actual = kas.getHoeveelheidPlanten();
         assertEquals(expected,actual);
         }
 
