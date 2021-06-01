@@ -40,7 +40,7 @@ public class Menu {
                         }
                         break;
                     case 8:
-                        KasEigenaar.maakAccount();
+                        KasEigenaar.getInstance().getAccount().maakAccount();
                         break;
                     case 9:
                         currentKas = MenuCases.case9(currentKas);

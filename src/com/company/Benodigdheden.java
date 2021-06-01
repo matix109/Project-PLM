@@ -24,25 +24,19 @@ public class Benodigdheden {
     }
     }
 
+    @Override
+    public String toString() {
+        return " moet staan in " + Temperatuur + " graden celcius met " +
+                Luchtvochtigheid + "% luchtvochtigheid en heeft de volgende hoeveelheden voeding nodig: ";
+    }
+
     public int getLuchtvochtigheid() {
         return this.Luchtvochtigheid;
     }
-
     public int getTemperatuur() {
         return this.Temperatuur;
     }
     public int getGroeiTijdWeken() {
         return this.groeiTijdWeken;
-    }
-    public void setGroeiTijdWeken(int groeiTijdWeken) {
-        this.groeiTijdWeken = groeiTijdWeken;
-    }
-
-    public void setLuchtvochtigheid(int luchtvochtigheid) {
-        this.Luchtvochtigheid = luchtvochtigheid;
-    }
-
-    public void setTemperatuur(int temperatuur) {
-        this.Temperatuur = temperatuur;
     }
 }

@@ -30,13 +30,13 @@ class berekenDeKwaliteitPairwiseTest {
     static void setup(){
         kas = new Kas("Kas");
         //Bloemen
-        madeliefje = new Bloem("Madeliefje", 0.20,new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
-        tulp = new Bloem("Tulp", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
-        lotus = new Bloem("Lotus", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));//Goed
+        madeliefje = new Bloem("Madeliefje", 0.20,new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
+        tulp = new Bloem("Tulp", 0.31, new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
+        lotus = new Bloem("Lotus", 0.31, new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
         //Groente
-        aardappel = new Groente("Aardappel", 0.31, new Benodigdheden(0,60,21), new Voeding(3, 4));//Goed
-        courgette = new Groente("Courgette", 0.20, new Benodigdheden(0,60,21),new Voeding( 3, 4));//Goed
-        wortel = new Groente("Wortel", 0.20, new Benodigdheden(0,60,21), new Voeding(3, 4));//Goed
+        aardappel = new Groente("Aardappel", 0.31, new Benodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
+        courgette = new Groente("Courgette", 0.20, new Benodigdheden(0,60,21),new GroenteVoeding( 3, 4));//Goed
+        wortel = new Groente("Wortel", 0.20, new Benodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
         //In de kas
         kas.addPlant(madeliefje);
         kas.addPlant(tulp);
@@ -47,9 +47,9 @@ class berekenDeKwaliteitPairwiseTest {
         kas.addPlant(wortel);
         kas.addPlant(prei);
         //Niet bio planten
-        tulp.geefVoeding(4,5,2021);
-        aardappel.geefVoeding(4,5,2021);
-        wortel.geefVoeding(4,5,2021);
+        GeefPlantVoeding.geefVoeding(tulp,4,5,2021);
+        GeefPlantVoeding.geefVoeding(aardappel,4,5,2021);
+        GeefPlantVoeding.geefVoeding(wortel,4,5,2021);
         //Kwaliteit
         //Door middel van een Kwaliteit object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
         //Onder elke kwaliteit staat de ingevulde methode als voorbeeld.

@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Login {
     private static Login singleton;
-    private KasEigenaar hoortBij;//Dit zou normaalgesproken een array zijn met gebruikers die kunnen inloggen
+    private KasEigenaar kasEigenaar;
     private boolean ingelogd;
 
     private Login(){
-        this.hoortBij = null;
+        this.kasEigenaar = null;
         this.ingelogd = false;
     }
 
@@ -20,12 +20,12 @@ singleton = new Login();
     }
 
     private boolean bestaatKasEigenaar(String Gebruikersnaam) {
-        if (hoortBij != null) {
+        if (kasEigenaar != null) {
             return true;
         } else {
-            if (KasEigenaar.getInstance().getGebruikersnaam() != null) {
-                if (KasEigenaar.getInstance().getGebruikersnaam().equals(Gebruikersnaam)) {
-                    this.hoortBij = KasEigenaar.getInstance();
+            if (KasEigenaar.getInstance().getAccount().getGebruikersnaam() != null) {
+                if (KasEigenaar.getInstance().getAccount().getGebruikersnaam().equals(Gebruikersnaam)) {
+                    this.kasEigenaar = KasEigenaar.getInstance();
                     return true;
                 }
             }
@@ -34,8 +34,8 @@ singleton = new Login();
     }
 
     private boolean gebruikersnaamControle(String gebruikersnaam){
-            if (hoortBij != null) {
-                return hoortBij.getGebruikersnaam().equals(gebruikersnaam);
+            if (kasEigenaar != null) {
+                return kasEigenaar.getAccount().getGebruikersnaam().equals(gebruikersnaam);
             }
 
         return false;
@@ -60,7 +60,7 @@ singleton = new Login();
                 String wachtwoord = scanner.nextLine();
                 System.out.println("=======================================");
 
-                if (gebruikersnaamControle(gebruikersnaam) && hoortBij.wachtwoordControle(wachtwoord)) {
+                if (gebruikersnaamControle(gebruikersnaam) && kasEigenaar.getAccount().wachtwoordControle(wachtwoord)) {
                     System.out.println();
                     this.ingelogd = true;
                     System.out.println("Succesvol ingelogd!");

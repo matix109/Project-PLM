@@ -4,7 +4,7 @@ import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.NietInDeKasException;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Scanner;// DEZE is nog vol met code smells en geen solid patterns.
 
 class Kas {
     private String Naam;
@@ -66,8 +66,8 @@ private void geoogstePlant(Oogst oogst, Plant plant){
 }
 
     private boolean Volgroeid(Plant plant){
-       return (plant.getBenodigdheden().getGroeiTijdWeken() + 1 == plant.getHuidigeGroeiTijdWeken()) || (plant.getBenodigdheden().getGroeiTijdWeken() - 1 == plant.getHuidigeGroeiTijdWeken())
-                || (plant.getBenodigdheden().getGroeiTijdWeken() == plant.getHuidigeGroeiTijdWeken());
+       return (plant.getBenodigdheden().getGroeiTijdWeken() + 1 == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken()) || (plant.getBenodigdheden().getGroeiTijdWeken() - 1 == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken())
+                || (plant.getBenodigdheden().getGroeiTijdWeken() == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken());
     }
 
     private boolean inDeKas(Plant plant){
@@ -85,43 +85,6 @@ private void geoogstePlant(Oogst oogst, Plant plant){
          }
    }
 
-/*    public void getBloemenLijst() {
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i) instanceof Bloem) {
-                System.out.println(groeitIn.get(i).getNaam());
-            }
-        }
-    }
-
-    public void getGroenteLijst() {
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if(groeitIn.get(i) instanceof Groente) {
-                System.out.println(groeitIn.get(i).getNaam());
-            }
-        }
-    }*/
-
-    /*    public int getHoeveelheidBloemen() {
-        int a =0;
-        for (int i = 0; i < groeitIn.size(); i++) {
-
-            if (groeitIn.get(i) instanceof Bloem) {
-                a++;
-            }
-        }
-        return a;
-    }
-
-    public int getHoeveelheidGroentes() {
-        int a = 0;
-        for (int i = 0; i < groeitIn.size(); i++) {
-            if (groeitIn.get(i) instanceof Groente) {
-                a++;
-            }
-        }
-        return a;
-    }*/
-
     public void getOogstenKas(){
         for (int i = 0; i < Bewaart.size(); i++) {
             System.out.print("De plant "+ Bewaart.get(i).getNaam() +" had een oogst van "+ Bewaart.get(i).getHoeveelheid()+
@@ -135,17 +98,11 @@ private void geoogstePlant(Oogst oogst, Plant plant){
 
 
     public int getHoeveelheidPlanten() {
-        int i;
-       for (i = 0; i < groeitIn.size(); i++) {
-        }
-        return i;
+    return groeitIn.size();
     }
 
     public int getHoeveelheidSoortenOogst() {
-        int i;
-        for (i = 0; i < Bewaart.size(); i++) {
-        }
-        return i;
+        return Bewaart.size();
     }
 
     public double getTotaleWinst() {
@@ -159,7 +116,7 @@ private void geoogstePlant(Oogst oogst, Plant plant){
     public void removePlant(Plant plant) {
             if (inDeKas(plant)) {
                 groeitIn.remove(plant);
-                plant.resetHandelingen();
+                plant.getHandelingen().resetHandelingen();
             }
         }
     }

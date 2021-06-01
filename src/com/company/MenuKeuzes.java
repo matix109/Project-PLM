@@ -5,45 +5,6 @@ import java.util.Scanner;
 
 public class MenuKeuzes {
 
-    public static int vraagEenInt() {
-        Scanner welEenCijfer = new Scanner(System.in);
-        while (true) {
-            try {
-                return welEenCijfer.nextInt();
-            }
-            catch (InputMismatchException e) {
-                welEenCijfer.next();
-                System.out.print("Dat is geen cijfer. Probeer opnieuw: ");
-            }
-        }
-    }
-
-    public static double vraagEenDouble() {
-        Scanner welEenDouble = new Scanner(System.in);
-        while (true) {
-            try {
-                return welEenDouble.nextDouble();
-            }
-            catch (InputMismatchException e) {
-                welEenDouble.next();
-                System.out.print("Dat is geen commagetal. Probeer opnieuw: ");
-            }
-        }
-    }
-
-    public static String vraagEenString() {
-        Scanner welEenString = new Scanner(System.in);
-        while (true) {
-            try {
-                return welEenString.nextLine();
-            }
-            catch (InputMismatchException e) {
-                welEenString.next();
-                System.out.print("Voer wat in: ");
-            }
-        }
-    }
-
     public static int printKeuzes() {
         System.out.println("Menu");
         System.out.println("1) Lijst met planten");// keuze uit/ hele lijst met planten/ bloemen/groentes/
@@ -57,7 +18,7 @@ public class MenuKeuzes {
         System.out.println("9) Verander van kas.");
         System.out.println("0) Exit");
         System.out.print("Uw keuze: ");
-            int choice = vraagEenInt();
+            int choice = AskForInput.vraagEenInt();
         System.out.println();
             return choice;
     }
@@ -69,7 +30,7 @@ public class MenuKeuzes {
         System.out.println("4) Ik wil een plant 1 week vooruit zetten in zijn groei.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choiceHandeling = vraagEenInt();
+        int choiceHandeling = AskForInput.vraagEenInt();
         System.out.println();
         return choiceHandeling;
     }
@@ -80,7 +41,7 @@ public class MenuKeuzes {
         System.out.println("3) Ik wil weten hoe lang een plant al groeit.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choicePlantInfo = vraagEenInt();
+        int choicePlantInfo = AskForInput.vraagEenInt();
         System.out.println();
         return choicePlantInfo;
     }
@@ -89,7 +50,7 @@ public class MenuKeuzes {
         System.out.println("2) Ik wil een groente toevoegen.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choicePlantToevoegen = vraagEenInt();
+        int choicePlantToevoegen = AskForInput.vraagEenInt();
         System.out.println();
         return choicePlantToevoegen;
     }
@@ -99,7 +60,7 @@ public class MenuKeuzes {
         System.out.println("3) Ik wil de totale winst zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choiceOogst = vraagEenInt();
+        int choiceOogst = AskForInput.vraagEenInt();
         System.out.println();
         return choiceOogst;
     }
@@ -109,7 +70,7 @@ public class MenuKeuzes {
         System.out.println("3) Ik wil een kas toevoegen.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choiceKasEigenaar = vraagEenInt();
+        int choiceKasEigenaar = AskForInput.vraagEenInt();
         System.out.println();
         return choiceKasEigenaar;
     }
@@ -118,7 +79,7 @@ public class MenuKeuzes {
         System.out.println("2) Ik wil de hoeveelheid planten in de kas zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
-        int choiceLijst = vraagEenInt();
+        int choiceLijst = AskForInput.vraagEenInt();
         System.out.println();
         return choiceLijst;
     }

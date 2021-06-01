@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class KasEigenaar {
     private static KasEigenaar singleton;
-    private String Gebruikersnaam;
-    private String Wachtwoord;
+    private KasEigenaarAccount Account;
     private ArrayList<Kas> Bezit;
 
 
     private KasEigenaar(){
+        Account = new KasEigenaarAccount();
         Bezit = new ArrayList<>();
         Bezit.add(new Kas("Dummy"));
     }
@@ -23,6 +23,14 @@ public class KasEigenaar {
             singleton = new KasEigenaar();
         }
         return singleton;
+    }
+
+    public int getKassenSize(){
+        return Bezit.size();
+    }
+
+    public KasEigenaarAccount getAccount(){
+        return Account;
     }
 
     public boolean bezitDeKas(String kas){
@@ -56,38 +64,5 @@ throw new KasBestaatNietException(name);
     if(bezitDeKas(kas.getKasNaam())){
         Bezit.remove(kas);
     }
-    }
-
-    public static void maakAccount(){
-        if(KasEigenaar.getInstance().Gebruikersnaam == null && KasEigenaar.getInstance().Wachtwoord == null) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Maak een account aan.");
-            System.out.print("Voer u nieuwe Gebruikersnaam in: ");
-            String Gebruikernsaam = scanner.nextLine();
-            KasEigenaar.getInstance().setGebruikersnaam(Gebruikernsaam);
-            System.out.print("Voer u nieuwe Wachtwoord in: ");
-            String Wachtwoord = scanner.nextLine();
-            KasEigenaar.getInstance().setWachtwoord(Wachtwoord);
-        }
-        else{
-            System.out.println("De kas eigenaar heeft al een account.");
-            System.out.println();
-        }
-    }
-
-    public String getGebruikersnaam() {
-        return Gebruikersnaam;
-    }
-
-    public boolean wachtwoordControle(String wachtwoord){
-        return this.Wachtwoord.equals(wachtwoord);
-    }
-
-    private void setGebruikersnaam(String gebruikersnaam) {
-        Gebruikersnaam = gebruikersnaam;
-    }
-
-    private void setWachtwoord(String wachtwoord) {
-        Wachtwoord = wachtwoord;
     }
 }

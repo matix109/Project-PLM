@@ -1,11 +1,9 @@
 package com.company;
 
 class Bloem extends Plant {
-    private Voeding voeding;
 
-    Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, Voeding voeding) {
-        super(naam,prijsPerStuk,benodigheid);
-        this.voeding = voeding;
+    Bloem(String naam, double prijsPerStuk,Benodigdheden benodigheid, BloemVoeding voeding) {
+        super(naam,prijsPerStuk,benodigheid,voeding);
     }
 
     public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){
@@ -15,10 +13,6 @@ class Bloem extends Plant {
             return (prijsPerStuk / 100) * 30;
         }
         return 0;
-    }
-
-    public Voeding getVoeding() {
-        return voeding;
     }
 
 }
