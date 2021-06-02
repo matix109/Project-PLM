@@ -17,6 +17,12 @@ class berekenDeKwaliteitPairwiseTest {
     static Kwaliteit kwaliteit4 = null;
     static Kwaliteit kwaliteit5 = null;
     static Kwaliteit kwaliteit6 = null;
+    static BerekenPrijsPerStuk PPS1 = null;
+    static BerekenPrijsPerStuk PPS2 = null;
+    static BerekenPrijsPerStuk PPS3 = null;
+    static BerekenPrijsPerStuk PPS4 = null;
+    static BerekenPrijsPerStuk PPS5 = null;
+    static BerekenPrijsPerStuk PPS6 = null;
     static Bloem madeliefje = null;
     static Bloem tulp = null;
     static Bloem lotus = null;
@@ -38,44 +44,50 @@ class berekenDeKwaliteitPairwiseTest {
         courgette = new Groente("Courgette", 0.20, new Benodigdheden(0,60,21),new GroenteVoeding( 3, 4));//Goed
         wortel = new Groente("Wortel", 0.20, new Benodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
         //In de kas
-        kas.addPlant(madeliefje);
-        kas.addPlant(tulp);
-        kas.addPlant(lotus);
-        kas.addPlant(iris);
-        kas.addPlant(aardappel);
-        kas.addPlant(courgette);
-        kas.addPlant(wortel);
-        kas.addPlant(prei);
+        kas.getKasPlanten().addPlant(madeliefje);
+        kas.getKasPlanten().addPlant(tulp);
+        kas.getKasPlanten().addPlant(lotus);
+        kas.getKasPlanten().addPlant(iris);
+        kas.getKasPlanten().addPlant(aardappel);
+        kas.getKasPlanten().addPlant(courgette);
+        kas.getKasPlanten().addPlant(wortel);
+        kas.getKasPlanten().addPlant(prei);
         //Niet bio planten
-        GeefPlantVoeding.geefVoeding(tulp,4,5,2021);
-        GeefPlantVoeding.geefVoeding(aardappel,4,5,2021);
-        GeefPlantVoeding.geefVoeding(wortel,4,5,2021);
+        new GeefPlantVoeding(tulp).geefVoeding(4,5,2021);
+        new GeefPlantVoeding(aardappel).geefVoeding(4,5,2021);
+        new GeefPlantVoeding(wortel).geefVoeding(4,5,2021);
         //Kwaliteit
-        //Door middel van een Kwaliteit object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
-        //Onder elke kwaliteit staat de ingevulde methode als voorbeeld.
-        kwaliteit1 = new Kwaliteit("Slecht",madeliefje,1);
-        //kwaliteit1.berekenPrijsPerStuk("Slecht",aardappel,true,false);
-        kwaliteit2 = new Kwaliteit("Slecht",aardappel,1);
-        //kwaliteit2.berekenPrijsPerStuk("Slecht",aardappel,false,true);
-        kwaliteit3 = new Kwaliteit("Algemeen",tulp,1);
-        //kwaliteit3.berekenPrijsPerStuk("Algemeen",tulp,false,true);
-        kwaliteit4 = new Kwaliteit("Algemeen",courgette,1);
-        //kwaliteit4.berekenPrijsPerStuk("Algemeen",courgette,true,false);
-        kwaliteit5 = new Kwaliteit("Goed",lotus,1);
-        //kwaliteit5.berekenPrijsPerStuk("Goed",lotus,true,true)
-        kwaliteit6 = new Kwaliteit("Goed",wortel,1);
-        //kwaliteit6.berekenPrijsPerStuk("Goed",wortel,false,false)
+        //Door middel van een BerekenPrijsPerStuk object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
+        //Onder elke BerekenPrijsPerStuk staat de ingevulde methode als voorbeeld.
+        kwaliteit1 = new Kwaliteit("Slecht");
+        PPS1 = new BerekenPrijsPerStuk(kwaliteit1,madeliefje,1);
+        //PPS1.berekenPrijsPerStuk("Slecht",aardappel,true,false);
+        kwaliteit2 = new Kwaliteit("Slecht");
+        PPS2 = new BerekenPrijsPerStuk(kwaliteit2,aardappel,1);
+        //PPS2.berekenPrijsPerStuk("Slecht",aardappel,false,true);
+        kwaliteit3 = new Kwaliteit("Algemeen");
+        PPS3 = new BerekenPrijsPerStuk(kwaliteit3,tulp,1);
+        //PPS3.berekenPrijsPerStuk("Algemeen",tulp,false,true);
+        kwaliteit4 = new Kwaliteit("Algemeen");
+        PPS4 = new BerekenPrijsPerStuk(kwaliteit4,courgette,1);
+        //PPS4.berekenPrijsPerStuk("Algemeen",courgette,true,false);
+        kwaliteit5 = new Kwaliteit("Goed");
+        PPS5 = new BerekenPrijsPerStuk(kwaliteit5,lotus,1);
+        //PPS5.berekenPrijsPerStuk("Goed",lotus,true,true)
+        kwaliteit6 = new Kwaliteit("Goed");
+        PPS6 = new BerekenPrijsPerStuk(kwaliteit6,wortel,1);
+        //PPS6.berekenPrijsPerStuk("Goed",wortel,false,false)
     }
 
     @Test
     @DisplayName("Prijs Per Stuk Test")
     void nettoWinstTest() {
-        assertEquals(0.77,kwaliteit1.getPrijsPerStuk(),0.01);
-        assertEquals(0.84,kwaliteit2.getPrijsPerStuk(),0.01);
-        assertEquals(1.05,kwaliteit3.getPrijsPerStuk(),0.01);
-        assertEquals(1.1,kwaliteit4.getPrijsPerStuk(),0.01);
-        assertEquals(1.5,kwaliteit5.getPrijsPerStuk(),0.01);
-        assertEquals(1.2,kwaliteit6.getPrijsPerStuk(),0.01);
+        assertEquals(0.77,PPS1.getPrijsPerStuk(),0.01);
+        assertEquals(0.84,PPS2.getPrijsPerStuk(),0.01);
+        assertEquals(1.05,PPS3.getPrijsPerStuk(),0.01);
+        assertEquals(1.1,PPS4.getPrijsPerStuk(),0.01);
+        assertEquals(1.5,PPS5.getPrijsPerStuk(),0.01);
+        assertEquals(1.2,PPS6.getPrijsPerStuk(),0.01);
     }
 
     @AfterAll
@@ -88,6 +100,12 @@ class berekenDeKwaliteitPairwiseTest {
         kwaliteit5 = null;
         kwaliteit6 = null;
         madeliefje = null;
+        PPS1 = null;
+        PPS2 = null;
+        PPS3 = null;
+        PPS4 = null;
+        PPS5 = null;
+        PPS6 = null;
         tulp = null;
         lotus = null;
         iris = null;

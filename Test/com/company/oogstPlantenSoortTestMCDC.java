@@ -15,7 +15,7 @@ class oogstPlantenSoortTestMCDC {
             kas = new Kas("kas");
             wortel = new Groente("Wortel",0.20,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
             courgette = new Groente("Courgette",0.30,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
-            kas.addPlant(wortel);
+            kas.getKasPlanten().addPlant(wortel);
         }
 
         @Test
@@ -23,7 +23,7 @@ class oogstPlantenSoortTestMCDC {
         void oogstPlantSoortTest1() {
             wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
             boolean expected = true;
-            boolean actual = kas.oogstPlantSoort(wortel,6,2,"Algemeen");
+            boolean actual = kas.getKasOogsten().oogstPlantSoort(wortel,6,2,"Algemeen");
             assertEquals(expected,actual);
         }
 
@@ -32,7 +32,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest2() {
         courgette.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         boolean expected = false;
-        boolean actual = kas.oogstPlantSoort(courgette,10,2,"Algemeen");
+        boolean actual = kas.getKasOogsten().oogstPlantSoort(courgette,10,2,"Algemeen");
         assertEquals(expected,actual);
     }
 
@@ -41,7 +41,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest3() {
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         boolean expected = false;
-        boolean actual = kas.oogstPlantSoort(wortel,0,2,"Algemeen");
+        boolean actual = kas.getKasOogsten().oogstPlantSoort(wortel,0,2,"Algemeen");
         assertEquals(expected,actual);
     }
 
@@ -50,7 +50,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest4() {
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(5);
         boolean expected = false;
-        boolean actual = kas.oogstPlantSoort(wortel,9,2,"Algemeen");
+        boolean actual = kas.getKasOogsten().oogstPlantSoort(wortel,9,2,"Algemeen");
         assertEquals(expected,actual);
     }
 

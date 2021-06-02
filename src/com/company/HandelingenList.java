@@ -17,7 +17,7 @@ public class HandelingenList{
     handelingenLijst.add(new Handeling(new Datum(dag,maand,jaar),handeling));
     }
 
-    public ArrayList<Handeling> getLijst(){
+    public ArrayList<Handeling> getHandelingenLijst(){
         ArrayList<Handeling> dummy = new ArrayList<>();
         dummy.addAll(handelingenLijst);
         return dummy;

@@ -1,17 +1,21 @@
 package com.company;
 
 public class PrintHandelingen{
-    public PrintHandelingen(){
-    }
-    private static String handelingenString(Plant plant, int i) {
-        return plant.getHandelingen().getLijst().get(i).toString() +"\n";
+    private Plant plant;
+
+    public PrintHandelingen(Plant plant){
+        this.plant = plant;
     }
 
-    public static String printLijst(Plant plant) {
+    private String handelingenString(int i) {
+        return plant.getHandelingen().getHandelingenLijst().get(i).toString() +"\n";
+    }
+
+    public void printLijst() {
         String handelingenString = "";
-        for (int i = 0; i < plant.getHandelingen().getLijst().size(); i++) {
-            handelingenString = handelingenString + handelingenString(plant,i);
+        for (int i = 0; i < plant.getHandelingen().getHandelingenLijst().size(); i++) {
+            handelingenString = handelingenString + handelingenString(i);
         }
-        return handelingenString;
+        System.out.println(handelingenString);
     }
 }

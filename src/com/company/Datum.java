@@ -1,6 +1,5 @@
 package com.company;
 
-
 public class Datum {
    String Datum;
 

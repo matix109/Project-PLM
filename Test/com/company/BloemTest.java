@@ -10,9 +10,9 @@ class BloemTest {
     @DisplayName("Voeding geven test")
     void geefVoedingTest(){
         Bloem madeliefje = new Bloem("Madeliefje",0.20,new Benodigdheden(7,60,21),new BloemVoeding(3,4,6));
-        new GeefPlantVoeding().geefVoeding(madeliefje,1,1,1999);
+        new GeefPlantVoeding(madeliefje).geefVoeding(1,1,1999);
         int Expected = 1;
-        int Actual = madeliefje.getHandelingen().getLijst().size();
+        int Actual = madeliefje.getHandelingen().getHandelingenLijst().size();
         assertEquals(Expected,Actual);
     }
 

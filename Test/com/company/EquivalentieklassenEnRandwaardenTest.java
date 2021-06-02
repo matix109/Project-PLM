@@ -20,9 +20,9 @@ class EquivalentieklassenEnRandwaardenTest {
     void setup(){
         kas = new Kas("Kas");
         madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7,60,21), new BloemVoeding(3, 4, 6));
-        GeefPlantVoeding.geefVoeding(madeliefje,1,1,2021);
+        new GeefPlantVoeding(madeliefje).geefVoeding(1,1,2021);
         madeliefje.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
-        kas.addPlant(madeliefje);
+        kas.getKasPlanten().addPlant(madeliefje);
     }
 
     static Stream<Arguments> parametersHoeveelheid() {
@@ -42,9 +42,9 @@ class EquivalentieklassenEnRandwaardenTest {
     @MethodSource("parametersHoeveelheid")
     @DisplayName("Extra kosten test")
     void nettoWinstTest(int input, double input2) {
-        kas.oogstPlantSoort(madeliefje,input,1.0,"Algemeen");
+        kas.getKasOogsten().oogstPlantSoort(madeliefje,input,1.0,"Algemeen");
         double Expected = input2;
-        double Actual = kas.getTotaleWinst();
+        double Actual = kas.getKasWinst().getTotaleWinst();
         assertEquals(Expected,Actual,0.0001);
     }
 

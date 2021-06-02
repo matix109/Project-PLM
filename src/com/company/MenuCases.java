@@ -11,11 +11,11 @@ public class MenuCases {
             case 0:
                 return;
             case 1:
-                kas.getPlantenLijst();
+                new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
                 System.out.println();
                 break;
             case 2:
-                System.out.println(kas.getHoeveelheidPlanten());
+                new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
                 System.out.println();
                 break;
             default:
@@ -30,14 +30,14 @@ public class MenuCases {
                 return;
             case 1:
                 try {
-                    Plant plant = kas.getTargetPlant();
+                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     System.out.print("Wat is de hoeveelheid planten?: ");
                     int hoeveelheid = AskForInput.vraagEenInt();
                     System.out.print("Wat is de prijs per stuk?: ");
                     double PPS = AskForInput.vraagEenDouble();
                     System.out.print("Wat is de kwaliteit?(Goed/Algemeen/Slecht): ");
                     String kwaliteit = AskForInput.vraagEenString();
-                    kas.oogstPlantSoort(plant, hoeveelheid, PPS, kwaliteit);
+                    kas.getKasOogsten().oogstPlantSoort(plant, hoeveelheid, PPS, kwaliteit);
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -46,14 +46,14 @@ public class MenuCases {
                 break;
             case 2:
                 try {
-                    Plant plant2 = kas.getTargetPlant();
+                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     System.out.print("Voer de dag in: ");
                     int dag = AskForInput.vraagEenInt();
                     System.out.print("Voer de maand in: ");
                     int maand = AskForInput.vraagEenInt();
                     System.out.print("Voer het jaar in: ");
                     int jaar = AskForInput.vraagEenInt();
-                    GeefPlantVoeding.geefVoeding(plant2,dag, maand, jaar);
+                    new GeefPlantVoeding(plant2).geefVoeding(dag, maand, jaar);
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -62,7 +62,7 @@ public class MenuCases {
                 break;
             case 3:
                 try {
-                    Plant plant3 = kas.getTargetPlant();
+                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     System.out.print("Voer de dag in: ");
                     int dag2 = AskForInput.vraagEenInt();
                     System.out.print("Voer de maand in: ");
@@ -80,7 +80,7 @@ public class MenuCases {
                 break;
             case 4:
                 try {
-                    Plant plant3 = kas.getTargetPlant();
+                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     plant3.getPlantLevensduur().volgendeWeek();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -99,8 +99,8 @@ public class MenuCases {
                 return;
             case 1:
                 try {
-                    Plant plant = kas.getTargetPlant();
-                    PrintBenodigdheden.printString(plant);
+                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+                    new PrintBenodigdheden(plant).printString();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -109,8 +109,8 @@ public class MenuCases {
                 break;
             case 2:
                 try {
-                    Plant plant2 = kas.getTargetPlant();
-                    System.out.println(PrintHandelingen.printLijst(plant2));
+                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+                    new PrintHandelingen(plant2).printLijst();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -119,8 +119,8 @@ public class MenuCases {
                 break;
             case 3:
                 try {
-                    Plant plant2 = kas.getTargetPlant();
-                    System.out.println(plant2.getPlantLevensduur().getHuidigeGroeiTijdWeken());
+                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+                    System.out.println(plant3.getPlantLevensduur().getHuidigeGroeiTijdWeken());
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -157,7 +157,7 @@ public class MenuCases {
                 System.out.print("Voer de Bloom in ml in: ");
                 double bloom = AskForInput.vraagEenDouble();
                 Bloem bloem = new Bloem(naam, prijs, new Benodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur), new BloemVoeding(gro, miGro, bloom));
-                kas.addPlant(bloem);
+                kas.getKasPlanten().addPlant(bloem);
                 System.out.println();
                 break;
             case 2:
@@ -178,7 +178,7 @@ public class MenuCases {
                 System.out.print("Voer de Mi-Gro in ml in: ");
                 double miGro2 = AskForInput.vraagEenDouble();
                 Groente groente = new Groente(naam2, prijs2, new Benodigdheden(groeiTijdWeken2, luchtvochtigheid2, temperatuur2), new GroenteVoeding(gro2, miGro2));
-                kas.addPlant(groente);
+                kas.getKasPlanten().addPlant(groente);
                 System.out.println();
                 break;
             default:
@@ -192,15 +192,15 @@ public class MenuCases {
             case 0:
                 return;
             case 1:
-                kas.getOogstenKas();
+                new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
                 System.out.println();
                 break;
             case 2:
-                System.out.println(kas.getHoeveelheidSoortenOogst());
+                new PrintOogsten(kas.getKasOogsten()).printHoeveelheidSoortenOogst();
                 System.out.println();
                 break;
             case 3:
-                System.out.println("De totale winst van " + kas.getKasNaam() + " is €" + kas.getTotaleWinst() + ".");
+                System.out.println("De totale winst van " + kas.getKasNaam() + " is €" + kas.getKasWinst().getTotaleWinst() + ".");
                 System.out.println();
                 break;
             default:
@@ -215,7 +215,7 @@ public class MenuCases {
                 return;
             case 1:
                 try {
-                    Plant plant = kas.getTargetPlant();
+                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     System.out.println("Wat zijn de nieuwe benodigdheden?");
                     System.out.print("Voer de groei tijd in weken in: ");
                     int groeiTijdWeken = AskForInput.vraagEenInt();
@@ -237,7 +237,7 @@ public class MenuCases {
                 break;
             case 2:
                 try {
-                    Plant plant2 = kas.getTargetPlant();
+                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     System.out.println("Wat voor nieuwe voeding krijgt de plant?");
                     try {
                         plant2.getVoeding().setVoeding();
@@ -253,14 +253,14 @@ public class MenuCases {
             case 3:
                 System.out.println("Welke kas wilt u toevoegen?");
                 String kasToevoegen = AskForInput.vraagEenString();
-                if (KasEigenaar.getInstance().bezitDeKas(kasToevoegen)) {
+                if (new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas(kasToevoegen)) {
                     System.out.println("De kas die u probeert tie te voegen is al in u bezit.");
                     System.out.println();
                 } else {
                     Kas nieuweKas = new Kas(kasToevoegen);
                     System.out.println();
                     try {
-                        KasEigenaar.getInstance().addKas(nieuweKas);
+                        KasEigenaar.getInstance().getBezit().addKas(nieuweKas);
                     } catch (KasEigenaarNietIngelogdException e) {
                         System.out.println(e);
                         System.out.println();
@@ -277,8 +277,8 @@ public class MenuCases {
             System.out.print("Voer de naam van de kas in die u wilt beheren: ");
             String kasString = AskForInput.vraagEenString();
             try {
-                if (KasEigenaar.getInstance().bezitDeKas(kasString)) {
-                    return currentKas = KasEigenaar.getInstance().getKasInBezit(kasString);
+                if (new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas(kasString)) {
+                    return currentKas = new KasBezitControle(KasEigenaar.getInstance().getBezit()).getKasInBezit(kasString);
                 } else {
                     System.out.println("Niet in bezit van de kas.");
                 }

@@ -14,12 +14,12 @@ class KasTest {
         kas = new Kas("kas");
         wortel = new Groente("Wortel",0.20,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
         courgette = new Groente("Courgette",0.30,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
-        kas.addPlant(wortel);
-        kas.addPlant(courgette);
+        kas.getKasPlanten().addPlant(wortel);
+        kas.getKasPlanten().addPlant(courgette);
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         courgette.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         wortel.getHandelingen().newHandeling(9,11,1999,"de blaadjes onderhouden");
-        kas.oogstPlantSoort(wortel,10,2,"Algemeen");
+        kas.getKasOogsten().oogstPlantSoort(wortel,10,2,"Algemeen");
     }
 
     @Test
@@ -27,7 +27,7 @@ class KasTest {
     @DisplayName("Hoeveelheid Groente")
     void oogstPlantSoortTest() {
         int expected = 1;
-        int actual = kas.getHoeveelheidPlanten();
+        int actual = kas.getKasPlanten().getPlantenLijst().size();
         assertEquals(expected,actual);
         }
 
@@ -36,7 +36,7 @@ class KasTest {
     @DisplayName("Soorten Oogst")
     void oogstPlantSoortTest2() {
         int expected = 1;
-        int actual = kas.getHoeveelheidSoortenOogst();
+        int actual = kas.getKasOogsten().getOogstenLijst().size();
         assertEquals(expected,actual);
     }
 
@@ -45,7 +45,7 @@ class KasTest {
     @DisplayName("Handelingen")
     void oogstPlantSoortTest3() {
         int expected = 0;
-        int actual = wortel.getHandelingen().getLijst().size();
+        int actual = wortel.getHandelingen().getHandelingenLijst().size();
         assertEquals(expected,actual);
     }
 

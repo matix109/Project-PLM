@@ -1,7 +1,12 @@
 package com.company;
 
 public class PrintBenodigdheden {
-    public static void printString(Plant plant) {
+    private Plant plant;
+
+    PrintBenodigdheden(Plant plant){
+      this.plant = plant;
+    }
+    public void printString() {
         System.out.println("Plantensoort " + plant.getNaam() + plant.getBenodigdheden().toString() + plant.getVoeding().getStringVoeding());
     }
     }
