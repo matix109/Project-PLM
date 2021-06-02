@@ -1,14 +1,22 @@
 package com.company;
 
-
+import com.company.DeKas.Kas;
+import com.company.DeKas.PrintOogsten;
+import com.company.DeKas.PrintPlanten;
 import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
+import com.company.KasEigenaar.KasBezitControle;
+import com.company.KasEigenaar.KasEigenaar;
+import com.company.KasEigenaar.Login;
+import com.company.Menu.Menu;
+import com.company.Planten.*;
+import com.company.VoedingPlanten.BloemVoeding;
+import com.company.VoedingPlanten.GeefPlantVoeding;
+import com.company.VoedingPlanten.GroenteVoeding;
 
-import java.text.ParseException;
-import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
         Kas kas = new Kas("kas");
         Groente wortel = new Groente("Wortel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
         Groente aardappel = new Groente("Aardappel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
@@ -147,24 +155,25 @@ public class Main {
         // Hier zou ik eiggenlijk gegevens willen opvragen uit de database over de kas eigenaar.
         //Zodat ik dit niet hoef te doen...
 
-        /*KasEigenaar.getInstance().getAccount().maakAccount();
+/*
+        KasEigenaar.getInstance().getAccount().maakAccount();
         Login.getInstance().Inloggen();
         try {
-            KasEigenaar.getInstance().addKas(kas);
+            KasEigenaar.getInstance().getBezit().addKas(kas);
         } catch (KasEigenaarNietIngelogdException e) {
             System.out.println(e);
         }
+*/
 
 
-     if (KasEigenaar.getInstance().getHoeveelheidKassen() == 1 && KasEigenaar.getInstance().bezitDeKas("Dummy")) {
+     if (KasEigenaar.getInstance().getBezit().getKassenLijst().size() == 1 && new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas("Dummy")) {
             System.out.println("De kas eigenaar bezit nog geen kassen. Gebruik:(Dummy) om verder te gaan.");
         }
-            Scanner scanner = new Scanner(System.in);
             System.out.println("In welke kas werkt u?");
-            String kasString = scanner.nextLine();
+            String kasString = AskForInput.vraagEenString();
             try {
-                Kas currentkas = KasEigenaar.getInstance().getKasInBezit(kasString);
-                if (KasEigenaar.getInstance().bezitDeKas(currentkas.getKasNaam())) {
+                Kas currentkas = new KasBezitControle(KasEigenaar.getInstance().getBezit()).getKasInBezit(kasString);
+                if (new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas(currentkas.getKasNaam())) {
                     int verder = 1;
                     while (verder != 0) {
                         Menu.printMenu(currentkas);
@@ -178,7 +187,7 @@ public class Main {
             } catch (KasBestaatNietException e) {
                 System.out.println(e);
                 System.out.println("Controleer de kas naam en probeer opnieuw.");
-            }*/
+            }
 
         }
     }

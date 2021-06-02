@@ -1,4 +1,8 @@
 package com.company;
+import com.company.DeKas.Kas;
+import com.company.Planten.Benodigdheden;
+import com.company.Planten.Groente;
+import com.company.VoedingPlanten.GroenteVoeding;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
