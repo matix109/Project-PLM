@@ -1,10 +1,15 @@
 package com.company.Planten;
 
+import com.company.DeKas.GetPlant;
+import com.company.DeKas.Kas;
+import com.company.DeKas.KasPlanten;
+import com.company.Exceptions.NietInDeKasException;
+
 public class PrintHandelingen{
     private Plant plant;
 
-    public PrintHandelingen(Plant plant){
-        this.plant = plant;
+    public PrintHandelingen(Kas kas) throws NietInDeKasException {
+        this.plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
     }
 
     private String handelingenString(int i) {

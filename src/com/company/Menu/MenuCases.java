@@ -8,13 +8,12 @@ import com.company.DeKas.PrintPlanten;
 import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.Exceptions.NietInDeKasException;
+import com.company.Factory.PlantenFactory;
 import com.company.KasEigenaar.KasBezitControle;
 import com.company.KasEigenaar.KasEigenaar;
 import com.company.KasEigenaar.Login;
 import com.company.Planten.*;
-import com.company.VoedingPlanten.BloemVoeding;
 import com.company.VoedingPlanten.GeefPlantVoeding;
-import com.company.VoedingPlanten.GroenteVoeding;
 
 public class MenuCases { // bij de cases die alleen een nummer returnen ff een string toevoegen zodat het voor de user duidelijk is.
     public static void case1(Kas kas) {
@@ -23,11 +22,11 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 0:
                 return;
             case 1:
-                new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
+                new PrintPlanten(kas).printPlantenLijst();
                 System.out.println();
                 break;
             case 2:
-                new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
+                new PrintPlanten(kas).printHoeveelheidPlanten();
                 System.out.println();
                 break;
             default:
@@ -42,14 +41,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 return;
             case 1:
                 try {
-                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.print("Wat is de hoeveelheid planten?: ");
-                    int hoeveelheid = AskForInput.vraagEenInt();
-                    System.out.print("Wat is de prijs per stuk?(€): ");
-                    double PPS = AskForInput.vraagEenDouble();
-                    System.out.print("Wat is de kwaliteit?(Goed/Algemeen/Slecht): ");
-                    String kwaliteit = AskForInput.vraagEenString();
-                    kas.getKasOogsten().oogstPlantSoort(plant, hoeveelheid, PPS, kwaliteit);
+                    kas.getKasOogsten().oogstPlantSoort();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -58,14 +50,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 2:
                 try {
-                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.print("Voer de dag in: ");
-                    int dag = AskForInput.vraagEenInt();
-                    System.out.print("Voer de maand in: ");
-                    int maand = AskForInput.vraagEenInt();
-                    System.out.print("Voer het jaar in: ");
-                    int jaar = AskForInput.vraagEenInt();
-                    new GeefPlantVoeding(plant2).geefVoeding(dag, maand, jaar);
+                    new GeefPlantVoeding(kas).geefVoeding();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -74,16 +59,8 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 3:
                 try {
-                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.print("Voer de dag in: ");
-                    int dag2 = AskForInput.vraagEenInt();
-                    System.out.print("Voer de maand in: ");
-                    int maand2 = AskForInput.vraagEenInt();
-                    System.out.print("Voer het jaar in: ");
-                    int jaar2 = AskForInput.vraagEenInt();
-                    System.out.print("Wat voor handleing gaat u verrichten?: ");
-                    String handleing = AskForInput.vraagEenString();
-                    plant3.getHandelingen().newHandeling(dag2, maand2, jaar2, handleing);
+                    Plant plant1 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+                    plant1.getHandelingen().newHandeling();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -92,8 +69,8 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 4:
                 try {
-                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    plant3.getPlantLevensduur().volgendeWeek();
+                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+                    plant2.getPlantLevensduur().volgendeWeek();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
                     System.out.println();
@@ -111,8 +88,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 return;
             case 1:
                 try {
-                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    new PrintBenodigdheden(plant).printString();
+                    new PrintBenodigdheden(kas).printString();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -121,8 +97,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 2:
                 try {
-                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    new PrintHandelingen(plant2).printLijst();
+                    new PrintHandelingen(kas).printLijst();
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -150,47 +125,11 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 0:
                 return;
             case 1:
-                System.out.print("Wat is de naam van de bloem?: ");
-                String naam = AskForInput.vraagEenString();
-                System.out.print("Wat is de prijs om te groeien?(€): ");
-                double prijs = AskForInput.vraagEenDouble();
-                System.out.println("Wat zijn de benodigdheden?");
-                System.out.print("Voer de groei tijd in weken in: ");
-                int groeiTijdWeken = AskForInput.vraagEenInt();
-                System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-                int luchtvochtigheid = AskForInput.vraagEenInt();
-                System.out.print("Voer de nodige temperatuur in(°C): ");
-                int temperatuur = AskForInput.vraagEenInt();
-                System.out.println("Wat voor voeding krijgt de bloem?");
-                System.out.print("Voer de Gro in ml in: ");
-                double gro = AskForInput.vraagEenDouble();
-                System.out.print("Voer de Mi-Gro in ml in: ");
-                double miGro = AskForInput.vraagEenDouble();
-                System.out.print("Voer de Bloom in ml in: ");
-                double bloom = AskForInput.vraagEenDouble();
-                Bloem bloem = new Bloem(naam, prijs, new Benodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur), new BloemVoeding(gro, miGro, bloom));
-                kas.getKasPlanten().addPlant(bloem);
+                kas.getKasPlanten().addPlant(PlantenFactory.Bloem_Factory.maakPlant());
                 System.out.println();
                 break;
             case 2:
-                System.out.print("Wat is de naam van de groente?: ");
-                String naam2 = AskForInput.vraagEenString();
-                System.out.print("Wat is de prijs om te groeien?(€): ");
-                double prijs2 = AskForInput.vraagEenDouble();
-                System.out.println("Wat zijn de benodigdheden?");
-                System.out.print("Voer de groei tijd in weken in: ");
-                int groeiTijdWeken2 = AskForInput.vraagEenInt();
-                System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-                int luchtvochtigheid2 = AskForInput.vraagEenInt();
-                System.out.print("Voer de nodige temperatuur in(°C): ");
-                int temperatuur2 = AskForInput.vraagEenInt();
-                System.out.println("Wat voor voeding krijgt de groente?");
-                System.out.print("Voer de Gro in ml in: ");
-                double gro2 = AskForInput.vraagEenDouble();
-                System.out.print("Voer de Mi-Gro in ml in: ");
-                double miGro2 = AskForInput.vraagEenDouble();
-                Groente groente = new Groente(naam2, prijs2, new Benodigdheden(groeiTijdWeken2, luchtvochtigheid2, temperatuur2), new GroenteVoeding(gro2, miGro2));
-                kas.getKasPlanten().addPlant(groente);
+                kas.getKasPlanten().addPlant(PlantenFactory.Groente_Factory.maakPlant());
                 System.out.println();
                 break;
             default:
@@ -204,11 +143,13 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 0:
                 return;
             case 1:
-                new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
+                new PrintOogsten(kas).printOogstenKas();
                 System.out.println();
                 break;
             case 2:
-                new PrintOogsten(kas.getKasOogsten()).printHoeveelheidSoortenOogst();
+                System.out.print("In totaal zijn er ");
+                new PrintOogsten(kas).printHoeveelheidSoortenOogst();
+                System.out.println(" oogsten");
                 System.out.println();
                 break;
             case 3:
@@ -228,16 +169,9 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 1:
                 try {
                     Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.println("Wat zijn de nieuwe benodigdheden?");
-                    System.out.print("Voer de groei tijd in weken in: ");
-                    int groeiTijdWeken = AskForInput.vraagEenInt();
-                    System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-                    int luchtvochtigheid = AskForInput.vraagEenInt();
-                    System.out.print("Voer de nodige temperatuur in(°C): ");
-                    int temperatuur = AskForInput.vraagEenInt();
-                    System.out.println();
                     try {
-                        plant.getBenodigdheden().setBenodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur);
+                        plant.getBenodigdheden().setBenodigdheden();
+                        System.out.println();
                     } catch (KasEigenaarNietIngelogdException e) {
                         System.out.println(e);
                         System.out.println();
@@ -250,9 +184,9 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 2:
                 try {
                     Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.println("Wat voor nieuwe voeding krijgt de plant?");
                     try {
-                        plant2.getVoeding().setVoeding();
+                        plant2.getSoortVoeding().setVoeding();
+                        System.out.println();
                     } catch (KasEigenaarNietIngelogdException e) {
                         System.out.println(e);
                         System.out.println();

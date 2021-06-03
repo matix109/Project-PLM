@@ -1,12 +1,24 @@
 package com.company.Planten;
 
+import com.company.AskForInput;
+
 public class Handeling{
     private Datum datum;
     private String Handeling;
 
-    public Handeling(Datum datum, String Handeling){
+    public Handeling(Datum datum, String Handeling){//Voor testen
         this.datum = datum;
         this.Handeling = Handeling;
+    }
+
+    public Handeling(){
+    maakHandeling();
+    }
+
+    private void maakHandeling(){
+        this.datum = new Datum();
+        System.out.print("Wat voor handleing gaat u verrichten?: ");
+        this.Handeling = AskForInput.vraagEenString();
     }
 
     @Override

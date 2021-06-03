@@ -3,6 +3,7 @@ package com.company;
 import com.company.DeKas.Oogst;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Bloem;
+import com.company.Planten.Datum;
 import com.company.VoedingPlanten.GeefPlantVoeding;
 import com.company.VoedingPlanten.BloemVoeding;
 import org.junit.jupiter.api.*;
@@ -20,7 +21,7 @@ class OogstTest {
     @BeforeEach
      void setup(){
         madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));
-        new GeefPlantVoeding(madeliefje).geefVoeding(1,1,2021);
+        new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1,1,2021));
     }
 
     static Stream<Arguments> parametersPlanten() {

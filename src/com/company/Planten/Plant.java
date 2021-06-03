@@ -1,5 +1,6 @@
 package com.company.Planten;
 
+import com.company.AskForInput;
 import com.company.VoedingPlanten.Voeding;
 
 public abstract class Plant {
@@ -7,23 +8,38 @@ public abstract class Plant {
     private Benodigdheden Heeft;
     private PlantLevensduur inDeGroei;
     private String naam;
-    private Voeding voeding;
     private double prijsOmTeGroeien;
     private boolean Bio = true;
+    private Voeding voeding;
 
-    Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid, Voeding Voeding) {
+        Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid,Voeding voeding) {// Om makkelijk mee te kunnen testen
         this.Ondergaat = new HandelingenList();
         this.naam = naam;
         this.prijsOmTeGroeien = prijsOmTeGroeien;
         this.Heeft = benodigheid;
-        this.voeding = Voeding;
         this.inDeGroei = new PlantLevensduur();
+        this.voeding = voeding;
     }
+
+    Plant() {
+        this.Ondergaat = new HandelingenList();
+        watIsDeNaam();
+        this.naam = AskForInput.vraagEenString();
+        System.out.print("Wat is de prijs om te groeien?(€): ");
+        this.prijsOmTeGroeien = AskForInput.vraagEenDouble();
+        this.Heeft = new Benodigdheden();
+        this.inDeGroei = new PlantLevensduur();
+        this.voeding = getSoortVoeding();
+    }
+
+    abstract public void watIsDeNaam();
 
     abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
 
+    abstract public Voeding getSoortVoeding();
+
     public Voeding getVoeding(){
-    return voeding;
+        return voeding;
     }
 
     public HandelingenList getHandelingen() {

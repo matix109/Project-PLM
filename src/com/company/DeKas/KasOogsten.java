@@ -1,5 +1,7 @@
 package com.company.DeKas;
 
+import com.company.AskForInput;
+import com.company.Exceptions.NietInDeKasException;
 import com.company.Planten.Plant;
 
 import java.util.ArrayList;
@@ -19,7 +21,28 @@ public class KasOogsten {
         return dummy;
     }
 
-    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit) {
+    public boolean oogstPlantSoort(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit){// Voor testen
+        if (kanGeoogstWorden(plant, Hoeveelheid)) {
+            Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
+            geoogstePlant(oogst, plant);
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean oogstPlantSoort() throws NietInDeKasException {
+        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        System.out.print("Wat is de hoeveelheid planten?: ");
+        int hoeveelheid = AskForInput.vraagEenInt();
+        System.out.print("Wat is de prijs per stuk?(€): ");
+        double PPS = AskForInput.vraagEenDouble();
+        System.out.print("Wat is de kwaliteit?(Goed/Algemeen/Slecht): ");
+        String kwaliteit = AskForInput.vraagEenString();
+        return oogstControle(plant,hoeveelheid,PPS,kwaliteit);
+    }
+
+    private boolean oogstControle(Plant plant, int Hoeveelheid, double prijsPerStuk, String Kwaliteit){
         if (kanGeoogstWorden(plant, Hoeveelheid)) {
             Oogst oogst = new Oogst(plant, Hoeveelheid, prijsPerStuk, Kwaliteit);
             geoogstePlant(oogst, plant);

@@ -3,8 +3,8 @@ package com.company.DeKas;
 public class PrintPlanten {
     private KasPlanten kasPlanten;
 
-    public PrintPlanten(KasPlanten kasPlanten){
-        this.kasPlanten = kasPlanten;
+    public PrintPlanten(Kas kas){
+        this.kasPlanten = kas.getKasPlanten();
     }
 
     public void printHoeveelheidPlanten() {

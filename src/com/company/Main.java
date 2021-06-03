@@ -1,8 +1,6 @@
 package com.company;
 
 import com.company.DeKas.Kas;
-import com.company.DeKas.PrintOogsten;
-import com.company.DeKas.PrintPlanten;
 import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.KasBezitControle;
@@ -11,7 +9,6 @@ import com.company.KasEigenaar.Login;
 import com.company.Menu.Menu;
 import com.company.Planten.*;
 import com.company.VoedingPlanten.BloemVoeding;
-import com.company.VoedingPlanten.GeefPlantVoeding;
 import com.company.VoedingPlanten.GroenteVoeding;
 
 
@@ -40,32 +37,32 @@ public class Main {
         /*        System.out.println(kas.getHoeveelheidGroentes());*/
         /*        kas.getGroenteLijst();*/
         System.out.println();
-        new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
+      //  new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
         System.out.println();
         /*        kas.getBloemenLijst();*/
         System.out.println();
-        new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
+      //  new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
         /*        System.out.println(kas.getHoeveelheidBloemen());*/
-        courgette.getHandelingen().newHandeling(2,9,1999,"Blaadjes geaaid x 2");
-        courgette.getHandelingen().newHandeling(2, 9, 1999, "Blaadjes geaaid x 2");
-        wortel.getHandelingen().newHandeling(9, 11, 1999, "de blaadjes onderhouden");
-        aardappel.getHandelingen().newHandeling(11, 9, 1999, "Bol geaaid");
+        courgette.getHandelingen().newHandeling(new Datum(2,9,1999),"Blaadjes geaaid x 2");
+        courgette.getHandelingen().newHandeling(new Datum(2, 9, 1999), "Blaadjes geaaid x 2");
+        wortel.getHandelingen().newHandeling(new Datum(9, 11, 1999), "de blaadjes onderhouden");
+        aardappel.getHandelingen().newHandeling(new Datum(11, 9, 1999), "Bol geaaid");
         System.out.println();
-        new PrintHandelingen(tulp).printLijst();
+       // new PrintHandelingen(tulp).printLijst();
         System.out.println(aardappel.getPrijsOmTeGroeien());
         System.out.println("Plantensoort "+aardappel.getNaam()+aardappel.getBenodigdheden().toString()+aardappel.getVoeding().getStringVoeding());
-        new PrintHandelingen(wortel).printLijst();
+      //  new PrintHandelingen(wortel).printLijst();
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
-        new GeefPlantVoeding(madeliefje).geefVoeding(11, 12, 1999);
+       // new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(11, 12, 1999));
         System.out.println(madeliefje.getVoeding().getStringVoeding());
-        madeliefje.getHandelingen().newHandeling(11, 12, 2000, "Blaadjes controleren");
-        new PrintHandelingen(madeliefje).printLijst();
-        new PrintHandelingen(courgette).printLijst();
-        new GeefPlantVoeding(courgette).geefVoeding(20, 20, 1999);
-        new GeefPlantVoeding(madeliefje).geefVoeding(11, 12, 1999);
-        new PrintHandelingen(courgette).printLijst();
-        new PrintHandelingen(madeliefje).printLijst();
-        new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
+        madeliefje.getHandelingen().newHandeling(new Datum(11, 12, 2000), "Blaadjes controleren");
+       // new PrintHandelingen(madeliefje).printLijst();
+      //  new PrintHandelingen(courgette).printLijst();
+       // new GeefPlantVoeding(courgette).geefVoeding(new Datum(20, 20, 1999));
+       // new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(11, 12, 1999));
+       // new PrintHandelingen(courgette).printLijst();
+       // new PrintHandelingen(madeliefje).printLijst();
+       // new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
         /*        kas.getGroenteLijst();*/
         System.out.println(kas.getKasWinst().getTotaleWinst());
 /*        Oogst oogst = new Oogst(courgette,2,3,"algemeen");
@@ -74,7 +71,7 @@ public class Main {
         System.out.println(kas.getKasWinst().getTotaleWinst());
         Kas kas2 = new Kas("kas");
         System.out.println(kas2.getKasWinst().getTotaleWinst());
-        new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
+       // new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
         System.out.println();
         /*        kas.getGroenteLijst();*/
         System.out.println();
@@ -84,7 +81,7 @@ public class Main {
         System.out.println();
         //kas.oogstPlantSoort(madeliefje,1,2.50,"algemeen");
         System.out.println();
-        new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
+       // new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
         System.out.println();
         /*        kas.getGroenteLijst();*/
         System.out.println();
@@ -92,22 +89,22 @@ public class Main {
         System.out.println();
         kas.getKasOogsten().oogstPlantSoort(courgette,7,2,"Goed");
         //KIJK HIER
-        new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
+       // new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
         System.out.println();
         System.out.println(kas.getKasWinst().getTotaleWinst());
-        courgette.getHandelingen().newHandeling(1, 1, 1999, "Testertje");
-        new PrintHandelingen(courgette).printLijst();
-        new PrintHandelingen(wortel).printLijst();
+        courgette.getHandelingen().newHandeling(new Datum(1, 1, 1999), "Testertje");
+       // new PrintHandelingen(courgette).printLijst();
+      //  new PrintHandelingen(wortel).printLijst();
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
         /*        kas.getBloemenLijst();*/
-        new PrintHandelingen(madeliefje).printLijst();
+       // new PrintHandelingen(madeliefje).printLijst();
         System.out.println(kas.getKasWinst().getTotaleWinst());
-        new PrintHandelingen(courgette).printLijst();
+      //  new PrintHandelingen(courgette).printLijst();
         kas.getKasOogsten().oogstPlantSoort(courgette, 10, 1, "Algemeen");
         System.out.println(kas.getKasWinst().getTotaleWinst());
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
         System.out.println(courgette.getBenodigdheden().getGroeiTijdWeken());
-        new PrintHandelingen(courgette).printLijst();
+       // new PrintHandelingen(courgette).printLijst();
         System.out.println(madeliefje.getNaam());
         madeliefje.setNaam("Moodeliefje");
 /*        kas.getBloemenLijst();
@@ -118,44 +115,44 @@ public class Main {
         astronemeria.getPlantLevensduur().setHuidigeGroeiTijdWeken(6);
         astronemeria.getPlantLevensduur().volgendeWeek();
         astronemeria.getPlantLevensduur().volgendeWeek();
-        new GeefPlantVoeding(astronemeria).geefVoeding(1, 1, 2021);
+       // new GeefPlantVoeding(astronemeria).geefVoeding(new Datum(1, 1, 2021));
         System.out.println();
-        new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
+        //new PrintPlanten(kas.getKasPlanten()).printPlantenLijst();
         System.out.println();
         /*        kas.getBloemenLijst();*/
         System.out.println();
 //        kas.getGroenteLijst();
 /*        System.out.println(kas.getHoeveelheidBloemen());
         System.out.println(kas.getHoeveelheidGroentes());*/
-        new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
+      //  new PrintPlanten(kas.getKasPlanten()).printHoeveelheidPlanten();
         System.out.println(kas.getKasWinst().getTotaleWinst());
         kas.getKasOogsten().oogstPlantSoort(astronemeria, 10, 4, "Goed");
-        new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
+       // new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
         System.out.println(kas.getKasWinst().getTotaleWinst());
-        new PrintOogsten(kas.getKasOogsten()).printHoeveelheidSoortenOogst();
-        new PrintHandelingen(madeliefje).printLijst();
-        new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
-        madeliefje.getHandelingen().newHandeling(1, 1, 2021, "Test nieuwe aanpassingen");
-        madeliefje.getHandelingen().newHandeling(1, 1, 2021, "Test nieuwe aanpassingen2");
+        //new PrintOogsten(kas.getKasOogsten()).printHoeveelheidSoortenOogst();
+       // new PrintHandelingen(madeliefje).printLijst();
+        //new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
+        madeliefje.getHandelingen().newHandeling(new Datum(1, 1, 2021), "Test nieuwe aanpassingen");
+        madeliefje.getHandelingen().newHandeling(new Datum(1, 1, 2021), "Test nieuwe aanpassingen2");
         System.out.println("Kijk hier");
         // kas.oogstPlantSoort(madeliefje,2,2,"Goed");
-        new PrintHandelingen(courgette).printLijst();
-        new PrintHandelingen(wortel).printLijst();
-        new PrintHandelingen(madeliefje).printLijst();
+       // new PrintHandelingen(courgette).printLijst();
+       // new PrintHandelingen(wortel).printLijst();
+       // new PrintHandelingen(madeliefje).printLijst();
         System.out.println(kas.getKasWinst().getTotaleWinst());
         System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
-        new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
+       // new PrintOogsten(kas.getKasOogsten()).printOogstenKas();
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
-        new PrintHandelingen(madeliefje).printLijst();
-        new GeefPlantVoeding(madeliefje).geefVoeding(1, 1, 2021);
+       // new PrintHandelingen(madeliefje).printLijst();
+       // new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1, 1, 2021));
         System.out.println("");
-        new PrintHandelingen(madeliefje).printLijst();
+       // new PrintHandelingen(madeliefje).printLijst();
         System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
 
         // Hier zou ik eiggenlijk gegevens willen opvragen uit de database over de kas eigenaar.
         //Zodat ik dit niet hoef te doen...
 
-/*
+
         KasEigenaar.getInstance().getAccount().maakAccount();
         Login.getInstance().Inloggen();
         try {
@@ -163,7 +160,7 @@ public class Main {
         } catch (KasEigenaarNietIngelogdException e) {
             System.out.println(e);
         }
-*/
+
 
 
      if (KasEigenaar.getInstance().getBezit().getKassenLijst().size() == 1 && new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas("Dummy")) {

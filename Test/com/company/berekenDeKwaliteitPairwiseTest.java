@@ -55,9 +55,9 @@ class berekenDeKwaliteitPairwiseTest {
         kas.getKasPlanten().addPlant(wortel);
         kas.getKasPlanten().addPlant(prei);
         //Niet bio planten
-        new GeefPlantVoeding(tulp).geefVoeding(4,5,2021);
-        new GeefPlantVoeding(aardappel).geefVoeding(4,5,2021);
-        new GeefPlantVoeding(wortel).geefVoeding(4,5,2021);
+        new GeefPlantVoeding(tulp).geefVoeding(new Datum(4,5,2021));
+        new GeefPlantVoeding(aardappel).geefVoeding(new Datum(4,5,2021));
+        new GeefPlantVoeding(wortel).geefVoeding(new Datum(4,5,2021));
         //Kwaliteit
         //Door middel van een BerekenPrijsPerStuk object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
         //Onder elke BerekenPrijsPerStuk staat de ingevulde methode als voorbeeld.

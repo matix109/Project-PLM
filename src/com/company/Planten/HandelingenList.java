@@ -13,8 +13,12 @@ public class HandelingenList{
         this.handelingenLijst = new ArrayList<>();
     }
 
-    public void newHandeling(int dag,int maand,int jaar, String handeling){
-    handelingenLijst.add(new Handeling(new Datum(dag,maand,jaar),handeling));
+    public void newHandeling(Datum datum, String handeling){//Voor testen
+    handelingenLijst.add(new Handeling(datum,handeling));
+    }
+
+    public void newHandeling(){
+        handelingenLijst.add(new Handeling());
     }
 
     public ArrayList<Handeling> getHandelingenLijst(){

@@ -1,11 +1,23 @@
 package com.company.Planten;
-
 import com.company.VoedingPlanten.GroenteVoeding;
+import com.company.VoedingPlanten.Voeding;
 
 public class Groente extends Plant {
 
-    public Groente(String naam, double prijsPerStuk, Benodigdheden benodigheid, GroenteVoeding voeding) {
+    public Groente(String naam, double prijsPerStuk, Benodigdheden benodigheid, GroenteVoeding voeding) {// Om makkelijk mee te kunnen testen
         super(naam,prijsPerStuk,benodigheid,voeding);
+    }
+
+public Groente() {
+    super();
+}
+
+public void watIsDeNaam() {
+    System.out.print("Wat is de naam van de groente?: ");
+}
+
+    public Voeding getSoortVoeding(){
+        return new GroenteVoeding();
     }
 
     public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){

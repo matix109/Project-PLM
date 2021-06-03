@@ -3,8 +3,8 @@ package com.company.DeKas;
 public class PrintOogsten {
     private KasOogsten kasOogsten;
 
-    public PrintOogsten(KasOogsten kasOogsten){
-        this.kasOogsten =kasOogsten;
+    public PrintOogsten(Kas kas){
+        this.kasOogsten = kas.getKasOogsten();
     }
 
     public void printOogstenKas () {
@@ -15,7 +15,7 @@ public class PrintOogsten {
     }
 
     public void printHoeveelheidSoortenOogst() {
-        System.out.println(kasOogsten.getOogstenLijst().size());
+        System.out.print(kasOogsten.getOogstenLijst().size());
     }
 
 }

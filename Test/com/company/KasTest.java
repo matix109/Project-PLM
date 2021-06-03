@@ -1,6 +1,7 @@
 package com.company;
 import com.company.DeKas.Kas;
 import com.company.Planten.Benodigdheden;
+import com.company.Planten.Datum;
 import com.company.Planten.Groente;
 import com.company.VoedingPlanten.GroenteVoeding;
 import org.junit.jupiter.api.*;
@@ -22,7 +23,7 @@ class KasTest {
         kas.getKasPlanten().addPlant(courgette);
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         courgette.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
-        wortel.getHandelingen().newHandeling(9,11,1999,"de blaadjes onderhouden");
+        wortel.getHandelingen().newHandeling(new Datum(9,11,1999),"de blaadjes onderhouden");
         kas.getKasOogsten().oogstPlantSoort(wortel,10,2,"Algemeen");
     }
 
