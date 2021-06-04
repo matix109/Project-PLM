@@ -1,16 +1,17 @@
 package com.company;
 
+import com.company.DeKas.Oogst;
+import com.company.Planten.Benodigdheden;
+import com.company.Planten.Bloem;
+import com.company.Planten.BloemBenodigdheden;
+import com.company.Planten.Datum;
+import com.company.VoedingPlanten.GeefPlantVoeding;
+import com.company.VoedingPlanten.BloemVoeding;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,8 +21,8 @@ class OogstTest {
 
     @BeforeEach
      void setup(){
-        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(0,60,21), new Voeding(3, 4, 6));
-        madeliefje.geefVoeding(1,1,2021);
+        madeliefje = new Bloem("Madeliefje", 0.20, new BloemBenodigdheden(0,60,21), new BloemVoeding(3, 4, 6));
+        new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1,1,2021));
     }
 
     static Stream<Arguments> parametersPlanten() {

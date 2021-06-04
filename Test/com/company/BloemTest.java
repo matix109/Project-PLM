@@ -1,5 +1,11 @@
 package com.company;
 
+import com.company.Planten.Benodigdheden;
+import com.company.Planten.Bloem;
+import com.company.Planten.BloemBenodigdheden;
+import com.company.Planten.Datum;
+import com.company.VoedingPlanten.GeefPlantVoeding;
+import com.company.VoedingPlanten.BloemVoeding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,10 +15,10 @@ class BloemTest {
     @Test
     @DisplayName("Voeding geven test")
     void geefVoedingTest(){
-        Bloem madeliefje = new Bloem("Madeliefje",0.20,new Benodigdheden(7,60,21),new Voeding(3,4,6));
-        madeliefje.geefVoeding(1,1,1999);
+        Bloem madeliefje = new Bloem("Madeliefje",0.20,new BloemBenodigdheden(7,60,21),new BloemVoeding(3,4,6));
+        new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1,1,1999));
         int Expected = 1;
-        int Actual = madeliefje.getHoeveelheidHandelingen();
+        int Actual = madeliefje.getHandelingen().getHandelingenLijst().size();
         assertEquals(Expected,Actual);
     }
 

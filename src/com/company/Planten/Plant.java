@@ -1,0 +1,77 @@
+package com.company.Planten;
+
+import com.company.AskForInput;
+import com.company.Factory.PlantenFactory;
+import com.company.VoedingPlanten.Voeding;
+
+public abstract class Plant {
+    private HandelingenList Ondergaat;
+    private Benodigdheden Heeft;
+    private PlantLevensduur inDeGroei;
+    private String naam;
+    private double prijsOmTeGroeien;
+    private boolean Bio = true;
+    private Voeding voeding;
+
+        Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid,Voeding voeding) {// Om makkelijk mee te kunnen testen
+        this.Ondergaat = new HandelingenList();
+        this.naam = naam;
+        this.prijsOmTeGroeien = prijsOmTeGroeien;
+        this.Heeft = benodigheid;
+        this.inDeGroei = new PlantLevensduur();
+        this.voeding = voeding;
+    }
+
+    Plant(PlantenFactory plant) {
+        this.Ondergaat = new HandelingenList();
+        System.out.print(plant.soortPlant());
+        this.naam = AskForInput.vraagEenString();
+        System.out.print("Wat is de prijs om te groeien?(€): ");
+        this.prijsOmTeGroeien = AskForInput.vraagEenDouble();
+        this.Heeft = plant.plantBenodighdheden();
+        this.inDeGroei = new PlantLevensduur();
+        this.voeding = plant.plantVoeding();
+    }
+
+    abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
+
+    public Voeding getVoeding(){
+        return voeding;
+    }
+
+    public HandelingenList getHandelingen() {
+        return Ondergaat;
+    }
+
+    public boolean getBio(){
+        return Bio;
+    }
+
+    public void setBio(boolean bio){
+        this.Bio = bio;
+    }
+
+    public Benodigdheden getBenodigdheden(){
+        return Heeft;
+    }
+
+    public PlantLevensduur getPlantLevensduur(){
+    return inDeGroei;
+    }
+
+    public String getNaam(){
+        return this.naam;
+    }
+
+    public double getPrijsOmTeGroeien() {
+        return this.prijsOmTeGroeien;
+    }
+
+    public void setPrijsOmTeGroeien(double prijsOmTeGroeien) {
+        this.prijsOmTeGroeien = prijsOmTeGroeien;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+}
