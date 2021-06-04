@@ -1,10 +1,11 @@
 package com.company.Factory;
+import com.company.Planten.Benodigdheden;
 import com.company.Planten.Plant;
+import com.company.VoedingPlanten.Voeding;
 
 
-public abstract class PlantenFactory {
-    public static BloemFactory Bloem_Factory = new BloemFactory();
-    public static GroenteFactory Groente_Factory = new GroenteFactory();
-
-    public abstract Plant maakPlant();
+public interface PlantenFactory {// interface maken en niet een plant latten aanmaken maar onderdelen van een plant
+    String soortPlant();
+    Benodigdheden plantBenodighdheden();
+    Voeding plantVoeding();
 }

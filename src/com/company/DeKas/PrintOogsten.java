@@ -10,7 +10,8 @@ public class PrintOogsten {
     public void printOogstenKas () {
         for (int i = 0; i < kasOogsten.getOogstenLijst().size(); i++) {
             System.out.print("De plant " + kasOogsten.getOogstenLijst().get(i).getNaam() + " had een oogst van " + kasOogsten.getOogstenLijst().get(i).getHoeveelheid() +
-                    " wat €" + kasOogsten.getOogstenLijst().get(i).getNettoWinst() + " opleverde\n");
+                    " wat €");
+            System.out.printf("%.2f opleverde.\n",kasOogsten.getOogstenLijst().get(i).getNettoWinst());
         }
     }
 

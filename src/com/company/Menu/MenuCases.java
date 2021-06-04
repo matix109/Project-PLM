@@ -8,7 +8,8 @@ import com.company.DeKas.PrintPlanten;
 import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.Exceptions.NietInDeKasException;
-import com.company.Factory.PlantenFactory;
+import com.company.Factory.BloemFactory;
+import com.company.Factory.GroenteFactory;
 import com.company.KasEigenaar.KasBezitControle;
 import com.company.KasEigenaar.KasEigenaar;
 import com.company.KasEigenaar.Login;
@@ -26,7 +27,9 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 System.out.println();
                 break;
             case 2:
+                System.out.print("In de kas staan ");
                 new PrintPlanten(kas).printHoeveelheidPlanten();
+                System.out.println(" planten.");
                 System.out.println();
                 break;
             default:
@@ -107,7 +110,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 3:
                 try {
                     Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-                    System.out.println(plant3.getPlantLevensduur().getHuidigeGroeiTijdWeken());
+                    System.out.println("De plant is in de groei voor "+plant3.getPlantLevensduur().getHuidigeGroeiTijdWeken()+" weken.");
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -125,11 +128,11 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
             case 0:
                 return;
             case 1:
-                kas.getKasPlanten().addPlant(PlantenFactory.Bloem_Factory.maakPlant());
+                kas.getKasPlanten().addPlant(new Bloem(new BloemFactory()));
                 System.out.println();
                 break;
             case 2:
-                kas.getKasPlanten().addPlant(PlantenFactory.Groente_Factory.maakPlant());
+                kas.getKasPlanten().addPlant(new Groente(new GroenteFactory()));
                 System.out.println();
                 break;
             default:
@@ -153,7 +156,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 System.out.println();
                 break;
             case 3:
-                System.out.println("De totale winst van " + kas.getKasNaam() + " is €" + kas.getKasWinst().getTotaleWinst() + ".");
+                System.out.printf("De totale winst van " + kas.getKasNaam() + " is €%.2f\n",kas.getKasWinst().getTotaleWinst());
                 System.out.println();
                 break;
             default:
@@ -185,7 +188,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 try {
                     Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
                     try {
-                        plant2.getSoortVoeding().setVoeding();
+                        plant2.getVoeding().setVoeding();
                         System.out.println();
                     } catch (KasEigenaarNietIngelogdException e) {
                         System.out.println(e);
@@ -233,7 +236,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 System.out.println();
             }
         } else {
-            System.out.println("De kas eigenaar is niet ingelogd. Log eerst in om kas te switchen");
+            System.out.println("De kas eigenaar is niet ingelogd. Log eerst in om kas te switchen van kas.");
         }
         return currentKas;
     }

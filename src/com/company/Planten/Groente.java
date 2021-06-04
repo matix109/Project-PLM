@@ -1,6 +1,8 @@
 package com.company.Planten;
+import com.company.Factory.GroenteFactory;
+import com.company.Factory.PlantenFactory;
 import com.company.VoedingPlanten.GroenteVoeding;
-import com.company.VoedingPlanten.Voeding;
+
 
 public class Groente extends Plant {
 
@@ -8,17 +10,9 @@ public class Groente extends Plant {
         super(naam,prijsPerStuk,benodigheid,voeding);
     }
 
-public Groente() {
-    super();
+public Groente(GroenteFactory plant) {
+    super(plant);
 }
-
-public void watIsDeNaam() {
-    System.out.print("Wat is de naam van de groente?: ");
-}
-
-    public Voeding getSoortVoeding(){
-        return new GroenteVoeding();
-    }
 
     public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){
         if (Kwaliteit.equalsIgnoreCase("slecht")) {

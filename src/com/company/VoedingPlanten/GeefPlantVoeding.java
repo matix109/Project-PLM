@@ -8,7 +8,7 @@ import com.company.Planten.Plant;
 public class GeefPlantVoeding {
     private Plant plant;
 
-    public GeefPlantVoeding(Plant plant){
+    public GeefPlantVoeding(Plant plant){//voor testen
         this.plant =plant;
     }
 

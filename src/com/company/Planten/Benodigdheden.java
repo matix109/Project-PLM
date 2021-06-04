@@ -1,32 +1,36 @@
 package com.company.Planten;
 
-import com.company.AskForInput;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.Login;
-
-public class Benodigdheden {
+public abstract class Benodigdheden {
     private int groeiTijdWeken;
     private int Luchtvochtigheid;
     private int Temperatuur;
 
     public Benodigdheden(){
-    maakBenodigdheden();
     }
+
     public Benodigdheden(int groeiTijdWeken, int Luchtvochtigheid,int Temperatuur){
     this.groeiTijdWeken = groeiTijdWeken;
     this.Luchtvochtigheid = Luchtvochtigheid;
     this.Temperatuur = Temperatuur;
     }
 
-    private void maakBenodigdheden(){
-        System.out.println("Wat zijn de benodigdheden?");
-    System.out.print("Voer de groei tijd in weken in: ");
-    this.groeiTijdWeken = AskForInput.vraagEenInt();
-    System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-    this.Luchtvochtigheid = AskForInput.vraagEenInt();
-    System.out.print("Voer de nodige temperatuur in(°C): ");
-    this.Temperatuur = AskForInput.vraagEenInt();
+    public Benodigdheden maakBenodigdheden(){
+        beginTekst();
+        this.groeiTijdWeken = maakWekenAan();
+        this.Luchtvochtigheid = maakLuchtvochtighiedAan();
+        this.Temperatuur = maakTemperatuurAan();
+        return this;
     }
+
+    public abstract void beginTekst();
+
+    public abstract int maakWekenAan();
+
+    public abstract int maakLuchtvochtighiedAan();
+
+    public abstract int maakTemperatuurAan();
 
     public void setBenodigdheden() throws KasEigenaarNietIngelogdException {
     if(Login.getInstance().kasEigenaarIngelogd()){

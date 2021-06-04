@@ -2,9 +2,6 @@ package com.company.Menu;
 
 import com.company.AskForInput;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class MenuKeuzes {
 
     public static int printKeuzes() {
@@ -17,7 +14,7 @@ public class MenuKeuzes {
         System.out.println("6) Aanpassingen invoeren");// Alleen als ingelogd // benodigheden/string voeding/addKas //
         System.out.println("7) Inloggen (kas eigenaar)");// Inlog optie
         System.out.println("8) Registreren (kas eigenaar)");// Registratie
-        System.out.println("9) Verander van kas.");
+        System.out.println("9) Verander van kas.");// switch kas
         System.out.println("0) Exit");
         System.out.print("Uw keuze: ");
             int choice = AskForInput.vraagEenInt();

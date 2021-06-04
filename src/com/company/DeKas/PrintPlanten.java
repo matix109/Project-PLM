@@ -8,7 +8,7 @@ public class PrintPlanten {
     }
 
     public void printHoeveelheidPlanten() {
-        System.out.println(kasPlanten.getPlantenLijst().size());
+        System.out.print(kasPlanten.getPlantenLijst().size());
     }
 
     public void printPlantenLijst() {

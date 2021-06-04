@@ -2,7 +2,7 @@ package com.company.Planten;
 
 import com.company.AskForInput;
 
-public class Handeling{
+public class Handeling{// deze abstract maken voor andere handelingen bijvoorbeeld zo als voeding geven dan doet die iets anders
     private Datum datum;
     private String Handeling;
 

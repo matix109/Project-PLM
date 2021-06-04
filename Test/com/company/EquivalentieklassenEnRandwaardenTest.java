@@ -3,6 +3,7 @@ package com.company;
 import com.company.DeKas.Kas;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Bloem;
+import com.company.Planten.BloemBenodigdheden;
 import com.company.Planten.Datum;
 import com.company.VoedingPlanten.GeefPlantVoeding;
 import com.company.VoedingPlanten.BloemVoeding;
@@ -24,7 +25,7 @@ class EquivalentieklassenEnRandwaardenTest {
     @BeforeEach
     void setup(){
         kas = new Kas("Kas");
-        madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7,60,21), new BloemVoeding(3, 4, 6));
+        madeliefje = new Bloem("Madeliefje", 0.20, new BloemBenodigdheden(7,60,21), new BloemVoeding(3, 4, 6));
         new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1,1,2021));
         madeliefje.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         kas.getKasPlanten().addPlant(madeliefje);

@@ -3,6 +3,7 @@ import com.company.DeKas.Kas;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Datum;
 import com.company.Planten.Groente;
+import com.company.Planten.GroenteBenodigdheden;
 import com.company.VoedingPlanten.GroenteVoeding;
 import org.junit.jupiter.api.*;
 
@@ -17,8 +18,8 @@ class KasTest {
     @BeforeAll
     static void initialize(){
         kas = new Kas("kas");
-        wortel = new Groente("Wortel",0.20,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
-        courgette = new Groente("Courgette",0.30,new Benodigdheden(7,60,21),new GroenteVoeding(3,4));
+        wortel = new Groente("Wortel",0.20,new GroenteBenodigdheden(7,60,21),new GroenteVoeding(3,4));
+        courgette = new Groente("Courgette",0.30,new GroenteBenodigdheden(7,60,21),new GroenteVoeding(3,4));
         kas.getKasPlanten().addPlant(wortel);
         kas.getKasPlanten().addPlant(courgette);
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
