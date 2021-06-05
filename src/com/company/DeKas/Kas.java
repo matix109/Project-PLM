@@ -1,5 +1,7 @@
 package com.company.DeKas;
 
+import com.company.Oogsten.KasOogsten;
+
 public class Kas {
     private String Naam;
     private KasOogsten oogst;

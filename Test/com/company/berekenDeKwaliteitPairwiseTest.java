@@ -1,8 +1,10 @@
 package com.company;
 
-import com.company.DeKas.BerekenPrijsPerStuk;
-import com.company.DeKas.Kas;
-import com.company.DeKas.Kwaliteit;
+import com.company.DeKas.*;
+import com.company.Oogsten.BerekenPrijsPerStuk;
+import com.company.Oogsten.Kwaliteit;
+import com.company.Oogsten.TesselaarBerekeningPPS;
+import com.company.Oogsten.TesselaarKwaliteit;
 import com.company.Planten.*;
 import com.company.VoedingPlanten.BloemVoeding;
 import com.company.VoedingPlanten.GeefPlantVoeding;
@@ -38,13 +40,13 @@ class berekenDeKwaliteitPairwiseTest {
     static void setup(){
         kas = new Kas("Kas");
         //Bloemen
-        madeliefje = new Bloem("Madeliefje", 0.20,new BloemBenodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
-        tulp = new Bloem("Tulp", 0.31, new BloemBenodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
-        lotus = new Bloem("Lotus", 0.31, new BloemBenodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
+        madeliefje = new Bloem("Madeliefje", 0.20,new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
+        tulp = new Bloem("Tulp", 0.31, new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
+        lotus = new Bloem("Lotus", 0.31, new Benodigdheden(0,60,21), new BloemVoeding(3, 4, 6));//Goed
         //Groente
-        aardappel = new Groente("Aardappel", 0.31, new GroenteBenodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
-        courgette = new Groente("Courgette", 0.20, new GroenteBenodigdheden(0,60,21),new GroenteVoeding( 3, 4));//Goed
-        wortel = new Groente("Wortel", 0.20, new GroenteBenodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
+        aardappel = new Groente("Aardappel", 0.31, new Benodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
+        courgette = new Groente("Courgette", 0.20, new Benodigdheden(0,60,21),new GroenteVoeding( 3, 4));//Goed
+        wortel = new Groente("Wortel", 0.20, new Benodigdheden(0,60,21), new GroenteVoeding(3, 4));//Goed
         //In de kas
         kas.getKasPlanten().addPlant(madeliefje);
         kas.getKasPlanten().addPlant(tulp);
@@ -61,23 +63,23 @@ class berekenDeKwaliteitPairwiseTest {
         //Kwaliteit
         //Door middel van een BerekenPrijsPerStuk object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
         //Onder elke BerekenPrijsPerStuk staat de ingevulde methode als voorbeeld.
-        kwaliteit1 = new Kwaliteit("Slecht");
-        PPS1 = new BerekenPrijsPerStuk(kwaliteit1,madeliefje,1);
+        kwaliteit1 = new TesselaarKwaliteit("Slecht");
+        PPS1 = new TesselaarBerekeningPPS(kwaliteit1,madeliefje,1);
         //PPS1.berekenPrijsPerStuk("Slecht",aardappel,true,false);
-        kwaliteit2 = new Kwaliteit("Slecht");
-        PPS2 = new BerekenPrijsPerStuk(kwaliteit2,aardappel,1);
+        kwaliteit2 = new TesselaarKwaliteit("Slecht");
+        PPS2 = new TesselaarBerekeningPPS(kwaliteit2,aardappel,1);
         //PPS2.berekenPrijsPerStuk("Slecht",aardappel,false,true);
-        kwaliteit3 = new Kwaliteit("Algemeen");
-        PPS3 = new BerekenPrijsPerStuk(kwaliteit3,tulp,1);
+        kwaliteit3 = new TesselaarKwaliteit("Algemeen");
+        PPS3 = new TesselaarBerekeningPPS(kwaliteit3,tulp,1);
         //PPS3.berekenPrijsPerStuk("Algemeen",tulp,false,true);
-        kwaliteit4 = new Kwaliteit("Algemeen");
-        PPS4 = new BerekenPrijsPerStuk(kwaliteit4,courgette,1);
+        kwaliteit4 = new TesselaarKwaliteit("Algemeen");
+        PPS4 = new TesselaarBerekeningPPS(kwaliteit4,courgette,1);
         //PPS4.berekenPrijsPerStuk("Algemeen",courgette,true,false);
-        kwaliteit5 = new Kwaliteit("Goed");
-        PPS5 = new BerekenPrijsPerStuk(kwaliteit5,lotus,1);
+        kwaliteit5 = new TesselaarKwaliteit("Goed");
+        PPS5 = new TesselaarBerekeningPPS(kwaliteit5,lotus,1);
         //PPS5.berekenPrijsPerStuk("Goed",lotus,true,true)
-        kwaliteit6 = new Kwaliteit("Goed");
-        PPS6 = new BerekenPrijsPerStuk(kwaliteit6,wortel,1);
+        kwaliteit6 = new TesselaarKwaliteit("Goed");
+        PPS6 = new TesselaarBerekeningPPS(kwaliteit6,wortel,1);
         //PPS6.berekenPrijsPerStuk("Goed",wortel,false,false)
     }
 

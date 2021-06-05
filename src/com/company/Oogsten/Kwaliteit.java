@@ -1,8 +1,8 @@
-package com.company.DeKas;
+package com.company.Oogsten;
 
 import com.company.AskForInput;
 
-public class Kwaliteit {
+public abstract class Kwaliteit {
     private String kwaliteit;
 
     public Kwaliteit(String Kwaliteit) {
@@ -12,19 +12,19 @@ public class Kwaliteit {
     private String geldigeKwaliteit(String kwaliteit){
         String correcteKwaliteit = kwaliteit;
         while (true) {
-            if (kwaliteitString(correcteKwaliteit)) {
+            if (kwaliteitStringVoorwaarden(correcteKwaliteit)) {
                 return correcteKwaliteit;
             }
             else {
-                System.out.println("Dat is geen geldige Kwaliteit. Voer Slecht,Algemeen of Goed in: ");
-            correcteKwaliteit = AskForInput.vraagEenString();
+                System.out.println(geldigeKwaliteitSoortenString());
+                correcteKwaliteit = AskForInput.vraagEenString();
             }
         }
     }
 
-    private boolean kwaliteitString(String kwaliteit){
-        return kwaliteit.equalsIgnoreCase("slecht") || kwaliteit.equalsIgnoreCase("algemeen") || kwaliteit.equalsIgnoreCase("goed");
-    }
+    public abstract String geldigeKwaliteitSoortenString();
+
+    public abstract boolean kwaliteitStringVoorwaarden(String kwaliteit);
 
     public String getKwaliteitString() {
         return kwaliteit;

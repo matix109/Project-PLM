@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.DeKas.Kas;
+import com.company.Factory.TesselaarOogstFactory;
+import com.company.Oogsten.TesselaarOogst;
 import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.KasBezitControle;
@@ -15,11 +17,11 @@ import com.company.VoedingPlanten.GroenteVoeding;
 public class Main {
     public static void main(String[] args){
         Kas kas = new Kas("kas");
-        Groente wortel = new Groente("Wortel", 0.20, new GroenteBenodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
-        Groente aardappel = new Groente("Aardappel", 0.20, new GroenteBenodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
-        Groente courgette = new Groente("Courgette", 0.20, new GroenteBenodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
-        Bloem madeliefje = new Bloem("Madeliefje", 0.20, new BloemBenodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
-        Bloem tulp = new Bloem("Tulp", 0.20, new BloemBenodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
+        Groente wortel = new Groente("Wortel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
+        Groente aardappel = new Groente("Aardappel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
+        Groente courgette = new Groente("Courgette", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
+        Bloem madeliefje = new Bloem("Madeliefje", 0.20, new Benodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
+        Bloem tulp = new Bloem("Tulp", 0.20, new Benodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
 
         kas.getKasPlanten().addPlant(wortel);
         kas.getKasPlanten().addPlant(aardappel);
@@ -47,24 +49,24 @@ public class Main {
         System.out.println(kas.getKasWinst().getTotaleWinst());
         Kas kas2 = new Kas("kas");
         System.out.println(kas2.getKasWinst().getTotaleWinst());
-        kas.getKasOogsten().oogstPlantSoort(courgette,7,2,"Goed");
+        kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(courgette,7,2,"Goed",new TesselaarOogstFactory()));
         System.out.println(kas.getKasWinst().getTotaleWinst());
         courgette.getHandelingen().newHandeling(new Datum(1, 1, 1999), "Testertje");
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
         System.out.println(kas.getKasWinst().getTotaleWinst());
-        kas.getKasOogsten().oogstPlantSoort(courgette, 10, 1, "Algemeen");
+        kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(courgette, 10, 1, "Algemeen",new TesselaarOogstFactory()));
         System.out.println(kas.getKasWinst().getTotaleWinst());
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
         System.out.println(courgette.getBenodigdheden().getGroeiTijdWeken());
         System.out.println(madeliefje.getNaam());
         madeliefje.setNaam("Moodeliefje");
-        Plant astronemeria = new Bloem("Astronemeria", 0.31, new BloemBenodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
+        Plant astronemeria = new Bloem("Astronemeria", 0.31, new Benodigdheden(7, 60, 21), new BloemVoeding(3, 4, 6));
         kas.getKasPlanten().addPlant(astronemeria);
         astronemeria.getPlantLevensduur().setHuidigeGroeiTijdWeken(6);
         astronemeria.getPlantLevensduur().volgendeWeek();
         astronemeria.getPlantLevensduur().volgendeWeek();
         System.out.println(kas.getKasWinst().getTotaleWinst());
-        kas.getKasOogsten().oogstPlantSoort(astronemeria, 10, 4, "Goed");
+        kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(astronemeria, 10, 4, "Goed",new TesselaarOogstFactory()));
         System.out.println(kas.getKasWinst().getTotaleWinst());
         madeliefje.getHandelingen().newHandeling(new Datum(1, 1, 2021), "Test nieuwe aanpassingen");
         madeliefje.getHandelingen().newHandeling(new Datum(1, 1, 2021), "Test nieuwe aanpassingen2");

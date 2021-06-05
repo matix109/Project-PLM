@@ -8,8 +8,8 @@ import com.company.Exceptions.NietInDeKasException;
 public class PrintHandelingen{
     private Plant plant;
 
-    public PrintHandelingen(Kas kas) throws NietInDeKasException {
-        this.plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+    public PrintHandelingen(Plant plant) throws NietInDeKasException {
+        this.plant = plant;
     }
 
     private String handelingenString(int i) {

@@ -9,20 +9,6 @@ public class Datum {
  this.Datum = datumOrganizer(Dag,Maand,Jaar);
     }
 
-    public Datum(){
-    this.Datum = maakDatum();
-    }
-
-private String maakDatum(){
-    System.out.print("Voer de dag in: ");
-    int dag2 = AskForInput.vraagEenInt();
-    System.out.print("Voer de maand in: ");
-    int maand2 = AskForInput.vraagEenInt();
-    System.out.print("Voer het jaar in: ");
-    int jaar2 = AskForInput.vraagEenInt();
-    return datumOrganizer(dag2,maand2,jaar2);
-}
-
     private String datumOrganizer(int Dag, int Maand, int Jaar){
         String datum;
         if (Dag < 10){

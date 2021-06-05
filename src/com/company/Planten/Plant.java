@@ -1,7 +1,6 @@
 package com.company.Planten;
-
-import com.company.AskForInput;
-import com.company.Factory.PlantenFactory;
+import com.company.Exceptions.KasEigenaarNietIngelogdException;
+import com.company.KasEigenaar.Login;
 import com.company.VoedingPlanten.Voeding;
 
 public abstract class Plant {
@@ -13,7 +12,7 @@ public abstract class Plant {
     private boolean Bio = true;
     private Voeding voeding;
 
-        Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid,Voeding voeding) {// Om makkelijk mee te kunnen testen
+        Plant(String naam, double prijsOmTeGroeien, Benodigdheden benodigheid, Voeding voeding) {// Om makkelijk mee te kunnen testen
         this.Ondergaat = new HandelingenList();
         this.naam = naam;
         this.prijsOmTeGroeien = prijsOmTeGroeien;
@@ -22,21 +21,18 @@ public abstract class Plant {
         this.voeding = voeding;
     }
 
-    Plant(PlantenFactory plant) {
-        this.Ondergaat = new HandelingenList();
-        System.out.print(plant.soortPlant());
-        this.naam = AskForInput.vraagEenString();
-        System.out.print("Wat is de prijs om te groeien?(€): ");
-        this.prijsOmTeGroeien = AskForInput.vraagEenDouble();
-        this.Heeft = plant.plantBenodighdheden();
-        this.inDeGroei = new PlantLevensduur();
-        this.voeding = plant.plantVoeding();
-    }
+    abstract public double getBerekekningKwaliteit(int Rating, double prijsPerStuk);
 
-    abstract public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk);
-
-    public Voeding getVoeding(){
+        public Voeding getVoeding(){
         return voeding;
+         }
+
+    public void setVoeding(Voeding voeding) throws KasEigenaarNietIngelogdException {
+        if (Login.getInstance().kasEigenaarIngelogd()) {
+            this.voeding = voeding;
+        } else {
+            throw new KasEigenaarNietIngelogdException();
+        }
     }
 
     public HandelingenList getHandelingen() {

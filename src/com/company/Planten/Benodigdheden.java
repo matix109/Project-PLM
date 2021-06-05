@@ -2,13 +2,10 @@ package com.company.Planten;
 
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.Login;
-public abstract class Benodigdheden {
+public class Benodigdheden {
     private int groeiTijdWeken;
     private int Luchtvochtigheid;
     private int Temperatuur;
-
-    public Benodigdheden(){
-    }
 
     public Benodigdheden(int groeiTijdWeken, int Luchtvochtigheid,int Temperatuur){
     this.groeiTijdWeken = groeiTijdWeken;
@@ -16,25 +13,11 @@ public abstract class Benodigdheden {
     this.Temperatuur = Temperatuur;
     }
 
-    public Benodigdheden maakBenodigdheden(){
-        beginTekst();
-        this.groeiTijdWeken = maakWekenAan();
-        this.Luchtvochtigheid = maakLuchtvochtighiedAan();
-        this.Temperatuur = maakTemperatuurAan();
-        return this;
-    }
-
-    public abstract void beginTekst();
-
-    public abstract int maakWekenAan();
-
-    public abstract int maakLuchtvochtighiedAan();
-
-    public abstract int maakTemperatuurAan();
-
-    public void setBenodigdheden() throws KasEigenaarNietIngelogdException {
+    public void setBenodigdheden(int groeiTijdWeken, int Luchtvochtigheid,int Temperatuur) throws KasEigenaarNietIngelogdException {
     if(Login.getInstance().kasEigenaarIngelogd()){
-    maakBenodigdheden();
+        this.groeiTijdWeken = groeiTijdWeken;
+        this.Luchtvochtigheid = Luchtvochtigheid;
+        this.Temperatuur = Temperatuur;
     }
     else{
     throw new KasEigenaarNietIngelogdException();

@@ -11,16 +11,6 @@ public class Handeling{// deze abstract maken voor andere handelingen bijvoorbee
         this.Handeling = Handeling;
     }
 
-    public Handeling(){
-    maakHandeling();
-    }
-
-    private void maakHandeling(){
-        this.datum = new Datum();
-        System.out.print("Wat voor handleing gaat u verrichten?: ");
-        this.Handeling = AskForInput.vraagEenString();
-    }
-
     @Override
     public String toString() {
        return datum.getDatumString() +" "+ Handeling;

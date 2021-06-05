@@ -1,4 +1,7 @@
-package com.company.DeKas;
+package com.company.Oogsten;
+
+import com.company.DeKas.Kas;
+import com.company.DeKas.KasPlanten;
 
 public class PrintPlanten {
     private KasPlanten kasPlanten;

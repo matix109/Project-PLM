@@ -2,7 +2,6 @@ package com.company;
 
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Bloem;
-import com.company.Planten.BloemBenodigdheden;
 import com.company.Planten.Datum;
 import com.company.VoedingPlanten.GeefPlantVoeding;
 import com.company.VoedingPlanten.BloemVoeding;
@@ -15,7 +14,7 @@ class BloemTest {
     @Test
     @DisplayName("Voeding geven test")
     void geefVoedingTest(){
-        Bloem madeliefje = new Bloem("Madeliefje",0.20,new BloemBenodigdheden(7,60,21),new BloemVoeding(3,4,6));
+        Bloem madeliefje = new Bloem("Madeliefje",0.20,new Benodigdheden(7,60,21),new BloemVoeding(3,4,6));
         new GeefPlantVoeding(madeliefje).geefVoeding(new Datum(1,1,1999));
         int Expected = 1;
         int Actual = madeliefje.getHandelingen().getHandelingenLijst().size();

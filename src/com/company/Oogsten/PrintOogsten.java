@@ -1,4 +1,6 @@
-package com.company.DeKas;
+package com.company.Oogsten;
+
+import com.company.DeKas.Kas;
 
 public class PrintOogsten {
     private KasOogsten kasOogsten;
@@ -9,7 +11,7 @@ public class PrintOogsten {
 
     public void printOogstenKas () {
         for (int i = 0; i < kasOogsten.getOogstenLijst().size(); i++) {
-            System.out.print("De plant " + kasOogsten.getOogstenLijst().get(i).getNaam() + " had een oogst van " + kasOogsten.getOogstenLijst().get(i).getHoeveelheid() +
+            System.out.print("De plant " + kasOogsten.getOogstenLijst().get(i).getPlant().getNaam() + " had een oogst van " + kasOogsten.getOogstenLijst().get(i).getHoeveelheid() +
                     " wat €");
             System.out.printf("%.2f opleverde.\n",kasOogsten.getOogstenLijst().get(i).getNettoWinst());
         }

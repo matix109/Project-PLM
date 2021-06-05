@@ -1,5 +1,7 @@
 package com.company.DeKas;
 
+import com.company.Oogsten.Oogst;
+
 public class KasWinst {
     private double totaleWinst;
 
