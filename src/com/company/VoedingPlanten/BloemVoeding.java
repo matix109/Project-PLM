@@ -1,45 +1,38 @@
 package com.company.VoedingPlanten;
-
-import com.company.AskForInput;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.Login;
 
-public class BloemVoeding extends Voeding {
-    double Gro;
-    double MiGro;
-    double Bloom;
+public class BloemVoeding extends Voeding{
 
-    public BloemVoeding() {
-    maakVoeding();
+
+    public BloemVoeding(double Gro, double MiGro, double Bloom){
+        super(Gro, MiGro, Bloom);
     }
 
-    public BloemVoeding(double Gro, double MiGro, double Bloom) {//Voor testen
-        this.Gro = Gro;
-        this.MiGro = MiGro;
-        this.Bloom = Bloom;
+
+   public void setVoeding(double Gro, double MiGro, double Bloom) throws KasEigenaarNietIngelogdException {
+       if(Login.getInstance().kasEigenaarIngelogd()) {
+           super.setGro(Gro);
+           super.setMiGro(MiGro);
+           super.setBloom(Bloom);
+       }
+       else {
+           throw new KasEigenaarNietIngelogdException();
+       }
     }
 
-private void maakVoeding(){
-    System.out.println("Wat voor voeding krijgt de bloem?");
-    System.out.print("Voer de Gro in ml in: ");
-    this.Gro = AskForInput.vraagEenDouble();
-    System.out.print("Voer de Mi-Gro in ml in: ");
-    this.MiGro = AskForInput.vraagEenDouble();
-    System.out.print("Voer de Bloom in ml in: ");
-    this.Bloom = AskForInput.vraagEenDouble();
-}
-
-    public void setVoeding() throws KasEigenaarNietIngelogdException {
-        if(Login.getInstance().kasEigenaarIngelogd()) {
-            maakVoeding();
-        }
-        else {
-            throw new KasEigenaarNietIngelogdException();
-        }
+    @Override
+    public String hoeveelGro() {
+        return getGro() + "ml Gro, ";
     }
 
-    public String setStringVoeding() {
-        return Gro + "ml Gro, " + MiGro + "ml MiGro en " + Bloom + "ml Bloom.";
+    @Override
+    public String hoeveelMiGro() {
+        return getMiGro() + "ml MiGro en ";
     }
 
+    @Override
+    public String hoeveelBloom() {
+        return getBloom() + "ml Bloom.";
+    }
 }

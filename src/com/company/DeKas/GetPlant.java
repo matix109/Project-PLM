@@ -1,6 +1,6 @@
 package com.company.DeKas;
 
-import com.company.AskForInput;
+import com.company.Menu.AskForInput;
 import com.company.Exceptions.NietInDeKasException;
 import com.company.Planten.Plant;
 

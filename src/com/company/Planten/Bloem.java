@@ -1,6 +1,4 @@
 package com.company.Planten;
-
-import com.company.Factory.BloemFactory;
 import com.company.VoedingPlanten.BloemVoeding;
 
 public class Bloem extends Plant {
@@ -9,14 +7,10 @@ public class Bloem extends Plant {
         super(naam,prijsPerStuk,benodigheid,voeding);
     }
 
-    public Bloem(BloemFactory plant) {
-        super(plant);
-    }
-
-    public double getBerekekningKwaliteit(String Kwaliteit, double prijsPerStuk){
-        if (Kwaliteit.equalsIgnoreCase("slecht")) {
+    public double getBerekekningKwaliteit(int rating, double prijsPerStuk){
+        if (rating == 0) {
             return (prijsPerStuk / 100) * 30;
-        } else if (Kwaliteit.equalsIgnoreCase("goed")) {
+        } else if (rating == 1) {
             return (prijsPerStuk / 100) * 30;
         }
         return 0;

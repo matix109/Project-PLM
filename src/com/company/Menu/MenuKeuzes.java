@@ -1,7 +1,5 @@
 package com.company.Menu;
 
-import com.company.AskForInput;
-
 public class MenuKeuzes {
 
     public static int printKeuzes() {
@@ -23,10 +21,11 @@ public class MenuKeuzes {
     }
 
     public static int printHandelingKeuzes(){
-        System.out.println("1) Ik wil een plant oogsten.");
-        System.out.println("2) Ik wil een plant voeding geven.");
-        System.out.println("3) Ik wil een aparte handeling verrichten op een plant.");
-        System.out.println("4) Ik wil een plant 1 week vooruit zetten in zijn groei.");
+        System.out.println("1) Ik wil een plant oogsten (Tesselaar Berekening).");
+        System.out.println("2) Ik wil een plant oogsten (Paradijs Berekening).");
+        System.out.println("3) Ik wil een plant voeding geven.");
+        System.out.println("4) Ik wil een aparte handeling verrichten op een plant.");
+        System.out.println("5) Ik wil een plant 1 week vooruit zetten in zijn groei.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choiceHandeling = AskForInput.vraagEenInt();
@@ -65,8 +64,9 @@ public class MenuKeuzes {
     }
     public static int printKasEigenaarHandelingen(){
         System.out.println("1) Ik wil de benodigdheden van een plant veranderen.");
-        System.out.println("2) Ik wil de voorgestelde voeding van een plant veranderen.");
-        System.out.println("3) Ik wil een kas toevoegen.");
+        System.out.println("2) Ik wil de voorgestelde voeding van een bloem veranderen.");
+        System.out.println("3) Ik wil de voorgestelde voeding van een groente veranderen.");
+        System.out.println("4) Ik wil een kas toevoegen.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
         int choiceKasEigenaar = AskForInput.vraagEenInt();

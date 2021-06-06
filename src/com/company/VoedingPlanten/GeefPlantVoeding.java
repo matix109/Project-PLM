@@ -12,17 +12,8 @@ public class GeefPlantVoeding {
         this.plant =plant;
     }
 
-    public GeefPlantVoeding(Kas kas) throws NietInDeKasException {
-        this.plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
-    }
-
     public void geefVoeding(Datum datum) {//Voor testen
         plant.getHandelingen().newHandeling(datum, "Krijgt: "+ plant.getVoeding().getStringVoeding());
-        plant.setBio(false);
-    }
-
-    public void geefVoeding(){
-        plant.getHandelingen().newHandeling(new Datum(),"Krijgt: "+ plant.getVoeding().getStringVoeding());
         plant.setBio(false);
     }
 }
