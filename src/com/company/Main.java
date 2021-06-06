@@ -15,8 +15,9 @@ import com.company.VoedingPlanten.GroenteVoeding;
 
 
 public class Main {
+
     public static void main(String[] args){
-        Kas kas = new Kas("kas");
+/*        Kas kas = new Kas("kas");
         Groente wortel = new Groente("Wortel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
         Groente aardappel = new Groente("Aardappel", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
         Groente courgette = new Groente("Courgette", 0.20, new Benodigdheden(7, 60, 21), new GroenteVoeding(3, 4));
@@ -74,18 +75,19 @@ public class Main {
         System.out.println(kas.getKasWinst().getTotaleWinst());
         System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
-        System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
+        System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());*/
 
         // Hier zou ik eiggenlijk gegevens willen opvragen uit de database over de kas eigenaar.
         //Zodat ik eerst niet de kas hoef toe te voegen op deze manier en zo voort.
+        // Haal de comments hier weg en boven weg en voer kas in bij bezit voor een volle kas.
 
-        KasEigenaar.getInstance().getAccount().maakAccount();
+/*        KasEigenaar.getInstance().getAccount().maakAccount();
         Login.getInstance().Inloggen();
         try {
             KasEigenaar.getInstance().getBezit().addKas(kas);
         } catch (KasEigenaarNietIngelogdException e) {
             System.out.println(e);
-        }
+        }*/
 
      if (KasEigenaar.getInstance().getBezit().getKassenLijst().size() == 1 && new KasBezitControle(KasEigenaar.getInstance().getBezit()).bezitDeKas("Dummy")) {
             System.out.println("De kas eigenaar bezit nog geen kassen. Gebruik:(Dummy) om verder te gaan.");
