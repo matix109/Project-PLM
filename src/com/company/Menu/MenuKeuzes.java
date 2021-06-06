@@ -1,7 +1,5 @@
 package com.company.Menu;
 
-import com.company.AskForInput;
-
 public class MenuKeuzes {
 
     public static int printKeuzes() {

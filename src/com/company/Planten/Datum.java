@@ -1,7 +1,5 @@
 package com.company.Planten;
 
-import com.company.AskForInput;
-
 public class Datum {
    String Datum;
 
@@ -28,9 +26,5 @@ public class Datum {
 
     public String getDatumString() {
         return Datum;
-    }
-
-    public void setDatum(int Dag, int Maand, int Jaar) {
-        this.Datum = datumOrganizer(Dag,Maand,Jaar);
     }
 }

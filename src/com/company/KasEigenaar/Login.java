@@ -1,6 +1,6 @@
 package com.company.KasEigenaar;
 
-import com.company.AskForInput;
+import com.company.Menu.AskForInput;
 
 public class Login {
     private static Login singleton;

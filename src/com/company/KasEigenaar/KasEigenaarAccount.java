@@ -1,6 +1,6 @@
 package com.company.KasEigenaar;
 
-import com.company.AskForInput;
+import com.company.Menu.AskForInput;
 
 public class KasEigenaarAccount {// Kan een lege wachtwoord of username bevatten dat is niet de bedoeling.
     private String Gebruikersnaam;

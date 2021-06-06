@@ -5,27 +5,27 @@ import com.company.Planten.Plant;
 import java.util.ArrayList;
 
 public class KasPlanten{
-    private ArrayList<Plant> groeitIn;
+    private ArrayList<Plant> bestaatUit;
 
     KasPlanten(){
-        groeitIn = new ArrayList<>();
+        bestaatUit = new ArrayList<>();
     }
 
      public ArrayList<Plant> getPlantenLijst(){
      ArrayList<Plant> dummy = new ArrayList<>();
-     dummy.addAll(groeitIn);
+     dummy.addAll(bestaatUit);
      return dummy;
      }
 
     public void removePlant(Plant plant) {
         if (new GetPlant(this).inDeKas(plant)) {
-            groeitIn.remove(plant);
+            bestaatUit.remove(plant);
             plant.getHandelingen().resetHandelingen();
         }
     }
 
     public void addPlant(Plant plant){
-        groeitIn.add(plant);
+        bestaatUit.add(plant);
     }
 
 }

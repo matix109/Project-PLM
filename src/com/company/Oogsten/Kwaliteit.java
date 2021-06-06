@@ -1,6 +1,6 @@
 package com.company.Oogsten;
 
-import com.company.AskForInput;
+import com.company.Menu.AskForInput;
 
 public abstract class Kwaliteit {
     private String kwaliteit;

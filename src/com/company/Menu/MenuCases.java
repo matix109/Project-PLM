@@ -1,23 +1,14 @@
 package com.company.Menu;
 
-import com.company.*;
+
 import com.company.DeKas.*;
-import com.company.Exceptions.KasBestaatNietException;
 import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.Exceptions.KasInBezitException;
 import com.company.Exceptions.NietInDeKasException;
-import com.company.Factory.TesselaarOogstFactory;
-import com.company.Factory.TesselaarOogstMetParadijsBerekeningFactory;
-import com.company.KasEigenaar.KasBezitControle;
 import com.company.KasEigenaar.KasEigenaar;
-import com.company.KasEigenaar.Login;
 import com.company.Oogsten.PrintOogsten;
 import com.company.Oogsten.PrintPlanten;
-import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.*;
-import com.company.VoedingPlanten.BloemVoeding;
-import com.company.VoedingPlanten.GeefPlantVoeding;
-import com.company.VoedingPlanten.GroenteVoeding;
 
 public class MenuCases { // bij de cases die alleen een nummer returnen ff een string toevoegen zodat het voor de user duidelijk is.
 

@@ -20,7 +20,6 @@ public abstract class Voeding {
     }
 
     abstract public void setVoeding(double Gro, double MiGro, double Bloom) throws KasEigenaarNietIngelogdException;
-
     public abstract String hoeveelGro();
     public abstract String hoeveelMiGro();
     public abstract String hoeveelBloom();

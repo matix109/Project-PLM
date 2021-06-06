@@ -27,14 +27,6 @@ public abstract class Plant {
         return voeding;
          }
 
-    public void setVoeding(Voeding voeding) throws KasEigenaarNietIngelogdException {
-        if (Login.getInstance().kasEigenaarIngelogd()) {
-            this.voeding = voeding;
-        } else {
-            throw new KasEigenaarNietIngelogdException();
-        }
-    }
-
     public HandelingenList getHandelingen() {
         return Ondergaat;
     }

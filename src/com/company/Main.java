@@ -1,17 +1,11 @@
 package com.company;
 
 import com.company.DeKas.Kas;
-import com.company.Factory.TesselaarOogstFactory;
-import com.company.Oogsten.TesselaarOogst;
+import com.company.Menu.AskForInput;
 import com.company.Exceptions.KasBestaatNietException;
-import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.KasEigenaar.KasBezitControle;
 import com.company.KasEigenaar.KasEigenaar;
-import com.company.KasEigenaar.Login;
 import com.company.Menu.Menu;
-import com.company.Planten.*;
-import com.company.VoedingPlanten.BloemVoeding;
-import com.company.VoedingPlanten.GroenteVoeding;
 
 
 public class Main {
