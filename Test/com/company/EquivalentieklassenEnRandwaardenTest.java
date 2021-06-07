@@ -2,6 +2,9 @@ package com.company;
 
 import com.company.DeKas.Kas;
 import com.company.Factory.TesselaarOogstFactory;
+import com.company.Oogsten.OogstDePlant;
+import com.company.Oogsten.OogstDePlantTesselaar;
+import com.company.Oogsten.OogstDetails;
 import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Bloem;
@@ -49,7 +52,7 @@ class EquivalentieklassenEnRandwaardenTest {
     @MethodSource("parametersHoeveelheid")
     @DisplayName("Extra kosten test")
     void nettoWinstTest(int input, double input2) {
-        kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(madeliefje,input,1.0,"Algemeen",new TesselaarOogstFactory()));
+        new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(madeliefje,new OogstDetails(input,1.0),"Algemeen",new TesselaarOogstFactory()));
         double Expected = input2;
         double Actual = kas.getKasWinst().getTotaleWinst();
         assertEquals(Expected,Actual,0.0001);

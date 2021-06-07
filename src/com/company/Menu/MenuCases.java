@@ -6,6 +6,7 @@ import com.company.Exceptions.KasEigenaarNietIngelogdException;
 import com.company.Exceptions.KasInBezitException;
 import com.company.Exceptions.NietInDeKasException;
 import com.company.KasEigenaar.KasEigenaar;
+import com.company.Oogsten.OogstDePlantTesselaar;
 import com.company.Oogsten.PrintOogsten;
 import com.company.Oogsten.PrintPlanten;
 import com.company.Planten.*;
@@ -39,7 +40,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 return;
             case 1:
                 try {
-                    kas.getKasOogsten().oogstPlantSoort(new MenuUserInput().case2_1(kas));
+                    new OogstDePlantTesselaar(kas).oogstPlantSoort(new MenuUserInput().case2_1(kas));
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -48,7 +49,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 2:
                 try {
-                    kas.getKasOogsten().oogstPlantSoort(new MenuUserInput().case2_2(kas));
+                    new OogstDePlantTesselaar(kas).oogstPlantSoort(new MenuUserInput().case2_2(kas));
                     System.out.println();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);

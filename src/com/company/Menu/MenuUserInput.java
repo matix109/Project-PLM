@@ -12,6 +12,7 @@ import com.company.KasEigenaar.KasBezitControle;
 import com.company.KasEigenaar.KasEigenaar;
 import com.company.KasEigenaar.Login;
 import com.company.Oogsten.Oogst;
+import com.company.Oogsten.OogstDetails;
 import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.*;
 import com.company.VoedingPlanten.BloemVoeding;
@@ -28,7 +29,7 @@ public class MenuUserInput {
         double PPS = AskForInput.vraagEenDouble();
         System.out.print("Wat is de kwaliteit?(Goed/Algemeen/Slecht): ");
         String kwaliteit = AskForInput.vraagEenString();
-        return new TesselaarOogst(plant, hoeveelheid, PPS, kwaliteit, new TesselaarOogstFactory());
+        return new TesselaarOogst(plant,new OogstDetails( hoeveelheid, PPS), kwaliteit, new TesselaarOogstFactory());
     }
 
     public Oogst case2_2(Kas kas) throws NietInDeKasException {
@@ -39,7 +40,7 @@ public class MenuUserInput {
         double PPS = AskForInput.vraagEenDouble();
         System.out.print("Wat is de kwaliteit?(Uitstekend/Matig/Bedorven): ");
         String kwaliteit = AskForInput.vraagEenString();
-        return new TesselaarOogst(plant2, hoeveelheid, PPS, kwaliteit, new TesselaarOogstMetParadijsBerekeningFactory());
+        return new TesselaarOogst(plant2,new OogstDetails( hoeveelheid, PPS), kwaliteit, new TesselaarOogstMetParadijsBerekeningFactory());
     }
 
     public void case2_3(Kas kas) throws NietInDeKasException {

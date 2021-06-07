@@ -4,28 +4,29 @@ import com.company.Planten.Plant;
 
 public class TesselaarBerekeningPPS extends BerekenPrijsPerStuk {
     private double nieuwePrijsPerStuk;
-
+    private PPSBerekeningCallsTesselaar plantCalls;
     public TesselaarBerekeningPPS(Kwaliteit kwaliteit, Plant plant, double PrijsPerStuk) {
         super(PrijsPerStuk);
-        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit, plant, plant.getBio(),isDePlantLuxe(plant));
+        plantCalls = new PPSBerekeningCallsTesselaar(plant);
+        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit, plant);
     }
-
+/*
     public boolean isDePlantLuxe(Plant plant){
         return plant.getPrijsOmTeGroeien() > 0.30;
-    }
+    }*/
 
-    public double berekenPrijsPerStuk(Kwaliteit kwaliteit, Plant plant, boolean Bio, boolean Luxe){
-        double tijdelijkePrijsPerStuk = kwaliteitPrijs(plant, getHuidigePrijsPerStuk(), kwaliteit);
-        if (Bio){
-            tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,10);
+    public double berekenPrijsPerStuk(Kwaliteit kwaliteit, Plant plant){
+        double tijdelijkePrijsPerStuk = plantCalls.kwaliteitPrijs(getHuidigePrijsPerStuk(), kwaliteit);
+        if (plantCalls.isDePlantBio()){
+            tijdelijkePrijsPerStuk = plantCalls.berekeningTPPS(tijdelijkePrijsPerStuk,10);
         }
-        if(Luxe){
-            tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,5);
+        if(plantCalls.isDePlantLuxe()){
+            tijdelijkePrijsPerStuk = plantCalls.berekeningTPPS(tijdelijkePrijsPerStuk,5);
         }
         return tijdelijkePrijsPerStuk;
     }
 
-    public double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
+/*    public double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
         return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
     }
 
@@ -38,7 +39,7 @@ public class TesselaarBerekeningPPS extends BerekenPrijsPerStuk {
             return PrijsPerStuk + plant.getBerekekningKwaliteit(1,PrijsPerStuk);
         }
         return PrijsPerStuk;
-    }
+    }*/
 
     public double getPrijsPerStuk() {
         return nieuwePrijsPerStuk;
