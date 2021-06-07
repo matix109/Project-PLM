@@ -1,10 +1,8 @@
-package com.company;
-
-import java.util.Scanner;
+package com.company.Menu;
 
 public class MenuKeuzes {
+
     public static int printKeuzes() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Menu");
         System.out.println("1) Lijst met planten");// keuze uit/ hele lijst met planten/ bloemen/groentes/
         System.out.println("2) Handeling uitvoeren op een plant");// oogsten/voeding geven/nieuwe handeling maken/
@@ -14,75 +12,74 @@ public class MenuKeuzes {
         System.out.println("6) Aanpassingen invoeren");// Alleen als ingelogd // benodigheden/string voeding/addKas //
         System.out.println("7) Inloggen (kas eigenaar)");// Inlog optie
         System.out.println("8) Registreren (kas eigenaar)");// Registratie
+        System.out.println("9) Verander van kas.");// switch kas
         System.out.println("0) Exit");
         System.out.print("Uw keuze: ");
+            int choice = AskForInput.vraagEenInt();
         System.out.println();
-        int choice = scanner.nextInt();
-        return choice;
+            return choice;
     }
 
     public static int printHandelingKeuzes(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("1) Ik wil een plant oogsten.");
-        System.out.println("2) Ik wil een plant voeding geven.");
-        System.out.println("3) Ik wil een aparte handeling verrichten op een plant.");
+        System.out.println("1) Ik wil een plant oogsten (Tesselaar Berekening).");
+        System.out.println("2) Ik wil een plant oogsten (Paradijs Berekening).");
+        System.out.println("3) Ik wil een plant voeding geven.");
+        System.out.println("4) Ik wil een aparte handeling verrichten op een plant.");
+        System.out.println("5) Ik wil een plant 1 week vooruit zetten in zijn groei.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choiceHandeling = AskForInput.vraagEenInt();
         System.out.println();
-        int choiceHandeling = scanner.nextInt();
         return choiceHandeling;
     }
 
     public static int printPlantInfo(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1) Ik wil de benodigdheden weten van een plant.");
         System.out.println("2) Ik wil de handelingen inzien die op een plant zijn verricht.");
+        System.out.println("3) Ik wil weten hoe lang een plant al groeit.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choicePlantInfo = AskForInput.vraagEenInt();
         System.out.println();
-        int choicePlantInfo = scanner.nextInt();
         return choicePlantInfo;
     }
     public static int printPlantToevoegen(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1) Ik wil een bloem toevoegen.");
         System.out.println("2) Ik wil een groente toevoegen.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choicePlantToevoegen = AskForInput.vraagEenInt();
         System.out.println();
-        int choicePlantToevoegen = scanner.nextInt();
         return choicePlantToevoegen;
     }
     public static int printPlantOogst(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("1) Ik alle oogst zien.");
-        System.out.println("2) Ik wil de totale winst zien.");
+        System.out.println("1) Ik een lijst met oogsten zien.");
+        System.out.println("2) Ik wil de hoeveelheid oogsten zien.");
+        System.out.println("3) Ik wil de totale winst zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choiceOogst = AskForInput.vraagEenInt();
         System.out.println();
-        int choiceOogst = scanner.nextInt();
         return choiceOogst;
     }
     public static int printKasEigenaarHandelingen(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1) Ik wil de benodigdheden van een plant veranderen.");
-        System.out.println("2) Ik wil de voorgestelde voeding van een plant veranderen.");
-        System.out.println("3) Ik wil een kas toevoegen.");
+        System.out.println("2) Ik wil de voorgestelde voeding van een bloem veranderen.");
+        System.out.println("3) Ik wil de voorgestelde voeding van een groente veranderen.");
+        System.out.println("4) Ik wil een kas toevoegen.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choiceKasEigenaar = AskForInput.vraagEenInt();
         System.out.println();
-        int choiceKasEigenaar = scanner.nextInt();
         return choiceKasEigenaar;
     }
     public static int printLijstKeuzes(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1) Ik wil alle planten zien.");
-        System.out.println("2) Ik wil alle bloemen zien.");
-        System.out.println("3) IK wil alle groentes zien.");
+        System.out.println("2) Ik wil de hoeveelheid planten in de kas zien.");
         System.out.println("0) Terug");
         System.out.print("Uw keuze: ");
+        int choiceLijst = AskForInput.vraagEenInt();
         System.out.println();
-        int choiceLijst = scanner.nextInt();
         return choiceLijst;
     }
 
