@@ -4,22 +4,24 @@ import com.company.Planten.Plant;
 
 public class ParadijsBerekeningPPS extends BerekenPrijsPerStuk{
     private double nieuwePrijsPerStuk;
+    private PPSBerekeningPlantCalls plantCalls;
 
     public ParadijsBerekeningPPS(Kwaliteit kwaliteit, Plant plant, double PrijsPerStuk) {
         super(PrijsPerStuk);
-        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit, plant, plant.getBio(),isDePlantLuxe(plant));
+        plantCalls = new PPSBerekeningPlantCalls(plant);
+        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit,plantCalls.isDePlantBio(), isDePlantLuxe());
     }
 
-    public boolean isDePlantLuxe(Plant plant){
-        return plant.getPrijsOmTeGroeien() > 0.10;
+    public boolean isDePlantLuxe(){
+        return plantCalls.plantPrijsOmTeGroeien() > 0.10;
     }
 
-    public double berekenPrijsPerStuk(Kwaliteit kwaliteit, Plant plant, boolean Bio, boolean Luxe){
-        double tijdelijkePrijsPerStuk = kwaliteitPrijs(plant, getHuidigePrijsPerStuk(), kwaliteit);
-        if (Bio){
+    public double berekenPrijsPerStuk(Kwaliteit kwaliteit,boolean bio, boolean luxe){
+        double tijdelijkePrijsPerStuk = kwaliteitPrijs(getHuidigePrijsPerStuk(), kwaliteit);
+        if (bio){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,20);
         }
-        if(Luxe){
+        if(luxe){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,2);
         }
         return tijdelijkePrijsPerStuk;
@@ -29,13 +31,13 @@ public class ParadijsBerekeningPPS extends BerekenPrijsPerStuk{
         return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
     }
 
-    public double kwaliteitPrijs(Plant plant, double PrijsPerStuk,Kwaliteit kwaliteit){
+    public double kwaliteitPrijs(double PrijsPerStuk,Kwaliteit kwaliteit){
         if (kwaliteit.getKwaliteitString().equalsIgnoreCase("matig")) {
-            return PrijsPerStuk - plant.getBerekekningKwaliteit(0,PrijsPerStuk);
+            return PrijsPerStuk - plantCalls.getPlantBerekeningKwaliteit0(PrijsPerStuk);
         } else if (kwaliteit.getKwaliteitString().equalsIgnoreCase("bedorven")) {
             return 0;
         } else if (kwaliteit.getKwaliteitString().equalsIgnoreCase("uitstekend")) {
-            return PrijsPerStuk + plant.getBerekekningKwaliteit(1,PrijsPerStuk);
+            return PrijsPerStuk + plantCalls.getPlantBerekeningKwaliteit1(PrijsPerStuk);
         }
         return PrijsPerStuk;
     }

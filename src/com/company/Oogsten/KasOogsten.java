@@ -2,19 +2,15 @@ package com.company.Oogsten;
 
 import com.company.DeKas.GetPlant;
 import com.company.DeKas.Kas;
-import com.company.Oogsten.MultiOogster;
-import com.company.Oogsten.Oogst;
 import com.company.Planten.Plant;
 
 import java.util.ArrayList;
 
-public class KasOogsten implements MultiOogster {
+public class KasOogsten{
     private ArrayList<Oogst> Bewaart;
-    private Kas kas;
 
-    public KasOogsten(Kas currentKas) {
+    public KasOogsten() {
         Bewaart = new ArrayList<>();
-        this.kas = currentKas;
     }
 
     public ArrayList<Oogst> getOogstenLijst(){
@@ -22,27 +18,7 @@ public class KasOogsten implements MultiOogster {
         dummy.addAll(Bewaart);
         return dummy;
     }
-
-    public boolean oogstPlantSoort(Oogst oogst){
-        if (kanGeoogstWorden(oogst.getPlant(), oogst.getHoeveelheid())) {
-            geoogstePlant(oogst, oogst.getPlant());
-            return true;
-        }
-        return false;
-    }
-
-    private boolean kanGeoogstWorden(Plant plant, int Hoeveelheid) {
-        return new GetPlant(kas.getKasPlanten()).inDeKas(plant) && Volgroeid(plant) && Hoeveelheid >= 1;
-    }
-
-    private void geoogstePlant(Oogst oogst, Plant plant) {
+    public void addOogst(Oogst oogst){
         Bewaart.add(oogst);
-        kas.getKasWinst().addWinst(oogst);
-        kas.getKasPlanten().removePlant(plant);
-    }
-
-    private boolean Volgroeid(Plant plant) {
-        return (plant.getBenodigdheden().getGroeiTijdWeken() + 1 == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken()) || (plant.getBenodigdheden().getGroeiTijdWeken() - 1 == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken())
-                || (plant.getBenodigdheden().getGroeiTijdWeken() == plant.getPlantLevensduur().getHuidigeGroeiTijdWeken());
     }
 }

@@ -10,7 +10,7 @@ public class Kas {
 
 public Kas(String naam){
     this.Naam = naam;
-    this.oogst = new KasOogsten(this);
+    this.oogst = new KasOogsten();
     this.plant = new KasPlanten();
     this.winst = new KasWinst();
 }

@@ -1,6 +1,8 @@
 package com.company;
 import com.company.DeKas.Kas;
 import com.company.Factory.TesselaarOogstFactory;
+import com.company.Oogsten.OogstDePlantTesselaar;
+import com.company.Oogsten.OogstDetails;
 import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Datum;
@@ -26,7 +28,7 @@ class KasTest {
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         courgette.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         wortel.getHandelingen().newHandeling(new Datum(9,11,1999),"de blaadjes onderhouden");
-        kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(wortel,10,2,"Algemeen",new TesselaarOogstFactory()));
+        new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(wortel,new OogstDetails(10,2),"Algemeen",new TesselaarOogstFactory()));
     }
 
     @Test

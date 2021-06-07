@@ -5,20 +5,14 @@ import com.company.Planten.Plant;
 
 public abstract class Oogst {
     private Plant plant;
-    private int Hoeveelheid;
-    private double prijsPerStuk;
+    private OogstDetails details;
 
-    public Oogst(Plant plant, int Hoeveelheid, double PrijsPerStuk) {
+    public Oogst(Plant plant,OogstDetails details) {
         this.plant = plant;
-        this.Hoeveelheid = Hoeveelheid;
-        this.prijsPerStuk =PrijsPerStuk;
+        this.details = details;
     }
 
 public abstract int extraKosten();
-
-    public int getHoeveelheid() {
-        return Hoeveelheid;
-    }
 
     public abstract double getWinst();
 
@@ -28,15 +22,7 @@ public abstract int extraKosten();
 
     public abstract double getNettoWinst();
 
-    public void setHoeveelheid(int hoeveelheid) {
-        this.Hoeveelheid = hoeveelheid;
-    }
-
-    public double getPrijsPerStuk() {
-        return prijsPerStuk;
-    }
-
-    public void setPrijsPerStuk(double prijsPerStuk) {
-        this.prijsPerStuk = prijsPerStuk;
+    public OogstDetails getOogstDetails() {
+        return details;
     }
 }

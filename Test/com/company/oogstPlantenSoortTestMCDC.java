@@ -2,6 +2,8 @@ package com.company;
 
 import com.company.DeKas.Kas;
 import com.company.Factory.TesselaarOogstFactory;
+import com.company.Oogsten.OogstDePlantTesselaar;
+import com.company.Oogsten.OogstDetails;
 import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Groente;
@@ -29,7 +31,7 @@ class oogstPlantenSoortTestMCDC {
         void oogstPlantSoortTest1() {
             wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
             boolean expected = true;
-            boolean actual = kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(wortel,6,2,"Algemeen",new TesselaarOogstFactory()));
+            boolean actual = new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(wortel,new OogstDetails(6,2),"Algemeen",new TesselaarOogstFactory()));
             assertEquals(expected,actual);
         }
 
@@ -38,7 +40,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest2() {
         courgette.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         boolean expected = false;
-        boolean actual = kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(courgette,10,2,"Algemeen",new TesselaarOogstFactory()));
+        boolean actual = new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(courgette,new OogstDetails(10,2),"Algemeen",new TesselaarOogstFactory()));
         assertEquals(expected,actual);
     }
 
@@ -47,7 +49,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest3() {
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(7);
         boolean expected = false;
-        boolean actual = kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(wortel,0,2,"Algemeen",new TesselaarOogstFactory()));
+        boolean actual = new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(wortel,new OogstDetails(0,2),"Algemeen",new TesselaarOogstFactory()));
         assertEquals(expected,actual);
     }
 
@@ -56,7 +58,7 @@ class oogstPlantenSoortTestMCDC {
     void oogstPlantSoortTest4() {
         wortel.getPlantLevensduur().setHuidigeGroeiTijdWeken(5);
         boolean expected = false;
-        boolean actual = kas.getKasOogsten().oogstPlantSoort(new TesselaarOogst(wortel,9,2,"Algemeen",new TesselaarOogstFactory()));
+        boolean actual = new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(wortel,new OogstDetails(9,2),"Algemeen",new TesselaarOogstFactory()));
         assertEquals(expected,actual);
     }
 

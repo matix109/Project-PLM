@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.Factory.TesselaarOogstFactory;
 import com.company.Oogsten.Oogst;
+import com.company.Oogsten.OogstDetails;
 import com.company.Oogsten.TesselaarOogst;
 import com.company.Planten.Benodigdheden;
 import com.company.Planten.Bloem;
@@ -39,7 +40,7 @@ class OogstTest {
     @DisplayName("Netto Winst Test")
     //@CsvSource({"Goed,2.20","Algemeen, 1.60","Slecht,1.0"})
     void nettoWinstTest(String input, double input2) {
-        Oogst testOogst = new TesselaarOogst(madeliefje,2,1.0,input,new TesselaarOogstFactory());
+        Oogst testOogst = new TesselaarOogst(madeliefje,new OogstDetails(2,1.0),input,new TesselaarOogstFactory());
         double Expected = input2;
         double Actual = testOogst.getNettoWinst();
         assertEquals(Expected,Actual,0.00000000001);
