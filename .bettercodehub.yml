@@ -7,6 +7,5 @@ exclude:
   - .*/src/com/company/Menu/MenuCases\.java
   - .*/src/com/company/Menu/MenuKeuzes\.java
   - .*/src/com/company/Menu/MenuUserInput\.java
-[![BCH compliance](https://bettercodehub.com/edge/badge/matix109/Project-PLM?branch=Develop)](https://bettercodehub.com/)
 
 
