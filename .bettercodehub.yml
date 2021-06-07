@@ -2,6 +2,11 @@ component_depth: 4
 languages:
   - java
 exclude:
-  - .*/src/com/company/Menu\.java
+  - .*/src/com/company/Menu/AskForInput\.java
+  - .*/src/com/company/Menu/Menu\.java
+  - .*/src/com/company/Menu/MenuCases\.java
+  - .*/src/com/company/Menu/MenuKeuzes\.java
+  - .*/src/com/company/Menu/MenuUserInput\.java
+
 
 
