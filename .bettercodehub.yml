@@ -2,5 +2,4 @@ component_depth: 4
 languages:
   - java
   - exclude:
-      - /Menu/.*
-      - .*/FileYouWantToExclude\.java
+      - Menu.*
