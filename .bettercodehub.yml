@@ -1,5 +1,3 @@
 component_depth: 4
 languages:
   - java
-  - exclude:
-  - .*/com.company.Menu\.java
