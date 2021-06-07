@@ -5,7 +5,7 @@ import com.company.Planten.Plant;
 public class PPSBerekeningPlantCalls {
     Plant onderDeLoep;
 
-    PPSBerekeningPlantCalls(Plant plant) {
+    public PPSBerekeningPlantCalls(Plant plant) {
         this.onderDeLoep = plant;
     }
 
