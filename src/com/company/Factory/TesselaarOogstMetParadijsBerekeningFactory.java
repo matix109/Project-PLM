@@ -1,9 +1,6 @@
 package com.company.Factory;
 
-import com.company.Oogsten.BerekenPrijsPerStuk;
-import com.company.Oogsten.Kwaliteit;
-import com.company.Oogsten.ParadijsBerekeningPPS;
-import com.company.Oogsten.ParadijsKwaliteit;
+import com.company.Oogsten.*;
 import com.company.Planten.Plant;
 
 public class TesselaarOogstMetParadijsBerekeningFactory implements TesselaarOogstenFactory{
@@ -13,7 +10,7 @@ public class TesselaarOogstMetParadijsBerekeningFactory implements TesselaarOogs
     }
 
     @Override
-    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, Plant plant, double pps) {
-        return new ParadijsBerekeningPPS(kwaliteit,plant,pps);
+    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, PPSBerekeningPlantCalls calls, double pps) {
+        return new ParadijsBerekeningPPS(kwaliteit,calls,pps);
     }
 }

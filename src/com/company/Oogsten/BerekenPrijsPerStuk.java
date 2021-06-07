@@ -17,7 +17,7 @@ public abstract class BerekenPrijsPerStuk {// DIT IS NU OOK EEN COMPOSITIE MET O
 
     public abstract boolean isDePlantLuxe();
 
-    public abstract double berekenPrijsPerStuk(Kwaliteit kwaliteit, boolean Bio, boolean Luxe);
+    public abstract double berekenPrijsPerStuk(Kwaliteit kwaliteit);
 
     public abstract double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent);
 

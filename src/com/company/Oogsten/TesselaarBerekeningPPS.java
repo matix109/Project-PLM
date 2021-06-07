@@ -5,22 +5,22 @@ import com.company.Planten.Plant;
 public class TesselaarBerekeningPPS extends BerekenPrijsPerStuk {
     private double nieuwePrijsPerStuk;
     private PPSBerekeningPlantCalls plantCalls;
-    public TesselaarBerekeningPPS(Kwaliteit kwaliteit, Plant plant, double PrijsPerStuk) {
+    public TesselaarBerekeningPPS(Kwaliteit kwaliteit, PPSBerekeningPlantCalls plantCalls, double PrijsPerStuk) {
         super(PrijsPerStuk);
-        plantCalls = new PPSBerekeningPlantCalls(plant);
-        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit, plantCalls.isDePlantBio(), isDePlantLuxe());
+        this.plantCalls = plantCalls;
+        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit);
     }
 
     public boolean isDePlantLuxe(){
         return plantCalls.plantPrijsOmTeGroeien() > 0.30;
     }
 
-    public double berekenPrijsPerStuk(Kwaliteit kwaliteit,boolean bio, boolean luxe){
+    public double berekenPrijsPerStuk(Kwaliteit kwaliteit){
         double tijdelijkePrijsPerStuk = kwaliteitPrijs(getHuidigePrijsPerStuk(), kwaliteit);
-        if (bio){
+        if (plantCalls.isDePlantBio()){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,10);
         }
-        if(luxe){
+        if(isDePlantLuxe()){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,5);
         }
         return tijdelijkePrijsPerStuk;

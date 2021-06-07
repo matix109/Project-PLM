@@ -9,7 +9,7 @@ public class TesselaarOogst extends Oogst {
     public TesselaarOogst(Plant plant, OogstDetails details, String Kwaliteit, TesselaarOogstenFactory oogst) {
         super(plant,details);
         Kwaliteit kwaliteit = oogst.maakKwaliteit(Kwaliteit);
-        this.Winst = details.getHoeveelheid() * oogst.maakBerekening(kwaliteit,plant,details.getPrijsPerStuk()).getPrijsPerStuk();
+        this.Winst = details.getHoeveelheid() * oogst.maakBerekening(kwaliteit,new PPSBerekeningPlantCalls(plant),details.getPrijsPerStuk()).getPrijsPerStuk();
         this.kosten = plant.getPrijsOmTeGroeien() * details.getHoeveelheid() + extraKosten();
     }
 

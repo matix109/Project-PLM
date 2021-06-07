@@ -6,22 +6,22 @@ public class ParadijsBerekeningPPS extends BerekenPrijsPerStuk{
     private double nieuwePrijsPerStuk;
     private PPSBerekeningPlantCalls plantCalls;
 
-    public ParadijsBerekeningPPS(Kwaliteit kwaliteit, Plant plant, double PrijsPerStuk) {
+    public ParadijsBerekeningPPS(Kwaliteit kwaliteit, PPSBerekeningPlantCalls plantCalls, double PrijsPerStuk) {
         super(PrijsPerStuk);
-        plantCalls = new PPSBerekeningPlantCalls(plant);
-        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit,plantCalls.isDePlantBio(), isDePlantLuxe());
+        this.plantCalls = plantCalls;
+        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit);
     }
 
     public boolean isDePlantLuxe(){
         return plantCalls.plantPrijsOmTeGroeien() > 0.10;
     }
 
-    public double berekenPrijsPerStuk(Kwaliteit kwaliteit,boolean bio, boolean luxe){
+    public double berekenPrijsPerStuk(Kwaliteit kwaliteit){
         double tijdelijkePrijsPerStuk = kwaliteitPrijs(getHuidigePrijsPerStuk(), kwaliteit);
-        if (bio){
+        if (plantCalls.isDePlantBio()){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,20);
         }
-        if(luxe){
+        if(isDePlantLuxe()){
             tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,2);
         }
         return tijdelijkePrijsPerStuk;
