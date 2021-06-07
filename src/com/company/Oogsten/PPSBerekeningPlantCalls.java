@@ -2,22 +2,27 @@ package com.company.Oogsten;
 
 import com.company.Planten.Plant;
 
-public abstract class PPSBerekeningPlantCalls {
+public class PPSBerekeningPlantCalls {
     Plant onderDeLoep;
 
-    PPSBerekeningPlantCalls(Plant plant){
-     this.onderDeLoep = plant;
+    PPSBerekeningPlantCalls(Plant plant) {
+        this.onderDeLoep = plant;
     }
 
-    public abstract double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent);
+    public double plantPrijsOmTeGroeien() {
+        return onderDeLoep.getPrijsOmTeGroeien();
+    }
 
-    public abstract double kwaliteitPrijs(double PrijsPerStuk, Kwaliteit kwaliteit);
+    public double getPlantBerekeningKwaliteit0(double PrijsPerStuk) {
+        return onderDeLoep.getBerekekningKwaliteit(0, PrijsPerStuk);
+    }
 
-    public abstract boolean isDePlantLuxe();
 
-    public abstract boolean isDePlantBio();
+    public double getPlantBerekeningKwaliteit1(double PrijsPerStuk) {
+        return onderDeLoep.getBerekekningKwaliteit(1, PrijsPerStuk);
+    }
 
-    public Plant getOnderDeLoep() {
-        return onderDeLoep;
+    public boolean isDePlantBio() {
+        return onderDeLoep.getBio();
     }
 }
