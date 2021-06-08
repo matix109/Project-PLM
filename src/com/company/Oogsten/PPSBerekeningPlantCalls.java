@@ -9,7 +9,7 @@ public class PPSBerekeningPlantCalls {
         this.onderDeLoep = plant;
     }
 
-    public double plantPrijsOmTeGroeien() {
+    public double plantPrijsOmTeGroeien(){
         return onderDeLoep.getPrijsOmTeGroeien();
     }
 
