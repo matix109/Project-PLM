@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OogstTest {
+class OogstNettoWinstTest {
     Bloem madeliefje = null;
 
     @BeforeEach

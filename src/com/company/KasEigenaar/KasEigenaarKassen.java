@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class KasEigenaarKassen {
     private ArrayList<Kas> Kassen;
 
-    KasEigenaarKassen(){
+    public KasEigenaarKassen(){
         Kassen = new ArrayList<>();
         Kassen.add(new Kas("Dummy"));
     }

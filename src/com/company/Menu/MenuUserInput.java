@@ -21,8 +21,13 @@ import com.company.VoedingPlanten.GroenteVoeding;
 
 public class MenuUserInput {
 
+    public String vraagNaamVanDePlant(){
+        System.out.print("Voer de naam van de plant in:");
+        return AskForInput.vraagEenString();
+    }
+
     public Oogst case2_1(Kas kas) throws NietInDeKasException {
-        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.print("Wat is de hoeveelheid planten?: ");
         int hoeveelheid = AskForInput.vraagEenInt();
         System.out.print("Wat is de prijs per stuk?(€): ");
@@ -33,7 +38,7 @@ public class MenuUserInput {
     }
 
     public Oogst case2_2(Kas kas) throws NietInDeKasException {
-        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.print("Wat is de hoeveelheid planten?: ");
         int hoeveelheid = AskForInput.vraagEenInt();
         System.out.print("Wat is de prijs per stuk?(€): ");
@@ -44,7 +49,7 @@ public class MenuUserInput {
     }
 
     public void case2_3(Kas kas) throws NietInDeKasException {
-        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.print("Voer de dag in: ");
         int dag = AskForInput.vraagEenInt();
         System.out.print("Voer de maand in: ");
@@ -55,7 +60,7 @@ public class MenuUserInput {
     }
 
     public void case2_4(Kas kas) throws NietInDeKasException {
-        Plant plant4 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant4 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.print("Voer de dag in: ");
         int dag2 = AskForInput.vraagEenInt();
         System.out.print("Voer de maand in: ");
@@ -110,7 +115,7 @@ public class MenuUserInput {
     }
 
     public void case6_1(Kas kas) throws NietInDeKasException, KasEigenaarNietIngelogdException {
-        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.println("Wat zijn de nieuwe benodigdheden?");
         System.out.print("Voer de groei tijd in weken in: ");
         int groeiTijdWeken = AskForInput.vraagEenInt();
@@ -123,7 +128,7 @@ public class MenuUserInput {
     }
 
     public void case6_2(Kas kas) throws NietInDeKasException, KasEigenaarNietIngelogdException {
-        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.println("Wat voor voeding krijgt de bloem?");
         System.out.print("Voer de Gro in ml in: ");
         double Gro = AskForInput.vraagEenDouble();
@@ -136,7 +141,7 @@ public class MenuUserInput {
     }
 
     public void case6_3(Kas kas) throws KasEigenaarNietIngelogdException, NietInDeKasException {
-        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant();
+        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
         System.out.println("Wat voor voeding krijgt de Groente?");
         System.out.print("Voer de Gro in ml in: ");
         double Gro = AskForInput.vraagEenDouble();
