@@ -21,132 +21,96 @@ import com.company.VoedingPlanten.GroenteVoeding;
 
 public class MenuUserInput {
 
-    public String vraagNaamVanDePlant(){
-        System.out.print("Voer de naam van de plant in:");
-        return AskForInput.vraagEenString();
-    }
-
     public Oogst case2_1(Kas kas) throws NietInDeKasException {
-        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
-        System.out.print("Wat is de hoeveelheid planten?: ");
-        int hoeveelheid = AskForInput.vraagEenInt();
-        System.out.print("Wat is de prijs per stuk?(€): ");
-        double PPS = AskForInput.vraagEenDouble();
+        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
+        int hoeveelheid = AskForInput.vraagDeHoeveelheidPlanten();
+        double PPS = AskForInput.vraagDePPS();
         System.out.print("Wat is de kwaliteit?(Goed/Algemeen/Slecht): ");
         String kwaliteit = AskForInput.vraagEenString();
         return new TesselaarOogst(plant,new OogstDetails( hoeveelheid, PPS), kwaliteit, new TesselaarOogstFactory());
     }
 
     public Oogst case2_2(Kas kas) throws NietInDeKasException {
-        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
-        System.out.print("Wat is de hoeveelheid planten?: ");
-        int hoeveelheid = AskForInput.vraagEenInt();
-        System.out.print("Wat is de prijs per stuk?(€): ");
-        double PPS = AskForInput.vraagEenDouble();
+        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
+        int hoeveelheid =AskForInput.vraagDeHoeveelheidPlanten();
+        double PPS =AskForInput.vraagDePPS();
         System.out.print("Wat is de kwaliteit?(Uitstekend/Matig/Bedorven): ");
         String kwaliteit = AskForInput.vraagEenString();
         return new TesselaarOogst(plant2,new OogstDetails( hoeveelheid, PPS), kwaliteit, new TesselaarOogstMetParadijsBerekeningFactory());
     }
 
     public void case2_3(Kas kas) throws NietInDeKasException {
-        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
-        System.out.print("Voer de dag in: ");
-        int dag = AskForInput.vraagEenInt();
-        System.out.print("Voer de maand in: ");
-        int maand = AskForInput.vraagEenInt();
-        System.out.print("Voer het jaar in: ");
-        int jaar = AskForInput.vraagEenInt();
+        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
+        int dag = AskForInput.vraagDeDag();
+        int maand = AskForInput.vraagDeMaand();
+        int jaar = AskForInput.vraagHetJaar();
         new GeefPlantVoeding(plant3).geefVoeding(new Datum(dag, maand, jaar));
     }
 
     public void case2_4(Kas kas) throws NietInDeKasException {
-        Plant plant4 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
-        System.out.print("Voer de dag in: ");
-        int dag2 = AskForInput.vraagEenInt();
-        System.out.print("Voer de maand in: ");
-        int maand2 = AskForInput.vraagEenInt();
-        System.out.print("Voer het jaar in: ");
-        int jaar2 = AskForInput.vraagEenInt();
-        System.out.print("Wat voor handleing gaat u verrichten?: ");
+        Plant plant4 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
+        int dag = AskForInput.vraagDeDag();
+        int maand =AskForInput.vraagDeMaand();
+        int jaar = AskForInput.vraagHetJaar();
+                System.out.print("Wat voor handleing gaat u verrichten?: ");
         String handleing = AskForInput.vraagEenString();
-        plant4.getHandelingen().newHandeling(new Datum(dag2, maand2, jaar2), handleing);
+        plant4.getHandelingen().newHandeling(new Datum(dag, maand, jaar), handleing);
     }
 
     public Bloem case4_1() {
         System.out.print("Wat is de naam van de bloem?: ");
         String naam = AskForInput.vraagEenString();
-        System.out.print("Wat is de prijs om te groeien?(€): ");
-        double prijs = AskForInput.vraagEenDouble();
-        System.out.println("Wat zijn de benodigdheden?");
-        System.out.print("Voer de groei tijd in weken in: ");
-        int groeiTijdWeken = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-        int luchtvochtigheid = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige temperatuur in(°C): ");
-        int temperatuur = AskForInput.vraagEenInt();
+        double prijs = AskForInput.vraagDePrijsOmTeGroeien();
+        System.out.println("Wat zijn de benodigdheden ven de bloem?");
+        int groeiTijdWeken = AskForInput.vraagDeGroeiTijdWeken();
+        int luchtvochtigheid = AskForInput.vraagDeLuchtvochtigheid();
+        int temperatuur = AskForInput.vraagDeTemperatuur();
         System.out.println("Wat voor voeding krijgt de bloem?");
-        System.out.print("Voer de Gro in ml in: ");
-        double gro = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Mi-Gro in ml in: ");
-        double miGro = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Bloom in ml in: ");
-        double bloom = AskForInput.vraagEenDouble();
+        double gro = AskForInput.vraagDeGro();
+        double miGro = AskForInput.vraagDeMi_Gro();
+        double bloom = AskForInput.vraagDeBloom();
         return new Bloem(naam, prijs, new Benodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur), new BloemVoeding(gro, miGro, bloom));
     }
 
     public Groente case4_2() {
         System.out.print("Wat is de naam van de groente?: ");
-        String naam2 = AskForInput.vraagEenString();
-        System.out.print("Wat is de prijs om te groeien?(€): ");
-        double prijs2 = AskForInput.vraagEenDouble();
-        System.out.println("Wat zijn de benodigdheden?");
-        System.out.print("Voer de groei tijd in weken in: ");
-        int groeiTijdWeken2 = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-        int luchtvochtigheid2 = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige temperatuur in(°C): ");
-        int temperatuur2 = AskForInput.vraagEenInt();
+        String naam = AskForInput.vraagEenString();
+        double prijs = AskForInput.vraagDePrijsOmTeGroeien();
+        System.out.println("Wat zijn de benodigdheden ven de groente?");
+        int groeiTijdWeken = AskForInput.vraagDeGroeiTijdWeken();
+        int luchtvochtigheid = AskForInput.vraagDeLuchtvochtigheid();
+        int temperatuur = AskForInput.vraagDeTemperatuur();
         System.out.println("Wat voor voeding krijgt de groente?");
-        System.out.print("Voer de Gro in ml in: ");
-        double gro2 = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Mi-Gro in ml in: ");
-        double miGro2 = AskForInput.vraagEenDouble();
-        return new Groente(naam2, prijs2, new Benodigdheden(groeiTijdWeken2, luchtvochtigheid2, temperatuur2), new GroenteVoeding(gro2, miGro2));
+        double gro = AskForInput.vraagDeGro();
+        double miGro = AskForInput.vraagDeMi_Gro();
+        return new Groente(naam, prijs, new Benodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur), new GroenteVoeding(gro, miGro));
     }
 
     public void case6_1(Kas kas) throws NietInDeKasException, KasEigenaarNietIngelogdException {
-        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
+        Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
         System.out.println("Wat zijn de nieuwe benodigdheden?");
-        System.out.print("Voer de groei tijd in weken in: ");
-        int groeiTijdWeken = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige luchtvochtigheid in(%): ");
-        int luchtvochtigheid = AskForInput.vraagEenInt();
-        System.out.print("Voer de nodige temperatuur in(°C): ");
-        int temperatuur = AskForInput.vraagEenInt();
+        int groeiTijdWeken = AskForInput.vraagDeGroeiTijdWeken();
+        int luchtvochtigheid = AskForInput.vraagDeLuchtvochtigheid();
+        int temperatuur = AskForInput.vraagDeTemperatuur();
         System.out.println();
         plant.getBenodigdheden().setBenodigdheden(groeiTijdWeken, luchtvochtigheid, temperatuur);
     }
 
     public void case6_2(Kas kas) throws NietInDeKasException, KasEigenaarNietIngelogdException {
-        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
+        Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
         System.out.println("Wat voor voeding krijgt de bloem?");
-        System.out.print("Voer de Gro in ml in: ");
-        double Gro = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Mi-Gro in ml in: ");
-        double MiGro = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Bloom in ml in: ");
-        double Bloom = AskForInput.vraagEenDouble();
+        double Gro = AskForInput.vraagDeGro();
+        double MiGro = AskForInput.vraagDeMi_Gro();
+        double Bloom = AskForInput.vraagDeBloom();
         System.out.println();
         plant2.getVoeding().setVoeding(Gro, MiGro, Bloom);
     }
 
     public void case6_3(Kas kas) throws KasEigenaarNietIngelogdException, NietInDeKasException {
-        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(vraagNaamVanDePlant());
-        System.out.println("Wat voor voeding krijgt de Groente?");
-        System.out.print("Voer de Gro in ml in: ");
-        double Gro = AskForInput.vraagEenDouble();
-        System.out.print("Voer de Mi-Gro in ml in: ");
-        double MiGro = AskForInput.vraagEenDouble();
+        Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
+        System.out.println("Wat voor voeding krijgt de groente?");
+        double Gro = AskForInput.vraagDeGro();
+        double MiGro = AskForInput.vraagDeMi_Gro();
         System.out.println();
         plant3.getVoeding().setVoeding(Gro, MiGro, 0);
     }

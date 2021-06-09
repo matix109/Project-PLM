@@ -4,42 +4,39 @@ import com.company.Planten.Plant;
 
 public class ParadijsBerekeningPPS extends BerekenPrijsPerStuk{
     private double nieuwePrijsPerStuk;
-    private PPSBerekeningPlantCalls plantCalls;
-
-    public ParadijsBerekeningPPS(Kwaliteit kwaliteit, PPSBerekeningPlantCalls plantCalls, double PrijsPerStuk) {
+    public ParadijsBerekeningPPS(Kwaliteit kwaliteit, Plant plant, double PrijsPerStuk) {
         super(PrijsPerStuk);
-        this.plantCalls = plantCalls;
-        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(kwaliteit);
+        this.nieuwePrijsPerStuk = berekenPrijsPerStuk(plant,kwaliteit);
     }
 
-    public boolean isDePlantLuxe(){
-        return plantCalls.plantPrijsOmTeGroeien() > 0.10;
+    public boolean isDePlantLuxe(Plant plant){
+        return plant.getPrijsOmTeGroeien() > 0.10;
     }
 
-    public double berekenPrijsPerStuk(Kwaliteit kwaliteit){
-        double tijdelijkePrijsPerStuk = kwaliteitPrijs(getHuidigePrijsPerStuk(), kwaliteit);
-        if (plantCalls.isDePlantBio()){
-            tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,20);
+    public double berekenPrijsPerStuk(Plant plant,Kwaliteit kwaliteit){
+       nieuwePrijsPerStuk = kwaliteitPrijs(plant,kwaliteit);
+        if (plant.getBio()){
+            nieuwePrijsPerStuk = berekeningTPPS(nieuwePrijsPerStuk,20);
         }
-        if(isDePlantLuxe()){
-            tijdelijkePrijsPerStuk = berekeningTPPS(tijdelijkePrijsPerStuk,2);
+        if(isDePlantLuxe(plant)){
+            nieuwePrijsPerStuk = berekeningTPPS(nieuwePrijsPerStuk,2);
         }
-        return tijdelijkePrijsPerStuk;
+        return nieuwePrijsPerStuk;
     }
 
     public double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
         return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
     }
 
-    public double kwaliteitPrijs(double PrijsPerStuk,Kwaliteit kwaliteit){
+    public double kwaliteitPrijs(Plant plant,Kwaliteit kwaliteit){
         if (kwaliteit.getKwaliteitString().equalsIgnoreCase("matig")) {
-            return PrijsPerStuk - plantCalls.getPlantBerekeningKwaliteit0(PrijsPerStuk);
+            return getHuidigePrijsPerStuk() - plant.getBerekeningKwaliteit(getHuidigePrijsPerStuk());
         } else if (kwaliteit.getKwaliteitString().equalsIgnoreCase("bedorven")) {
             return 0;
         } else if (kwaliteit.getKwaliteitString().equalsIgnoreCase("uitstekend")) {
-            return PrijsPerStuk + plantCalls.getPlantBerekeningKwaliteit1(PrijsPerStuk);
+            return getHuidigePrijsPerStuk() + plant.getBerekeningKwaliteit(getHuidigePrijsPerStuk());
         }
-        return PrijsPerStuk;
+        return getHuidigePrijsPerStuk();
     }
 
     public double getPrijsPerStuk() {

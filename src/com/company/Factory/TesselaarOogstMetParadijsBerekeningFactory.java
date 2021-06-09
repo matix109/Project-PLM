@@ -10,7 +10,7 @@ public class TesselaarOogstMetParadijsBerekeningFactory implements TesselaarOogs
     }
 
     @Override
-    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, PPSBerekeningPlantCalls calls, double pps) {
-        return new ParadijsBerekeningPPS(kwaliteit,calls,pps);
+    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, Plant plant, double pps) {
+        return new ParadijsBerekeningPPS(kwaliteit,plant,pps);
     }
 }

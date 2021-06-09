@@ -61,22 +61,22 @@ class berekenDeKwaliteitPairwiseTest {
         //Door middel van een BerekenPrijsPerStuk object aan te maken wordt de methode met 4 parameters(3,2,2,2) getest.
         //Onder elke BerekenPrijsPerStuk staat de ingevulde methode als voorbeeld.
         kwaliteit1 = new TesselaarKwaliteit("Slecht");
-        PPS1 = new TesselaarBerekeningPPS(kwaliteit1,new PPSBerekeningPlantCalls(madeliefje),1);
+        PPS1 = new TesselaarBerekeningPPS(kwaliteit1,madeliefje,1);
         //PPS1.berekenPrijsPerStuk("Slecht",aardappel,true,false);
         kwaliteit2 = new TesselaarKwaliteit("Slecht");
-        PPS2 = new TesselaarBerekeningPPS(kwaliteit2,new PPSBerekeningPlantCalls(aardappel),1);
+        PPS2 = new TesselaarBerekeningPPS(kwaliteit2,aardappel,1);
         //PPS2.berekenPrijsPerStuk("Slecht",aardappel,false,true);
         kwaliteit3 = new TesselaarKwaliteit("Algemeen");
-        PPS3 = new TesselaarBerekeningPPS(kwaliteit3,new PPSBerekeningPlantCalls(tulp),1);
+        PPS3 = new TesselaarBerekeningPPS(kwaliteit3,tulp,1);
         //PPS3.berekenPrijsPerStuk("Algemeen",tulp,false,true);
         kwaliteit4 = new TesselaarKwaliteit("Algemeen");
-        PPS4 = new TesselaarBerekeningPPS(kwaliteit4,new PPSBerekeningPlantCalls(courgette),1);
+        PPS4 = new TesselaarBerekeningPPS(kwaliteit4,courgette,1);
         //PPS4.berekenPrijsPerStuk("Algemeen",courgette,true,false);
         kwaliteit5 = new TesselaarKwaliteit("Goed");
-        PPS5 = new TesselaarBerekeningPPS(kwaliteit5,new PPSBerekeningPlantCalls(lotus),1);
+        PPS5 = new TesselaarBerekeningPPS(kwaliteit5,lotus,1);
         //PPS5.berekenPrijsPerStuk("Goed",lotus,true,true)
         kwaliteit6 = new TesselaarKwaliteit("Goed");
-        PPS6 = new TesselaarBerekeningPPS(kwaliteit6,new PPSBerekeningPlantCalls(wortel),1);
+        PPS6 = new TesselaarBerekeningPPS(kwaliteit6,wortel,1);
         //PPS6.berekenPrijsPerStuk("Goed",wortel,false,false)
     }
 

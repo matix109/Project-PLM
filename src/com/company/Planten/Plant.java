@@ -21,7 +21,7 @@ public abstract class Plant {
         this.voeding = voeding;
     }
 
-    abstract public double getBerekekningKwaliteit(int Rating, double prijsPerStuk);
+    abstract public double getBerekeningKwaliteit(double HuidigePPS);
 
         public Voeding getVoeding(){
         return voeding;

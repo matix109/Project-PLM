@@ -76,7 +76,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 5:
                 try {
-                    Plant plant5 = new GetPlant(kas.getKasPlanten()).getTargetPlant(new MenuUserInput().vraagNaamVanDePlant());
+                    Plant plant5 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
                     plant5.getPlantLevensduur().volgendeWeek();
                 } catch (NietInDeKasException e) {
                     System.out.println(e);
@@ -95,7 +95,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 return;
             case 1:
                 try {
-                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(new MenuUserInput().vraagNaamVanDePlant());
+                    Plant plant = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
                     new PrintBenodigdheden(plant).printString();
                     System.out.println();
                 } catch (NietInDeKasException e) {
@@ -105,7 +105,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 2:
                 try {
-                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(new MenuUserInput().vraagNaamVanDePlant());
+                    Plant plant2 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
                     new PrintHandelingen(plant2).printLijst();
                     System.out.println();
                 } catch (NietInDeKasException e) {
@@ -115,7 +115,7 @@ public class MenuCases { // bij de cases die alleen een nummer returnen ff een s
                 break;
             case 3:
                 try {
-                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(new MenuUserInput().vraagNaamVanDePlant());
+                    Plant plant3 = new GetPlant(kas.getKasPlanten()).getTargetPlant(AskForInput.vraagNaamVanDePlant());
                     System.out.println("De plant is in de groei voor " + plant3.getPlantLevensduur().getHuidigeGroeiTijdWeken() + " weken.");
                     System.out.println();
                 } catch (NietInDeKasException e) {
