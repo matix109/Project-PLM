@@ -6,13 +6,8 @@ public class Groente extends Plant {
         super(naam,prijsPerStuk,benodigheid, voeding);
     }
 
-    public double getBerekekningKwaliteit(int rating, double prijsPerStuk){
-        if (rating == 0) {
-            return (prijsPerStuk / 100) * 20;
-        } else if (rating == 1) {
-            return (prijsPerStuk / 100) * 20;
+    public double getBerekeningKwaliteit(double PPS){
+            return (PPS/ 100) * 20;
         }
-        return 0;
-    }
 
 }

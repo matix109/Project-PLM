@@ -10,7 +10,7 @@ public class TesselaarOogstFactory implements TesselaarOogstenFactory{
     }
 
     @Override
-    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, PPSBerekeningPlantCalls calls, double pps) {
-        return new TesselaarBerekeningPPS(kwaliteit,calls,pps);
+    public BerekenPrijsPerStuk maakBerekening(Kwaliteit kwaliteit, Plant plant, double pps) {
+        return new TesselaarBerekeningPPS(kwaliteit,plant,pps);
     }
 }
