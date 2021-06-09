@@ -69,13 +69,13 @@ public class Main {
         System.out.println(kas.getKasWinst().getTotaleWinst());
         System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
         System.out.println("Plantensoort "+madeliefje.getNaam()+madeliefje.getBenodigdheden().toString()+madeliefje.getVoeding().getStringVoeding());
-        System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());*/
+        System.out.println(madeliefje.getHandelingen().getHandelingenLijst().size());
 
         // Hier zou ik eiggenlijk gegevens willen opvragen uit de database over de kas eigenaar.
         //Zodat ik eerst niet de kas hoef toe te voegen op deze manier en zo voort.
         // Haal de comments hier weg en boven weg en voer kas in bij bezit voor een volle kas.
 
-/*        KasEigenaar.getInstance().getAccount().maakAccount();
+        KasEigenaar.getInstance().getAccount().maakAccount();
         Login.getInstance().Inloggen();
         try {
             KasEigenaar.getInstance().getBezit().addKas(kas);

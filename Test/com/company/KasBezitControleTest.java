@@ -50,6 +50,7 @@ class KasBezitControleTest {
     assertTrue(new KasBezitControle(kasEigenaarBezit).bezitDeKas("kas"));
     assertFalse(new KasBezitControle(kasEigenaarBezit).bezitDeKas("kas2"));
     }
+
     @Test
     public void getKasInBezit_ZorgtVoorExceptionTest() {
         Exception exception = assertThrows(KasBestaatNietException.class, () -> {
