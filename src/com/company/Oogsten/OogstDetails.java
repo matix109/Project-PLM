@@ -4,7 +4,7 @@ public class OogstDetails {
     private int Hoeveelheid;
     private double prijsPerStuk;
 
-    public OogstDetails(int Hoeveelheid, double PPS){
+    public OogstDetails(int Hoeveelheid, double PPS){// dit is de temporary field ding
     this.Hoeveelheid =Hoeveelheid;
     this.prijsPerStuk = PPS;
     }

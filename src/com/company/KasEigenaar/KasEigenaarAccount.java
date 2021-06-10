@@ -18,22 +18,18 @@ public class KasEigenaarAccount {// Kan een lege wachtwoord of username bevatten
             String Gebruikernsaam = AskForInput.vraagEenString();
             while(Gebruikernsaam.length() < 3) {
                 System.out.println("Voer minimaal 3 characters in: ");
-                Gebruikernsaam = AskForInput.vraagEenString();
-            }
+                Gebruikernsaam = AskForInput.vraagEenString(); }
             setGebruikersnaam(Gebruikernsaam);
             System.out.print("Voer u nieuwe Wachtwoord in: ");
             String Wachtwoord = AskForInput.vraagEenString();
             while(Wachtwoord.length() < 3) {
                 System.out.println("Voer minimaal 3 characters in: ");
-                Wachtwoord = AskForInput.vraagEenString();
-            }
+                Wachtwoord = AskForInput.vraagEenString(); }
             setWachtwoord(Wachtwoord);
-            System.out.println("Succes! Account met de naam: "+Gebruikernsaam+" is aangemaakt.");
-        }
+            System.out.println("Succes! Account met de naam: "+Gebruikernsaam+" is aangemaakt."); }
         else{
             System.out.println("De kas eigenaar heeft al een account.");
-            System.out.println();
-        }
+            System.out.println(); }
     }
 
     public String getGebruikersnaam() {

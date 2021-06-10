@@ -39,7 +39,7 @@ public class TesselaarBerekeningPPS extends BerekenPrijsPerStuk {
         return getHuidigePrijsPerStuk();
     }
 
-    public double getPrijsPerStuk() {
+    public double getNieuwePrijsPerStuk() {
         return nieuwePrijsPerStuk;
     }
 }

@@ -47,8 +47,7 @@ singleton = new Login();
 
     public boolean Inloggen(){
         if(kasEigenaarIngelogd()){
-            return true;
-        }
+            return true; }
         else{
             for(int i = 0; i < 3;i++) {
                 System.out.println("=======================================");
@@ -58,28 +57,20 @@ singleton = new Login();
                 System.out.print("Voer u wachtword in: ");
                 String wachtwoord = AskForInput.vraagEenString();
                 System.out.println("=======================================");
-
                 if (gebruikersnaamControle(gebruikersnaam) && kasEigenaar.getAccount().wachtwoordControle(wachtwoord)) {
                     System.out.println();
                     this.ingelogd = true;
                     System.out.println("Succesvol ingelogd!");
-                    return true;
-                }
+                    return true; }
                 else {
                     System.out.println("Onjuiste combinatie van gebruikersnaam en wachtwoord");
-                    System.out.println();
-                }
-            }
+                    System.out.println(); } }
                 else{
                     System.out.println("Kas eigenaar bestaat nog niet of heeft geen account.");
                     System.out.println();
-                    break;
-                }
-              }
-            }
+                    break; } } }
         System.out.println("=======================================");
-        return false;
-    }
+        return false; }
 
 
 }

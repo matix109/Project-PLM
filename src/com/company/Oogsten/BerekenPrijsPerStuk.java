@@ -15,7 +15,7 @@ public abstract class BerekenPrijsPerStuk {// DIT IS NU OOK EEN COMPOSITIE MET O
         return huidigePrijsPerStuk;
     }
 
-    public abstract double getPrijsPerStuk();
+    public abstract double getNieuwePrijsPerStuk();
 
     public abstract boolean isDePlantLuxe(Plant plant);
 

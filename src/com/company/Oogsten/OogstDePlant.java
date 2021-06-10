@@ -2,9 +2,10 @@ package com.company.Oogsten;
 
 import com.company.DeKas.GetPlant;
 import com.company.DeKas.Kas;
+import com.company.Exceptions.KanNietGeoogstWordenException;
 import com.company.Planten.Plant;
 
-public abstract class OogstDePlant implements MultiOogster {
+public abstract class OogstDePlant{
     private Kas kas;
 
     OogstDePlant(Kas currentKas){

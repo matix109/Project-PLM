@@ -83,12 +83,12 @@ class berekenDeKwaliteitPairwiseTest {
     @Test
     @DisplayName("Prijs Per Stuk Test")
     void nettoWinstTest() {
-        assertEquals(0.77,PPS1.getPrijsPerStuk(),0.01);
-        assertEquals(0.84,PPS2.getPrijsPerStuk(),0.01);
-        assertEquals(1.05,PPS3.getPrijsPerStuk(),0.01);
-        assertEquals(1.1,PPS4.getPrijsPerStuk(),0.01);
-        assertEquals(1.5,PPS5.getPrijsPerStuk(),0.01);
-        assertEquals(1.2,PPS6.getPrijsPerStuk(),0.01);
+        assertEquals(0.77,PPS1.getNieuwePrijsPerStuk(),0.01);
+        assertEquals(0.84,PPS2.getNieuwePrijsPerStuk(),0.01);
+        assertEquals(1.05,PPS3.getNieuwePrijsPerStuk(),0.01);
+        assertEquals(1.1,PPS4.getNieuwePrijsPerStuk(),0.01);
+        assertEquals(1.5,PPS5.getNieuwePrijsPerStuk(),0.01);
+        assertEquals(1.2,PPS6.getNieuwePrijsPerStuk(),0.01);
     }
 
     @AfterAll

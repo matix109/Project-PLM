@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.DeKas.Kas;
+import com.company.Exceptions.KanNietGeoogstWordenException;
 import com.company.Factory.TesselaarOogstFactory;
 import com.company.Oogsten.OogstDePlant;
 import com.company.Oogsten.OogstDePlantTesselaar;
@@ -51,7 +52,7 @@ class EquivalentieklassenEnRandwaardenTest {
     @ParameterizedTest
     @MethodSource("parametersHoeveelheid")
     @DisplayName("Extra kosten test")
-    void nettoWinstTest(int input, double input2) {
+    void nettoWinstTest(int input, double input2) throws KanNietGeoogstWordenException {
         new OogstDePlantTesselaar(kas).oogstPlantSoort(new TesselaarOogst(madeliefje,new OogstDetails(input,1.0),"Algemeen",new TesselaarOogstFactory()));
         double Expected = input2;
         double Actual = kas.getKasWinst().getTotaleWinst();
