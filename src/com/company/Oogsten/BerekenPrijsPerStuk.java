@@ -21,7 +21,9 @@ public abstract class BerekenPrijsPerStuk {// DIT IS NU OOK EEN COMPOSITIE MET O
 
     public abstract double berekenPrijsPerStuk(Plant plant,Kwaliteit kwaliteit);
 
-    public abstract double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent);
+    public double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
+        return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
+    }
 
     public abstract double kwaliteitPrijs(Plant plant,Kwaliteit kwaliteit);
 

@@ -24,10 +24,6 @@ public class TesselaarBerekeningPPS extends BerekenPrijsPerStuk {
         return nieuwePrijsPerStuk;
     }
 
-    public double berekeningTPPS(double tijdelijkePrijsPerStuk, int procent){
-        return tijdelijkePrijsPerStuk + ((tijdelijkePrijsPerStuk/100)*procent);
-    }
-
     public double kwaliteitPrijs(Plant plant,Kwaliteit kwaliteit){
         if (kwaliteit.getKwaliteitString().equalsIgnoreCase("slecht")) {
             return getHuidigePrijsPerStuk() - plant.getBerekeningKwaliteit(getHuidigePrijsPerStuk());
